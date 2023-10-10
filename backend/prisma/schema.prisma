@@ -1,0 +1,17 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  email       String      @id @unique
+  password    String
+  token       Int?
+  pengelola   Boolean?   @default(false)
+  isVerify    Boolean?   @default(false)
+  created_at  DateTime?   @default(now())
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
