@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+@media (max-width: 768px) {
+    /* Styles for small screens */
+  }
+  
