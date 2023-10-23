@@ -1,18 +1,7 @@
 import React,{useState} from "react";
-import logo from "../../image/Sewa_Asri.png";
-import Axios from 'axios'
 
-async function Submit(credentials){
-  console.log(credentials)
-  const response = await Axios.post('http://127.0.0.1:3001/api/v1/login',{
-    email:credentials.email,
-    password:credentials.password
-  })
-  console.log(response)
-}
-
-export default function Password(props) {
-  console.log(props)
+export default function Password() {
+   
     const [input, setInput] = useState({
       password: '',
       confirmPassword: ''
@@ -38,6 +27,11 @@ export default function Password(props) {
         const stateObj = { ...prev, [name]: "" };
    
         switch (name) {
+          case "username":
+            if(!value){
+              stateObj[name] = "Please Input Email.";
+            }
+            break
           case "password":
             if (!value) {
               stateObj[name] = "Please enter Password.";
@@ -63,15 +57,9 @@ export default function Password(props) {
         return stateObj;
       });
     }
-    const handleSubmit = async (e)=>{
-      e.preventDefault();
-      await Submit()
-    }
    
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
-      <a href="/" ><img src={logo} alt="Sewa Asri logo" className="w-36 mb-10" /></a>
-      <form method="post" className="flex items-center justify-center flex-col gap-3" onSubmit={handleSubmit} >
+    <div className="flex flex-col justify-center items-center mt-16 h-screen" >
         <label className="text-left w-full">Buat Password</label>
         <input
           type="password"
@@ -102,9 +90,8 @@ export default function Password(props) {
           type="submit"
           className="text-white bg-[#40BF40] p-2 w-[15rem] rounded-2xl"
         >
-          Buat Password
+          Sign Up
         </button>
-      </form>
-    </div>
+      </div>
   );
 }

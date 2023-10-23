@@ -78,7 +78,7 @@ exports.login =async (req,res,next)=>{
       email: email,
     },
   })
-  console.log(user.password)
+  console.log(user)
   if (!user || !await bcrypt.compare(password,user.password)){
     return next(new AppError('Incorrect email or password', 401));
   }
