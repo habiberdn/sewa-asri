@@ -1,15 +1,15 @@
 const express = require("express");
-const userController = require("../controller/userController");
+const userController = require("../controller/authController");
 const userRouter = express.Router();
 
 userRouter
   .route("/user")
   .get(userController.getAllUser)
-  .post(userController.Register);
+  .post(userController.checkEmail,userController.Register);
 
 userRouter.post("/login", userController.login);
 userRouter.get("/logout", userController.logout);
-
+userRouter.post('/forgotPassword', userController.forgetPassword);
 
 userRouter
   .route("/:email")

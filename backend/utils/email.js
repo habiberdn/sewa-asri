@@ -1,14 +1,13 @@
 const nodemailer = require('nodemailer');
-
-const pug = require('pug');
 const { convert } = require('html-to-text');
+const pug = require('pug')
 
 module.exports = class Email {
   constructor(user, url) {
     this.to = user.email;
-    this.firstName = user.name.split(' ')[0];
+    // this.firstName = user.name.split(' ')[0];
     this.url = url;
-    this.from = `Jonas Schmedtmann <${process.env.EMAIL_FROM}>`;
+    this.from = `Sewa Asri `;
   }
   newTransport() {
     if (process.env.NODE_ENV === 'production') {
@@ -34,9 +33,9 @@ module.exports = class Email {
   async send(template, subject) {
     //1) Render HTML basend on pug template
     const html = pug.renderFile(
-      `${__dirname}/../views/emails/${template}.pug`,
+      `${__dirname}/../views/${template}.pug`,
       {
-        firstName: this.firstName,
+        // firstName: this.firstName,
         url: this.url,
         subject,
       }

@@ -26,12 +26,14 @@ export default function Login() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-[#f1f2f2]">
+    <div className="flex justify-between">
+      <div className="w-[20rem] h-screen flex justify-center items-center ml-[10rem] ">
+      <img src={logo} alt="Sewa Asri logo" className="w-[15rem]"  />
+      </div>
       <form
-        className="backdrop-blur-sm flex items-center justify-center flex-col bg-[#ffff] rounded-2xl p-[2rem]  "
+        className="flex items-center justify-center flex-col h-screen mr-[20rem] "
         onSubmit={handleSubmit}
       >
-        <img src={logo} alt="Sewa Asri logo" className="w-32 mb-7" />
         <label className="text-left w-full ">Email</label>
         <input
           type="email"
@@ -60,16 +62,16 @@ export default function Login() {
           type="submit"
           id="register"
         >
-          Log In
+          Masuk
         </button>
-        <span className="mt-1 mb-1">Or</span>
+        <span className="mt-1 mb-1">atau</span>
         <button
           className="border border-[#cccc] p-2 w-[15rem] rounded-2xl flex gap-2 justify-center items-center"
           type="button"
           id="signGoogle"
         >
           <img src={google} alt="google-logo" className="w-6" />
-          
+          Lanjutkan dengan google
         </button>
         <p className="text-sm mt-3">Don't have an account? <a href="/register" className="text-[#40BF40]"><b>Sign Up</b></a></p>
 

@@ -15,10 +15,13 @@ export default function Register() {
     password: '',
     confirmPassword: ''
   });
-
+  const [state,setState] = useState({
+    error:null
+  }) 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    e.target.name = "cancel";
+   
     if (input.password !== input.confirmPassword){
       Navigate('/register');
       return swal({
@@ -42,14 +45,20 @@ export default function Register() {
         });
         Navigate('/login')
       }
-    }).catch(err =>{
-      console.error(err)
-      swal({
-        icon: "error",
-        title: "Oops...",
-        text: "Email or/and password wrong!",
-        footer: '<a href="">Why do I have this issue?</a>',
-      });
+      else{
+        swal({
+          icon: "error",
+          title: "Oops...",
+          text: "Email or/and password wrong!",
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
+      }
+    }).catch(error =>{
+      console.error(error.response.data.error)
+      if (error.response) {
+        // The request was made, but the server responded with a status code outside the 2xx range.
+        setState({ error: error.response.data.error });
+      }
     })
   }
 
@@ -103,18 +112,18 @@ export default function Register() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
+    <div className="flex flex-col justify-center items-center h-screen bg-[#f1f2f2]">
       <form
-        className="flex items-center justify-center flex-col "
+           className="backdrop-blur-sm flex items-center justify-center flex-col bg-[#ffff] rounded-2xl p-[2rem]  "
         onSubmit={handleSubmit}
       >
-        <img src={logo} alt="Sewa Asri logo" className="w-40 mb-4" />
+        <img src={logo} alt="Sewa Asri logo" className="w-32 mb-7" />
         <label className="text-left w-full">Email</label>
         <input
           type="email"
           name="email"
           id=""
-          className="bg-[#FBFBFB] w-[15rem] rounded-md pl-2 p-1.5 mb-3"
+          className="bg-[#FBFBFB] w-[15rem] rounded-md pl-2 p-1.5 mb-2"
           required
           onChange={(e) => {
             if (e.target.value.includes("@") && e.target.value.includes(".")) {
@@ -127,12 +136,14 @@ export default function Register() {
           value={email}
           placeholder="you@gmail.com"
         />
+        {state.error && <div className="text-[0.8rem] w-full text-left text-[#ee4d2d] ">{state.error}</div>}
+
         {inPassword && 
         <div className="flex flex-col justify-center items-center">
         <label className="text-left w-full"> Password</label>
         <input
           type="password"
-          className="bg-[#FBFBFB] w-[15rem] rounded-md pl-2 p-1.5"
+          className="bg-[#FBFBFB] w-[15rem] rounded-md pl-2 p-1.5 mb-3"
           placeholder="*******"
           required
           onChange={handleChange}
@@ -145,7 +156,7 @@ export default function Register() {
         <label className="text-left w-full">Confirm Password</label>
         <input
           type="password"
-          className="bg-[#FBFBFB] w-[15rem] rounded-md pl-2 p-1.5"
+          className="bg-[#FBFBFB] w-[15rem] rounded-md pl-2 p-1.5 mb-2"
           placeholder="*******"
           required
           value={input.confirmPassword}
@@ -157,21 +168,23 @@ export default function Register() {
  
         </div>
         } 
-        <button
+        <p className="text-[0.78rem] w-full text-right mb-1 ">Already have an account? <a href="/login" className="text-[#40BF40]"><b>Click</b></a></p>
+        <button 
           className="text-white bg-[#40BF40] p-2 w-[15rem] rounded-2xl"
           type="submit"
           id="register"
         >
          {inPassword? "Sign up" : "Input Email"} 
         </button>
-        <span className="mt-1 mb-1">atau</span>
+
+        <span className="mt-1 mb-1">Or</span>
         <button
           className="border border-[#cccccc] p-2 w-[15rem] rounded-2xl flex gap-2 justify-center items-center"
           type="button"
           id="signGoogle"
         >
           <img src={google} alt="google-logo" className="w-6" />
-          Lanjutkan dengan google
+          
         </button>
 
       </form>
