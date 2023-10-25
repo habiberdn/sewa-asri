@@ -7,6 +7,8 @@ userRouter
   .get(userController.getAllUser)
   .post(userController.checkEmail,userController.Register);
 
+userRouter.route('/user/:email',).get(userController.getOneUser)
+
 userRouter.post("/login", userController.login);
 userRouter.get("/logout", userController.logout);
 userRouter.post('/forgotPassword', userController.forgetPassword);

@@ -114,7 +114,7 @@ export default function Register() {
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-[#f1f2f2]">
       <form
-           className="backdrop-blur-sm flex items-center justify-center flex-col bg-[#ffff] rounded-2xl p-[2rem]  "
+           className="flex items-center justify-center flex-col bg-[#ffff] rounded-2xl p-[2rem]  "
         onSubmit={handleSubmit}
       >
         <img src={logo} alt="Sewa Asri logo" className="w-32 mb-7" />

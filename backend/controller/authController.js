@@ -110,7 +110,7 @@ async function createPasswordResetToken(email) {
     console.log(err)
   }
 
-  return resetToken;
+  return hashedToken;
 }
 
 exports.forgetPassword = catchAsync(async (req, res, next) => {
@@ -134,10 +134,10 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
     
     if (resetToken) {
       // Construct the reset URL
-      const resetURL = `${req.protocol}://${req.get("host")}/api/v1/resetPassword/${resetToken}`;
+      const Token = `${resetToken}`;
       
       // Send the reset email using your Email class or function
-      await new Email(emailDb, resetURL).sendPasswordReset();
+      await new Email(emailDb, Token).sendPasswordReset();
 
       res.status(200).json({
         status: "success",
@@ -161,6 +161,7 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
 });
 
 exports.resetPassword =async (req,res,next)=>{
+  const {password} = req.body;
   const resetToken = crypto.randomBytes(32).toString("hex");
   const pwResetExpires = Date.now() + 10 * 60 * 1000;
 
@@ -203,6 +204,7 @@ exports.logout = (req, res) => {
 };
 
 exports.getOneUser = async (req, res, next) => {
+  console.log(req.params.email)
   const getUser = await prisma.user.findUnique({
     where: {
       email: req.params.email,
