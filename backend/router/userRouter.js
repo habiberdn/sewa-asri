@@ -12,6 +12,7 @@ userRouter.route('/user/:email',).get(userController.getOneUser)
 userRouter.post("/login", userController.login);
 userRouter.get("/logout", userController.logout);
 userRouter.post('/forgotPassword', userController.forgetPassword);
+userRouter.patch('resetPassword',userController.resetPassword)
 
 userRouter
   .route("/:email")

@@ -7,14 +7,16 @@ import Axios from 'axios';
 import swal from "sweetalert";
 
 export default function Register() {
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [inPassword,setInPassword] = useState(false)
   const Navigate = useNavigate()
   
   const [input, setInput] = useState({
+    email:'',
     password: '',
     confirmPassword: ''
   });
+  console.log(input)
   const [state,setState] = useState({
     error:null
   }) 
@@ -32,7 +34,7 @@ export default function Register() {
       });
     }
     Axios.post('http://127.0.0.1:3000/api/v1/user',{
-      email:email,
+      email:input.email,
       password:input.password
     }).then(data =>{
       console.log(data)
@@ -69,6 +71,7 @@ export default function Register() {
   })
 
   function handleChange(event){
+    console.log(event)
     const {value,name} = event.target
     setInput(prev => ({
       ...prev,
@@ -131,9 +134,9 @@ export default function Register() {
             } else {
               setInPassword(true)
             }
-            setEmail(e.target.value)
+            handleChange(e)
           }}
-          value={email}
+          value={input.email}
           placeholder="you@gmail.com"
         />
         {state.error && <div className="text-[0.8rem] w-full text-left text-[#ee4d2d] ">{state.error}</div>}

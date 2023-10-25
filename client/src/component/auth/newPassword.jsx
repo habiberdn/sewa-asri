@@ -17,7 +17,7 @@ export default function NewPasswrod() {
         e.preventDefault();
         const data = await Axios.get(`http://127.0.0.1:3000/api/v1/user/${email}`)
         if(data.data.getUser.passwordResetToken  === token){
-           Navigate('/resetPassword')
+           Navigate(`/resetPassword?email=${email}`)
         }
         else{
           setError(true)
