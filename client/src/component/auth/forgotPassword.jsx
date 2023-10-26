@@ -15,10 +15,10 @@ export default function ForgotPassword() {
     console.log(data.data.getUser.email)
     if(data.data.getUser.email === email.email){
       try{
-        await Axios.post('http://127.0.0.1:3000/api/v1/forgotPassword',{
+       const post =  await Axios.post('http://127.0.0.1:3000/api/v1/forgotPassword',{
          email:email.email
         })
-       
+       console.log(post)
         Navigate(`/forgotPassword/token?email=${email.email}`,{
           email:email
         })

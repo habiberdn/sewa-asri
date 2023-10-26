@@ -12,12 +12,21 @@ export default function NewPasswrod() {
 
     const [token,setToken] =useState()
     const [error,setError] = useState(false)
+    
 
     const handleSubmit = async(e)=>{
         e.preventDefault();
         const data = await Axios.get(`http://127.0.0.1:3000/api/v1/user/${email}`)
+        if( new Date(Date.now())>data.data.getUser.passwordResetExpires){
+          console.log('benarr')
+        }
+        console.log(data.data.getUser.passwordResetExpires)
+        console.log(new Date(Date.now()))
         if(data.data.getUser.passwordResetToken  === token){
            Navigate(`/resetPassword?email=${email}`)
+        }
+        if(!data.data.getUser.passwordResetToken ||  !(new Date(Date.now())<data.data.getUser.passwordResetExpires)){
+          return setError(true);
         }
         else{
           setError(true)
@@ -42,7 +51,7 @@ export default function NewPasswrod() {
         setToken(e.target.value)
      }}
     />
-    {error && <p className="text-[0.8rem] w-full text-left text-[#ee4d2d] ">Token is Incorrect</p>}
+    {error && <p className="text-[0.8rem] w-full text-left text-[#ee4d2d] ">Token is invalid or has expired</p>}
     <button
       className="text-white bg-[#40BF40] p-2 w-[15rem] rounded-2xl"
       type="submit"

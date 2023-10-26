@@ -6,6 +6,7 @@ const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const catchAsync = require("../utils/catchAsync");
 const Email = require("../utils/email");
+const moment = require("moment-timezone");
 
 const signToken = (email) => {
   return jwt.sign({ email }, process.env.JWT_SECRET, {
@@ -73,13 +74,11 @@ exports.checkEmail = catchAsync(async (req, res, next) => {
   const emailDb = await prisma.user.findUnique({
     where: {
       email: email,
-    }
+    },
   });
   if (!email || !emailDb) {
-
     return next();
   }
-  console.log(emailDb);
   if (email === emailDb.email) {
     res.status(400).json({
       error: "Email already exist",
@@ -90,24 +89,26 @@ exports.checkEmail = catchAsync(async (req, res, next) => {
 });
 
 async function createPasswordResetToken(email) {
-  const resetToken = crypto.randomBytes(32).toString('hex');
-  
+  const resetToken = crypto.randomBytes(32).toString("hex");
+
   const hashedToken = crypto
-    .createHash('sha256')
+    .createHash("sha256")
     .update(resetToken)
-    .digest('hex');
-  const now = new Date(Date.now() + 10 * 60 * 1000)
-  try{
-    const user = await prisma.user.update({
+    .digest("hex");
+
+  const now = new Date(Date.now() + 10 * 60 * 1000 + 3600 * 7 * 1000);
+
+  console.log(now);
+  try {
+    await prisma.user.update({
       where: { email: email },
       data: {
         passwordResetToken: hashedToken,
         passwordResetExpires: now,
       },
     });
-
-  }catch(err){
-    console.log(err)
+  } catch (err) {
+    console.log(err);
   }
 
   return hashedToken;
@@ -115,7 +116,7 @@ async function createPasswordResetToken(email) {
 
 exports.forgetPassword = catchAsync(async (req, res, next) => {
   const { email } = req.body;
- 
+
   try {
     // Find the user by their email
     const emailDb = await prisma.user.findUnique({
@@ -131,11 +132,11 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
 
     // Call the createPasswordResetToken function
     const resetToken = await createPasswordResetToken(emailDb.email);
-    
+
     if (resetToken) {
       // Construct the reset URL
       const Token = `${resetToken}`;
-      
+
       // Send the reset email using your Email class or function
       await new Email(emailDb, Token).sendPasswordReset();
 
@@ -148,9 +149,6 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
     }
   } catch (err) {
     // Handle errors, reset the user's data if necessary
-
-    // emailDb.passwordResetToken = undefined;
-    // emailDb.passwordResetExpires = undefined;
     console.log(err);
 
     return next(
@@ -160,17 +158,39 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
   }
 });
 
-exports.resetPassword =async (req,res,next)=>{
-  const {password} = req.body;
-  const resetToken = crypto.randomBytes(32).toString("hex");
-  const pwResetExpires = Date.now() + 10 * 60 * 1000;
+exports.resetPassword = catchAsync(async (req, res, next) => {
+  const { email } = req.body;
+  try {
+    const passwordDb = await prisma.user.findMany({
+      where: {
+        email: email,
+      },
+    });
 
-  const resetCrypto = crypto
-  .createHash('sha256')
-  .update(resetToken)
-  .digest('hex');
+    if (!passwordDb) {
+      return next(new AppError('Token is invalid or has expired', 400));
+    }
 
-}
+    const { password } = req.body;
+    console.log(password);
+    const hashPassword = await bcrypt.hash(password, 10);
+
+    const update = await prisma.user.update({
+      where: {
+        email: email,
+      },
+      data: {
+        password: hashPassword,
+        passwordResetToken: undefined,
+        passwordResetExpires: undefined,
+      },
+    });
+    
+    createSendToken(update, 200, res);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
@@ -204,7 +224,7 @@ exports.logout = (req, res) => {
 };
 
 exports.getOneUser = async (req, res, next) => {
-  console.log(req.params.email)
+  console.log(req.params.email);
   const getUser = await prisma.user.findUnique({
     where: {
       email: req.params.email,
