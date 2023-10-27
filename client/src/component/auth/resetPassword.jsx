@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import logo from "../../image/Sewa_Asri.png";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-
 
 export default function ResetPassword() {
   const location = useLocation();
@@ -17,8 +15,8 @@ export default function ResetPassword() {
     password: "",
     passConfirm: "",
   });
-
   const [error, setError] = useState(false);
+  const [token,setToken] = useState(false)
 
   function handleChange(event) {
     const { value, name } = event.target;
@@ -27,6 +25,18 @@ export default function ResetPassword() {
       [name]: value,
     }));
   }
+
+  const isExpired = async () => {
+    const expired = await axios.get(
+      `http://127.0.0.1:3000/api/v1/user/${email}`
+    );
+    if(expired.data.getUser.passwordResetExpires < new Date(Date.now())){
+      setTimeout(()=>{
+        alert('Token is expired!')
+      },1500)
+      Navigate('/login')
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,21 +48,17 @@ export default function ResetPassword() {
     if (input.password === input.passConfirm) {
       try {
         console.log("masuk");
-         await axios.patch(
-          "http://127.0.0.1:3000/api/v1/resetPassword",
-          {
-            email: email,
-            password: input.password,
-          }
-        );
+        await axios.patch("http://127.0.0.1:3000/api/v1/resetPassword", {
+          email: email,
+          password: input.password,
+        });
         swal({
           icon: "success",
           title: "Password already changed!",
           showConfirmButton: false,
           timer: 1500,
         });
-        Navigate('/login')
-       
+        Navigate("/login");
       } catch (err) {
         console.log(err);
       }
@@ -70,7 +76,9 @@ export default function ResetPassword() {
         className="flex items-center justify-center flex-col bg-[#ffff] rounded-2xl p-[2rem]"
       >
         <img src={logo} alt="Sewa Asri logo" className="w-32 mb-7" />
-
+      {setTimeout(()=>{
+        isExpired()
+      },600000)}
         <label className="w-full text-left">New Password</label>
         <input
           name="password"
@@ -90,7 +98,6 @@ export default function ResetPassword() {
           className="bg-[#FBFBFB] w-[15rem] rounded-md pl-2 p-1.5 mb-1 mt-3"
           value={input.passConfirm}
           required
-
         />
         {error && (
           <div className="text-[0.8rem] w-full text-left text-[#ee4d2d] ">
