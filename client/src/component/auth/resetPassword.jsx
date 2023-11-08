@@ -16,7 +16,6 @@ export default function ResetPassword() {
     passConfirm: "",
   });
   const [error, setError] = useState(false);
-  const [token,setToken] = useState(false)
 
   function handleChange(event) {
     const { value, name } = event.target;
