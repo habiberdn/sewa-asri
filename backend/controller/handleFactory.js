@@ -47,13 +47,13 @@ exports.createOne = (Model) =>
 
 exports.getOne = (Model, popOptions) =>
   catchAsync(async (req, res, next) => {
-    let query = await Model.findById(req.params.id);
+    let query = await Model.findOne({email:req.params.id});
     if (popOptions) query = query.populate(popOptions);
-    const doc = await query;
-    //if want to apply in getAllTour, never duplicate the code, use query middleware instead
+    const doc = query;
+   
 
     if (!doc) {
-      return next(new AppError('No Tour found in that ID', 404));
+      return next(new AppError('No Tour found in that Email or ID', 404));
     }
 
     res.status(200).json({

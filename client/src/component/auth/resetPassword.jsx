@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import logo from "../../image/Sewa_Asri.png";
 import axios from "axios";
-import { useLocation,useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
 export default function ResetPassword() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const email = searchParams.get("email");
-  console.log(email);
+  const token = searchParams.get("token");
+  console.log(token);
   const Navigate = useNavigate();
 
   const [input, setInput] = useState({
@@ -25,47 +25,27 @@ export default function ResetPassword() {
     }));
   }
 
-  const isExpired = async () => {
-    const expired = await axios.get(
-      `http://127.0.0.1:3000/api/v1/user/${email}`
-    );
-    if(expired.data.getUser.passwordResetExpires < new Date(Date.now())){
-      setTimeout(()=>{
-        alert('Token is expired!')
-      },1500)
-      Navigate('/login')
-    }
-  };
-
+  console.log(input.password,input.passConfirm)
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await axios.get(`http://127.0.0.1:3000/api/v1/user/${email}`);
-    console.log(data.data.getUser.password);
-    console.log(input.password);
-    console.log(input.passConfirm);
-
-    if (input.password === input.passConfirm) {
-      try {
-        console.log("masuk");
-        await axios.patch("http://127.0.0.1:3000/api/v1/resetPassword", {
-          email: email,
-          password: input.password,
-        });
-        swal({
-          icon: "success",
-          title: "Password already changed!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        Navigate("/login");
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      console.log("gmasuk");
-
-      setError(true);
+    try {
+      
+      await axios.patch(`http://127.0.0.1:3000/api/v1/user/resetPassword/${token}`, {
+        password: input.password,
+        passwordConfirm : input.passConfirm
+      });
+      swal({
+        icon: "success",
+        title: "Password already changed!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      Navigate("/login");
+    } catch (err) {
+      setError(err.response.data.message);
+      
     }
+
   };
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-[#f1f2f2]">
@@ -75,9 +55,7 @@ export default function ResetPassword() {
         className="flex items-center justify-center flex-col bg-[#ffff] rounded-2xl p-[2rem]"
       >
         <img src={logo} alt="Sewa Asri logo" className="w-32 mb-7" />
-      {setTimeout(()=>{
-        isExpired()
-      },600000)}
+
         <label className="w-full text-left">New Password</label>
         <input
           name="password"
@@ -100,7 +78,7 @@ export default function ResetPassword() {
         />
         {error && (
           <div className="text-[0.8rem] w-full text-left text-[#ee4d2d] ">
-            Password aren't correct or new password not same!
+            {error}
           </div>
         )}
         <button

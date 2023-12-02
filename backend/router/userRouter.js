@@ -5,13 +5,13 @@ const userRouter = express.Router();
 
 
 userRouter.post('/signup', authController.signup);
-userRouter.route('/:email',).get(userController.getUsers)
+// userRouter.route('/:email',).get(userController.getUsers)
 
 userRouter.post("/login", authController.login);
 userRouter.get("/logout", authController.logout);
-// userRouter.post('/forgotPassword', authController.forgetPassword);
-// userRouter.patch('/resetPassword',authController.resetPassword)
-userRouter.use(authController.protect);
+userRouter.post('/forgotPassword', authController.forgotPassword);
+userRouter.patch('/resetPassword/:token',authController.resetPassword)
+// userRouter.use(authController.protect);
 userRouter
   .route("/")
   .get(userController.getAllUsers)

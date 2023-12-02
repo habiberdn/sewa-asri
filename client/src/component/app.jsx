@@ -4,7 +4,7 @@ import Login from "./auth/login";
 import Register from "./auth/regisEmail";
 import Home from "./homePage/home";
 import ForgotPassword from "./auth/forgotPassword";
-import NewPasswrod from "./auth/newPassword";
+import NewPasswrod from "./auth/token";
 import ResetPassword from "./auth/resetPassword";
 export default function App() {
   return (

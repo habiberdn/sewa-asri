@@ -7,15 +7,14 @@ export default function ForgotPassword() {
   const Navigate = useNavigate();
   const [email,setEmail] =useState()
   const [isSubmit,setSubmit] =useState(false)
-
   const handleSubmit = async(e)=>{
     e.preventDefault();
     setSubmit(true)
     const data = await Axios.get(`http://127.0.0.1:3000/api/v1/user/${email.email}`)
-    console.log(data.data.getUser.email)
-    if(data.data.getUser.email === email.email){
+   console.log(data.data.data.doc.email,email)
+    if(data.data.data.doc.email === email.email){
       try{
-       const post =  await Axios.post('http://127.0.0.1:3000/api/v1/forgotPassword',{
+       const post =  await Axios.post('http://127.0.0.1:3000/api/v1/user/forgotPassword',{
          email:email.email
         })
        console.log(post)
