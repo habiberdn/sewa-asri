@@ -1,22 +1,24 @@
-const express = require("express");
-const userController = require("../controller/authController");
+const express = require('express');
+const authController = require("../controller/authController");
+const userController = require('../controller/userController')
 const userRouter = express.Router();
 
+
+userRouter.post('/signup', authController.signup);
+userRouter.route('/:email',).get(userController.getUsers)
+
+userRouter.post("/login", authController.login);
+userRouter.get("/logout", authController.logout);
+// userRouter.post('/forgotPassword', authController.forgetPassword);
+// userRouter.patch('/resetPassword',authController.resetPassword)
+userRouter.use(authController.protect);
 userRouter
-  .route("/user")
-  .get(userController.getAllUser)
-  .post(userController.checkEmail,userController.Register);
-
-userRouter.route('/user/:email',).get(userController.getOneUser)
-
-userRouter.post("/login", userController.login);
-userRouter.get("/logout", userController.logout);
-userRouter.post('/forgotPassword', userController.forgetPassword);
-userRouter.patch('/resetPassword',userController.resetPassword)
+  .route("/")
+  .get(userController.getAllUsers)
 
 userRouter
-  .route("/:email")
-  .get(userController.getOneUser)
+  .route("/:id")
+  .get(userController.getUsers)
   .put(userController.updateUser)
   .delete(userController.deleteUser);
 

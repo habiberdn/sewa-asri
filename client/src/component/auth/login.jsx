@@ -8,11 +8,11 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [error,setError] = useState("")
   const Navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post('http://127.0.0.1:3000/api/v1/login',{
+    Axios.post('http://127.0.0.1:3000/api/v1/user/login',{
       email:email,
       password:password
     }).then((data)=>{
@@ -22,6 +22,7 @@ export default function Login() {
       }
     }).catch(err=>{
       console.error(err)
+      setError(err.response.data.message)
     })
   }
 
@@ -54,6 +55,7 @@ export default function Login() {
           value={password}
           placeholder="*******"
         />
+        {error  && <div className="text-[0.8rem] w-full text-left text-[#ee4d2d] ">{error}</div>}
        <a href="/forgotPassword" className="text-[0.8rem] hover:text-[#40BF40] text-left w-full mb-2"> <p>Forgot password?</p></a>
         <button
           className="text-white bg-[#40BF40] p-2 w-[15rem] rounded-2xl"
