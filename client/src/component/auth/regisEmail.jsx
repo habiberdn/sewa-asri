@@ -42,7 +42,7 @@ export default function Register() {
           icon: "success",
           title: "Account already created, please log in!",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 1000,
         });
         Navigate('/login')
       }
@@ -75,7 +75,7 @@ export default function Register() {
     }));
     validateInput(event);
   }
-
+  console.log(input.email,input.password,input.passwordConfirm)
   const validateInput = e => {
     let { name, value } = e.target;
     setError(prev => {
