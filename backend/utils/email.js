@@ -4,7 +4,7 @@ const pug = require('pug')
 
 module.exports = class Email {
   constructor(user, url) {
-    this.to = user.email;
+    this.to = user.email? user.email : user; 
     // this.firstName = user.name.split(' ')[0];
     this.url = url;
     this.from = `Sewa Asri`;
@@ -56,7 +56,11 @@ module.exports = class Email {
   }
 
   async sendWelcome() {
-    await this.send('welcome', 'welcome to the natours family');
+    await this.send('welcome', 'Welcome to the Natours family');
+  }
+
+  async isEmail(){
+    await this.send('email','Confirm your email!')
   }
 
   async sendPasswordReset() {

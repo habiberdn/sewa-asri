@@ -22,7 +22,7 @@ app.use('/api/v1/user', userRouter)
 
 app.all('*', (req, res, next) => {
     //handling unhandled route
-    next(new AppError(`Cant fint ${req.originalUrl} on this server`, 404));
+    next(new AppError(`Cant find ${req.originalUrl} on this server`, 404));
 });
 app.use(globalError);
 
