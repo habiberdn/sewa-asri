@@ -21,7 +21,23 @@ const userSchema = new mongoose.Schema({
     },
     bathroomQuantity:{
         type:Number,
-
+    },
+    review:{
+        ref:'Review',
+        type:mongoose.Schema.ObjectId,
+        require:[true,'Villa must belong to a review'],
+    },
+    address:{
+        ref:'Address',
+        type:mongoose.Schema.ObjectId,
+        require:[true,'Villa must belong to a Address'],
+    },  
+    createdAt:{
+        type:Date,
+        default:Date.now(),
     }
-
 })
+
+const villa = mongoose.model('Villa', userSchema);
+
+module.exports = villa;

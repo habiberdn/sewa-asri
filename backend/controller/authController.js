@@ -61,11 +61,21 @@ exports.email = async (req, res, next) => {
   const tokenCryp = crypto.randomBytes(32).toString('hex');
   const token = tokenCryp.substring(0, 5);
   await new Email(email, token).isEmail()
+  res.redirect(`/signup?token=${token},email=${email}`);
   res.status(200).json({
     status: 'success',
     email, token
   })
-  res.user = {email,token}
+}
+
+exports.verifyEmail = (req,res,next)=>{
+  const {token,email} = req.query;
+  if (token.substring(0,5) !== req.body.token){
+    next(new AppError("Token aren't the same!"))
+  }
+  console.log(token)
+  res.user = email;
+  next()
 }
 
 
