@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const userSchema = new mongoose.Schema({
+const villaSchema = new mongoose.Schema({
     image : {
         type:String
     },
@@ -22,22 +22,20 @@ const userSchema = new mongoose.Schema({
     bathroomQuantity:{
         type:Number,
     },
-    review:{
-        ref:'Review',
+    bookmarkId:{
         type:mongoose.Schema.ObjectId,
-        require:[true,'Villa must belong to a review'],
+        ref:'Bookmark',
     },
-    address:{
-        ref:'Address',
+    ratings :{
         type:mongoose.Schema.ObjectId,
-        require:[true,'Villa must belong to a Address'],
-    },  
+        ref:'Review',
+    },
     createdAt:{
         type:Date,
         default:Date.now(),
     }
 })
 
-const villa = mongoose.model('Villa', userSchema);
+const villa = mongoose.model('Villa', villaSchema);
 
 module.exports = villa;

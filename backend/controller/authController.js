@@ -11,9 +11,8 @@ const signToken = (id) => {
     expiresIn: process.env.JWT_EXPIRED_IN,
   });
 };
-
+  
 const createSendToken = (user, statusCode, res) => {
-
   const token = signToken(user.id);
   const cookieOption = {
     expires: new Date(
@@ -77,7 +76,6 @@ exports.verifyEmail = (req,res,next)=>{
   res.user = email;
   next()
 }
-
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {
   // 1) Get user based on POSTed email
