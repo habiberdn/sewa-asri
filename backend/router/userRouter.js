@@ -19,6 +19,5 @@ userRouter
   .put(userController.updateUser)
   .delete(userController.deleteUser);
 
-userRouter.post('/email',authController.email)
-userRouter.post('/signup',authController.verifyEmail,authController.signup);
+userRouter.post('/signup',authController.signup);
 module.exports = userRouter;

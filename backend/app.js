@@ -2,6 +2,10 @@ const express = require('express')
 const cors = require('cors')
 const rateLimit = require('express-rate-limit');
 const userRouter = require('./router/userRouter')
+const otpRouter = require('./router/otpRouter')
+const ratingsRouter = require('./router/ratingsRouter')
+const bookmarkRouter = require('./router/bookmarkRouter')
+const villaRouter = require('./router/villaRouter')
 const globalError = require('./controller/errorController');
 const AppError = require('./utils/appError');
 const app = express()
@@ -17,8 +21,12 @@ const limiter = rateLimit({
     message: 'Too many request from this IP,please try again in an hour!',
 });
 app.use('/api', limiter);
-
+app.use('/api/v1/otp',otpRouter)
+app.use('/api/v1/rating', ratingsRouter)
+app.use('/api/v1/bookmark', bookmarkRouter)
 app.use('/api/v1/user', userRouter)
+app.use('/api/v1/villa', villaRouter)
+
 
 app.all('*', (req, res, next) => {
     //handling unhandled route

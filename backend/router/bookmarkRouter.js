@@ -6,10 +6,12 @@ const userRouter = express.Router();
 userRouter.use(authController.protect)
 userRouter
     .route("/")
-    .get(bookmarkController.getAllUsers)
+    .get(bookmarkController.getAllBookmark)
 
 userRouter
     .route("/:id")
-    .get(bookmarkController.getUsers)
-    .put(bookmarkController.updateUser)
-    .delete(bookmarkController.deleteUser);
+    .get(bookmarkController.getBookmark)
+    .put(bookmarkController.updateBookmark)
+    .delete(bookmarkController.deleteBookmark);
+
+module.exports = userRouter;

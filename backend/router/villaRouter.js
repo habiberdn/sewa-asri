@@ -6,10 +6,13 @@ const userRouter = express.Router();
 userRouter.use(authController.protect)
 userRouter
     .route("/")
-    .get(villaController.getAllUsers)
+    .get(villaController.getAllVilla)
 
 userRouter
     .route("/:id")
-    .get(villaController.getUsers)
-    .put(villaController.updateUser)
-    .delete(villaController.deleteUser);
+    .get(villaController.getVilla)
+    .put(villaController.updateVilla)
+    .delete(villaController.deleteVilla);
+
+module.exports = userRouter;
+

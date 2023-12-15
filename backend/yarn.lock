@@ -730,6 +730,11 @@ on-finished@2.4.1:
   dependencies:
     ee-first "1.1.1"
 
+otp-generator@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/otp-generator/-/otp-generator-4.0.1.tgz#ec6bb8d0d14c171318e8eb731fdfcd2dd1ad83e7"
+  integrity sha512-2TJ52vUftA0+J3eque4wwVtpaL4/NdIXDL0gFWFJFVUAZwAN7+9tltMhL7GCNYaHJtuONoier8Hayyj4HLbSag==
+
 parseley@^0.12.0:
   version "0.12.1"
   resolved "https://registry.npmjs.org/parseley/-/parseley-0.12.1.tgz"

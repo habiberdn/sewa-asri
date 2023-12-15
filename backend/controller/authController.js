@@ -4,14 +4,17 @@ const catchAsync = require("../utils/catchAsync");
 const Email = require("../utils/email");
 const User = require('../models/userModels')
 const { promisify } = require('util');
-const crypto = require('crypto')
+const crypto = require('crypto');
+const otpGenerator = require('otp-generator');
+const otpModel = require('../models/otpModel')
+
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRED_IN,
   });
 };
-  
+
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user.id);
   const cookieOption = {
@@ -35,8 +38,65 @@ const createSendToken = (user, statusCode, res) => {
   });
 };
 
+exports.sendOtp = async (req, res, next) => {
+  try {
+    const { email } = req.body
+    const checkEmail = await User.findOne({
+      email: email
+    })
+
+    if (checkEmail) {
+      return next(new AppError("Email already exist!", 400))
+    }
+
+    let otp = otpGenerator.generate(6, {
+      upperCaseAlphabets: false,
+      lowerCaseAlphabets: false,
+      specialChars: false,
+    });
+
+    let result = await otpModel.findOne({ otp: otp });
+    while (result) {
+      otp = otpGenerator.generate(6, {
+        upperCaseAlphabets: false,
+      });
+      result = await otpModel.findOne({ otp: otp });
+    }
+  await new Email(email, otp).isEmail()
+
+    const otpPayload = { email, otp };
+    await otpModel.create(otpPayload);
+    res.status(200).json({
+      success: true,
+      message: 'OTP sent successfully',
+      otp,
+    });
+  } catch (err) {
+    console.log(err.message);
+    return next(new AppError('Error',500))
+  }
+
+}
+
 exports.signup = catchAsync(async (req, res, next) => {
   try {
+    const { name, email, password, otp } = req.body;
+    // Check if all details are provided
+    if (!name || !email || !password || !otp) {
+      return res.status(403).json({
+        success: false,
+        message: 'All fields are required',
+      });
+    }
+
+    const response = await otpModel.find({ email }).sort({ createdAt: -1 }).limit(1);
+    if (response.length === 0 || otp !== response[0].otp) {
+      return res.status(400).json({
+        success: false,
+        message: 'The OTP is not valid',
+      });
+    }
+
     const newUser = await User.create({
       name: req.body.name,
       email: req.body.email,
@@ -44,6 +104,7 @@ exports.signup = catchAsync(async (req, res, next) => {
       passwordConfirm: req.body.passwordConfirm,
       role: req.body.role,
     });
+
     const url = `${req.protocol}://127.0.0.1:3000/me`;
     await new Email(newUser, url).sendWelcome();
     createSendToken(newUser, 201, res);
@@ -51,31 +112,6 @@ exports.signup = catchAsync(async (req, res, next) => {
     return next(new AppError("Email already exist!, Try another", 400));
   }
 })
-
-exports.email = async (req, res, next) => {
-  const email = req.body.email;
-  if (!email) {
-    return next(new AppError('There is no email address.', 404));
-  }
-  const tokenCryp = crypto.randomBytes(32).toString('hex');
-  const token = tokenCryp.substring(0, 5);
-  await new Email(email, token).isEmail()
-  res.redirect(`/signup?token=${token},email=${email}`);
-  res.status(200).json({
-    status: 'success',
-    email, token
-  })
-}
-
-exports.verifyEmail = (req,res,next)=>{
-  const {token,email} = req.query;
-  if (token.substring(0,5) !== req.body.token){
-    next(new AppError("Token aren't the same!"))
-  }
-  console.log(token)
-  res.user = email;
-  next()
-}
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {
   // 1) Get user based on POSTed email
