@@ -47,20 +47,35 @@ exports.createOne = (Model) =>
 
 exports.getOne = (Model, popOptions) =>
   catchAsync(async (req, res, next) => {
-    let query = await Model.findOne({email:req.params.id});
+    let query = await Model.findOne({ email: req.params.id });
     if (popOptions) query = query.populate(popOptions);
     const doc = query;
-   
+
 
     if (!doc) {
-      return next(new AppError('No Tour found in that Email or ID', 404));
+      return next(new AppError('Nothing found with that data', 404));
     }
 
     res.status(200).json({
       status: 'success',
-      data: {
-        doc,
-      },
+      doc
+    });
+  });
+
+exports.getOtp = (Model) =>
+  catchAsync(async (req, res, next) => {
+    let query = await Model.findOne({ otp: req.params.otp });
+
+    const doc = query;
+
+
+    if (!doc) {
+      return next(new AppError('Nothing found with that data', 404));
+    }
+
+    res.status(200).json({
+      status: 'success',
+      doc
     });
   });
 
@@ -70,7 +85,7 @@ exports.getAll = (Model) =>
     let filter = {}; //ragu
     if (req.params.tourId) filter = { tour: req.params.tourId };
 
-    
+
     //execute
     const features = new APIFeatures(Model.find(), req.query)
       .filter()
@@ -84,8 +99,6 @@ exports.getAll = (Model) =>
     res.status(200).json({
       status: 'success',
       result: doc.length,
-      data: {
-        data:doc,
-      },
+      doc
     });
   });

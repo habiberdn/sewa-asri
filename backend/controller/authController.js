@@ -7,6 +7,8 @@ const { promisify } = require('util');
 const crypto = require('crypto');
 const otpGenerator = require('otp-generator');
 const otpModel = require('../models/otpModel')
+const factory = require('./handleFactory')
+
 
 
 const signToken = (id) => {
@@ -77,6 +79,9 @@ exports.sendOtp = async (req, res, next) => {
   }
 
 }
+
+exports.getOneOtp = factory.getOtp(otpModel)
+exports.getAllOtp = factory.getAll(otpModel)
 
 exports.signup = catchAsync(async (req, res, next) => {
   try {
