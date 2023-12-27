@@ -57,7 +57,7 @@ module.exports = class Email {
      this.newTransport().sendMail({
       from : 'Sewa Asri',
       to: this.to,
-
+      html
      })
   }
 
