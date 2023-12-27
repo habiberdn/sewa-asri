@@ -52,7 +52,6 @@ module.exports = class Email {
       to: this.to,
       html,
       subject,
-      text
      })
   }
 
