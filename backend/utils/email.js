@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const { convert } = require('html-to-text');
+const htmlToText = require('html-to-text');
 const pug = require('pug')
 
 module.exports = class Email {
@@ -47,10 +47,10 @@ module.exports = class Email {
 
     //2) Redefine email option
     const mailOptions = {
-      from: 'Sewa Asri',
+      // from: 'Sewa Asri',
       to: this.to,
-      subject,
-      text: convert(html),
+      // subject,
+      // text: htmlToText.fromString(html),
       // html:
     };
 
