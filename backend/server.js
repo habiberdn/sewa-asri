@@ -9,10 +9,10 @@ const db = process.env.DATABASE;
 console.log(process.env.NODE_ENV);
 
 mongoose
-.connect(db, {})
+.connect(db)
   .then(() => console.log('Connection succesfull'));
   
-  const server = app.listen(port, () => {
+  app.listen(port, () => {
     console.log(`App running on port ${port}`);
    
   });
