@@ -1,7 +1,6 @@
 const nodemailer = require('nodemailer');
 const { convert } = require('html-to-text');
 const pug = require('pug')
-const Transport = require("nodemailer-brevo-transport");
 
 
 
