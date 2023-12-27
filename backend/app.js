@@ -22,7 +22,7 @@ const limiter = rateLimit({
     
 });
 
-// app.enable('trust proxy');
+app.set('trust proxy', 1);
 // app.use((req, res, next) => {
 //     if (req.secure) {
 //         next();
@@ -30,7 +30,7 @@ const limiter = rateLimit({
 //         res.redirect('https://' + req.headers.host + req.url);
 //     }
 // });
-app.use('/', limiter);
+app.use(limiter);
 app.use('/api/v1/otp',otpRouter)
 app.use('/api/v1/rating', ratingsRouter)
 app.use('/api/v1/bookmark', bookmarkRouter)
