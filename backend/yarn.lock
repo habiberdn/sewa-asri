@@ -708,11 +708,6 @@ negotiator@0.6.3:
   resolved "https://registry.npmjs.org/negotiator/-/negotiator-0.6.3.tgz"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
-nodemailer-brevo-transport@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/nodemailer-brevo-transport/-/nodemailer-brevo-transport-2.1.0.tgz#acde4b112f59db5dc654ddcb134dfe8823f26740"
-  integrity sha512-knXJec27LieUdoUFEjUDXDlTnBxfLqjh478hHR45j3zVdMg5LTKx5eNPEI+0Ofz4CqKB5Qi1XaG9z2i/HXiGBQ==
-
 nodemailer@^6.9.7:
   version "6.9.7"
   resolved "https://registry.npmjs.org/nodemailer/-/nodemailer-6.9.7.tgz"

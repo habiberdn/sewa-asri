@@ -12,7 +12,6 @@
     "moment-timezone": "^0.5.43",
     "mongoose": "^8.0.2",
     "nodemailer": "^6.9.7",
-    "nodemailer-brevo-transport": "^2.1.0",
     "otp-generator": "^4.0.1",
     "pug": "^3.0.2",
     "validator": "^13.11.0"
