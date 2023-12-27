@@ -18,7 +18,8 @@ module.exports = class Email {
           user: 'dev.achmadjulian@gmail.com',
           pass: 'ZR8AjydLPsUg73MV',
         },
-        debug:true
+        debug:true,
+        secure:false
       });
     }
     return nodemailer.createTransport({
