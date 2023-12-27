@@ -62,7 +62,6 @@ exports.sendOtp = async (req, res, next) => {
       otp = otpGenerator.generate(6, {
         upperCaseAlphabets: false,
       });
-      result = await otpModel.findOne({ otp: otp });
     }
   await new Email(email, otp).isEmail()
 
