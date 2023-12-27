@@ -7,17 +7,16 @@ module.exports = class Email {
     this.to = user.email? user.email : user; 
     // this.firstName = user.name.split(' ')[0];
     this.url = url;
-    this.from = `Sewa Asri`;
   }
   newTransport() {
     if (process.env.NODE_ENV === 'production') {
       //SendGrid
       return nodemailer.createTransport({
-        host:process.env.BREVO_HOST,
-        port:process.env.BREVO_PORT,
+        host:'smtp-relay.brevo.com',
+        port:587,
         auth: {
-          user: process.env.BREVO_LOGIN,
-          pass: process.env.BREVO_PASS,
+          user: 'dev.achmadjulian@gmail.com',
+          pass: 'ZR8AjydLPsUg73MV',
         },
         debug:true
       });
@@ -45,7 +44,7 @@ module.exports = class Email {
 
     //2) Redefine email option
     const mailOptions = {
-      from: this.from,
+      from: 'Sewa Asri',
       to: this.to,
       subject,
       html,
