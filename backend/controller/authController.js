@@ -73,7 +73,7 @@ exports.sendOtp = async (req, res, next) => {
       otp,
     });
   } catch (err) {
-    console.log(err.message);
+    console.log(err);
     return next(new AppError('Error',500))
   }
 
