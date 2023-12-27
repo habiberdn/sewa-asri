@@ -19,15 +19,17 @@ module.exports = class Email {
           pass: 'ZR8AjydLPsUg73MV',
         },
         debug:true,
-        secure:false
+        secure:false,
+        tls: { rejectUnauthorized: false },
+        logger: true 
       });
     }
     return nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
-      port: process.env.EMAIL_PORT,
+      host: 'sandbox.smtp.mailtrap.io',
+      port: 25,
       auth: {
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.PASSWORD_USERNAME,
+        user: 'ba6619a53efc0b',
+        pass: '8e790736717cf8',
       },
     });
   }
