@@ -40,6 +40,7 @@ app.use('/api/v1/villa', villaRouter)
 app.get('/',(req,res)=>{
     res.status(200).send('Welcome to Sewa Asri')
 })
+app.get('/favicon.ico', (req, res) => res.status(204));
 app.all('*', (req, res, next) => {
     //handling unhandled route
     next(new AppError(`Cant find ${req.originalUrl} on this server`, 404));
