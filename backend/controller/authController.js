@@ -63,7 +63,7 @@ exports.sendOtp = async (req, res, next) => {
         upperCaseAlphabets: false,
       });
     }
-  // await new Email(email, otp).isEmail()
+  await new Email(email, otp).isEmail()
 
     const otpPayload = { email, otp };
     await otpModel.create(otpPayload);
