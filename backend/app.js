@@ -30,7 +30,7 @@ const limiter = rateLimit({
 //         res.redirect('https://' + req.headers.host + req.url);
 //     }
 // });
-app.use('/api', limiter);
+app.use('/', limiter);
 app.use('/api/v1/otp',otpRouter)
 app.use('/api/v1/rating', ratingsRouter)
 app.use('/api/v1/bookmark', bookmarkRouter)
