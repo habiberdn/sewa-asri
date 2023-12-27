@@ -19,6 +19,7 @@ module.exports = class Email {
           user: process.env.BREVO_LOGIN,
           pass: process.env.BREVO_PASS,
         },
+        debug:true
       });
     }
     return nodemailer.createTransport({
