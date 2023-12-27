@@ -47,11 +47,11 @@ module.exports = class Email {
 
     //2) Redefine email option
     const mailOptions = {
-      // from: 'Sewa Asri',
+      from: 'Sewa Asri',
       to: this.to,
       // subject,
       // text: htmlToText.fromString(html),
-      // html:
+      html
     };
 
     //3) Create a transport and send email
