@@ -51,7 +51,6 @@ module.exports = class Email {
       from : 'Sewa Asri',
       to: this.to,
       html,
-      subject,
      })
   }
 
