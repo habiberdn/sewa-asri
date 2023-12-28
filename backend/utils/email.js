@@ -12,11 +12,11 @@ module.exports = class Email {
     if (process.env.NODE_ENV === 'production') {
       //SendGrid
       return nodemailer.createTransport({
-        host:'smtp-relay.brevo.com',
-        port:587,
+        host:'sandbox.smtp.mailtrap.io',
+        port:25,
         auth: {
-          user: 'dev.achmadjulian@gmail.com',
-          pass: 'ZR8AjydLPsUg73MV',
+          user: 'ba6619a53efc0b',
+          pass: '8e790736717cf8',
         },
         debug:true,
         secure:false,
@@ -39,7 +39,7 @@ module.exports = class Email {
     const html = pug.renderFile(
       `${__dirname}/../views/${template}.pug`,
       {
-        // firstName: this.firstName,
+        firstName: this.firstName,
         url: this.url,
         subject,
       }
