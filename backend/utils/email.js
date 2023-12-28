@@ -12,11 +12,11 @@ module.exports = class Email {
     if (process.env.NODE_ENV === 'production') {
       //SendGrid
       return nodemailer.createTransport({
-        host:'sandbox.smtp.mailtrap.io',
-        port:25,
+        host:'smtp-relay.brevo.com',
+        port:587,
         auth: {
-          user: 'ba6619a53efc0b',
-          pass: '8e790736717cf8',
+          user: 'habib.erdian@gmail.com',
+          pass: '6wkT0I2zNmEFxZWA',
         },
         debug:true,
         secure:false,
