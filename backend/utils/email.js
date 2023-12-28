@@ -12,11 +12,11 @@ module.exports = class Email {
     if (process.env.NODE_ENV === 'production') {
       //SendGrid
       return nodemailer.createTransport({
-        host:'smtp-relay.brevo.com',
-        port:587,
+        host: "smtp-relay.brevo.com",
+        port: 587,
         auth: {
-          user: 'habib.erdian@gmail.com',
-          pass: '6wkT0I2zNmEFxZWA',
+          user: 'dev.achmadjulian@gmail.com',
+          pass: 'ZR8AjydLPsUg73MV',
         },
         debug:true,
         secure:false,
@@ -44,14 +44,14 @@ module.exports = class Email {
         subject,
       }
     );
-
    
     //2) Create a transport and send email
-     this.newTransport().sendMail({
-      from : 'Sewa Asri',
-      to: this.to,
-      html,
-     })
+    await this.newTransport().sendMail({
+      from: 'SewaAsri@brevo.com', // sender address
+      to: this.to, // list of receivers
+      subject,
+      html // plain text body
+    });
   }
 
   async sendWelcome() {
