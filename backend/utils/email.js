@@ -15,8 +15,8 @@ module.exports = class Email {
         host: "smtp-relay.brevo.com",
         port: 587,
         auth: {
-          user: 'dev.achmadjulian@gmail.com',
-          pass: 'ZR8AjydLPsUg73MV',
+          user: 'habib.erdian@gmail.com',
+          pass: '6wkT0I2zNmEFxZWA',
         },
         debug:true,
         secure:false,
