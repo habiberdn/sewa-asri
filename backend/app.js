@@ -8,7 +8,7 @@ const bookmarkRouter = require('./router/bookmarkRouter')
 const villaRouter = require('./router/villaRouter')
 const globalError = require('./controller/errorController');
 const AppError = require('./utils/appError');
-const app = express()
+const app = express();
 const cookieParser = require('cookie-parser');
 
 app.use(express.urlencoded({ extended: true }));

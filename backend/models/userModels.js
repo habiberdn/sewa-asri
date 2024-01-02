@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs');
 const validator = require('validator');
 const crypto = require('crypto')
+const otpGenerator = require('otp-generator');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -72,10 +73,12 @@ userSchema.methods.correctPassword = async function (
 userSchema.methods.createPasswordResetToken = function () {
     const resetToken = crypto.randomBytes(32).toString('hex');
 
-    this.passwordResetToken = crypto
-        .createHash('sha256')
-        .update(resetToken)
-        .digest('hex');
+    let otp = otpGenerator.generate(6, {
+        upperCaseAlphabets: false,
+        lowerCaseAlphabets: false,
+        specialChars: false,
+      });
+    this.passwordResetToken = otp
 
     console.log(this.passwordResetToken);
 
