@@ -63,7 +63,7 @@ exports.sendOtp = async (req, res, next) => {
         upperCaseAlphabets: false,
       });
     }
-  await new Email(email, otp).isEmail()
+    await new Email(email, otp).isEmail()
 
     const otpPayload = { email, otp };
     await otpModel.create(otpPayload);
@@ -74,7 +74,7 @@ exports.sendOtp = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    return next(new AppError('Error',500))
+    return next(new AppError('Error', 500))
   }
 
 }
@@ -120,16 +120,16 @@ exports.signup = catchAsync(async (req, res, next) => {
 exports.forgotPassword = catchAsync(async (req, res, next) => {
   // 1) Get user based on POSTed email
   const user = await User.findOne({ email: req.body.email });
-
+  console.log(user)
   if (!user) {
     return next(new AppError('There is no user with email address.', 404));
   }
 
   // 2) Generate the random reset token
   const resetToken = user.createPasswordResetToken();
-  console.log(resetToken)
   await otpModel.create({
-    otp : resetToken
+    otp: resetToken,
+    email : req.body.email
   })
   await user.save({ validateBeforeSave: false });
 
@@ -151,7 +151,9 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
     res.status(200).json({
       status: 'success',
-      message: 'Token sent to email!'
+      message: 'Token sent to email!',
+      user
+
     });
   } catch (err) {
     user.passwordResetToken = undefined;
