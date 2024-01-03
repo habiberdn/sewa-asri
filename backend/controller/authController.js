@@ -128,6 +128,9 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   // 2) Generate the random reset token
   const resetToken = user.createPasswordResetToken();
   console.log(resetToken)
+  await otpModel.create({
+    otp : resetToken
+  })
   await user.save({ validateBeforeSave: false });
 
   // 3) Send it to user's email
