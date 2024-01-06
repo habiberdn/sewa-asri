@@ -16,7 +16,7 @@ userRouter
 userRouter
   .route("/:id")
   .get(userController.getUsers)
-  .put(userController.updateUser)
+  .patch(userController.updateUser)
   .delete(userController.deleteUser);
 
 userRouter.post('/signup',authController.signup);

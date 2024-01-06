@@ -167,6 +167,17 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   }
 });
 
+exports.restrictTo = (...roles) => {
+  //roles ['admin','lead-guide'].role = 'user'
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError('You do not have permission to perform this action', 403)
+      ); //403 = forbidden response
+    }
+    next();
+  };
+};
 
 exports.protect = catchAsync(async (req, res, next) => {
   //1. Getting token and check if it there

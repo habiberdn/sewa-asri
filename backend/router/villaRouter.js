@@ -8,10 +8,12 @@ userRouter
     .route("/")
     .get(villaController.getAllVilla)
 
+userRouter.use(authController.restrictTo('manager')) 
 userRouter
     .route("/:id")
     .get(villaController.getVilla)
-    .put(villaController.updateVilla)
+    .post(villaController.createVilla)
+    .patch(villaController.updateVilla)
     .delete(villaController.deleteVilla);
 
 module.exports = userRouter;
