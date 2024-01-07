@@ -13,14 +13,16 @@ const villaSchema = new mongoose.Schema({
     },
     price :{
         type:Number,
-
     },
     bedroomQuantity:{
         type:Number,
-
+        required: [true, 'A user must have a bedroom'],
+        min: [1, 'bedroomQuantity must be above 1'],
     },
     bathroomQuantity:{
         type:Number,
+        required: [true, 'A user must have a bethroom'],
+        min: [1, 'bathroomQuantity must be above 1'],
     },
     bookmarkId:{
         type:mongoose.Schema.ObjectId,
