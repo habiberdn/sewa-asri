@@ -1,0 +1,460 @@
+import calendarIcon from "./../assets/icons/calendar.png";
+import bellIcon from "./../assets/icons/bell.png";
+import { Button, Chips, SearchBar } from ".";
+import { getUser } from "../utils/userStore";
+import { useNavigate } from "@tanstack/react-router";
+
+type Variant = "main" | "dashboard" | "chat" | "reservation-schedule" | "villa-management" | "add-new-villa" | "edit-villa" | "detail-villa";
+
+type Day = "Senin" | "Selasa" | "Rabu" | "Kamis" | "Jumat" | "Sabtu" | "Minggu";
+
+type Month = "Januari" | "Februari" | "Maret" | "April" | "Mei" | "Juni" | "Juli" | "Agustus" | "September" | "Oktober" | "November" | "Desember";
+
+interface Date {
+    day: Day;
+    month: Month;
+}
+
+interface IHeader {
+    variant: Variant; 
+    onCreateVillaHandler?: () => void;
+    onHoverProfile?: () => void;
+    onSearchHandler?: () => void;
+}
+
+export function Header({ variant, onHoverProfile, onSearchHandler, onCreateVillaHandler }: IHeader) {
+    const user = getUser();
+
+    const date = new Date;
+    let currentDate: Date = {
+        day: "Senin",
+        month: "Januari"
+    };
+
+    switch (date.getDay()) {
+        case 0:
+            currentDate.day = "Minggu";
+            break;
+
+        case 1:
+            currentDate.day = "Senin";
+            break;
+
+        case 2:
+            currentDate.day = "Selasa";
+            break;
+
+        case 3:
+            currentDate.day = "Rabu";
+            break;
+
+        case 4:
+            currentDate.day = "Kamis";
+            break;
+
+        case 5:
+            currentDate.day = "Jumat";
+            break;
+        
+        case 6:
+            currentDate.day = "Sabtu";
+            break;
+    }
+
+    switch (date.getMonth()) {
+        case 0:
+            currentDate.month = "Januari";
+            break;
+
+        case 1:
+            currentDate.month = "Februari";
+            break;
+
+        case 2:
+            currentDate.month = "Maret";
+            break;
+
+        case 3:
+            currentDate.month = "April";
+            break;
+
+        case 4:
+            currentDate.month = "Mei";
+            break;
+
+        case 5:
+            currentDate.month = "Juni";
+            break;
+        
+        case 6:
+            currentDate.month = "Juli";
+            break;
+        
+        case 7:
+            currentDate.month = "Agustus";
+            break;
+        
+        case 8:
+            currentDate.month = "Oktober";
+            break;
+        
+        case 9:
+            currentDate.month = "September";
+            break;
+        
+        case 10:
+            currentDate.month = "November";
+            break;
+        
+        case 1:
+            currentDate.month = "Desember";
+            break;
+    }
+
+    switch (variant) {
+        case "main":
+            return (
+                <header  className="header header-main">
+        
+                    <section  className="header-main-date">
+        
+                        <img    src={calendarIcon}
+                                className="icon"
+                                />
+        
+                        <article  className="header-main-date-detail">
+        
+                            <h4     className="label-regular date">
+                                { currentDate.day }, { date.getDate() }
+                            </h4>
+        
+                            <h4     className="label-regular month">
+                                { currentDate.month }
+                            </h4>
+                        </article>
+                    </section>
+        
+                    <nav  className="profile-notification-wrapper">
+        
+                        <img    src={bellIcon}
+                                className="icon"
+        
+                                onClick={() => {
+                                    console.info("Notifications");
+                                }}
+                                />
+        
+                        <article    className="account"
+                                    onMouseEnter={() => {
+                                        if (onHoverProfile) {
+                                            onHoverProfile()
+                                        }
+                                    }}
+                                    >
+        
+                            <img    src={
+                                        user?.photo === "default.jpg" ? 
+                                        "https://randomuser.me/api/portraits/men/16.jpg" 
+                                        : 
+                                        user?.photo
+                                    }
+                                    className="photo-profile"
+                                    />
+        
+                            <h4     className={`p-regular name`}>
+                                { user?.name }
+                            </h4>
+                        </article>
+                    </nav>
+                </header>
+            );
+    
+        case "dashboard":
+            return (
+                <header  className="header header-dashboard">
+        
+                    <article  className="detail-overview">
+
+                        <h1  className="h1-medium header-title">
+                            Dashboard
+                        </h1>
+
+                        <section  className="overview">
+                            <article  className="overview-card">
+
+                                <h3  className="h2-medium detail">
+                                    36
+                                </h3>
+
+                                <h4  className="p-regular label">
+                                    Reservasi di bulan September
+                                </h4>
+                            </article>
+
+                            <article  className="overview-card">
+
+                                <h3  className="h2-medium detail">
+                                    10
+                                </h3>
+
+                                <h4  className="p-regular label">
+                                    Reservasi sukses di bulan September
+                                </h4>
+                            </article>
+
+                            <article  className="overview-card">
+
+                                <h3  className="h2-medium detail">
+                                    4
+                                </h3>
+
+                                <h4  className="p-regular label">
+                                    Reservasi ditolak di bulan September
+                                </h4>
+                            </article>
+                        </section>
+                    </article>
+                </header>
+            );
+
+        case "chat":
+            return (
+                <header  className="header header-chat">
+        
+                    <article  className="detail-overview">
+
+                        <h1  className="h1-medium header-title">
+                            Chat
+                        </h1>
+
+                        <article  className="guest-profile">
+                            
+                            <img  src="https://randomuser.me/api/portraits/women/70.jpg" 
+                                  className="photo-profile" />
+
+                            <section>
+                                <h4  className="h4-regular name">
+                                    Suicidal Tendencies
+                                </h4>
+
+                                <h4  className="label-regular date">
+                                    13 September
+                                </h4>
+                            </section>
+                        </article>
+                    </article>
+                </header>
+            );
+
+        case "reservation-schedule":
+            return (
+                <header  className="header header-chat">
+        
+                    <article  className="detail-overview">
+
+                        <h1  className="h1-medium header-title">
+                            Reservation schedule
+                        </h1>
+
+                        
+                    </article>
+                </header>
+            );
+        
+            
+        case "villa-management":
+            return <VillaManagement onSearchHandler={() => {
+                                        if (onSearchHandler) {
+                                            onSearchHandler();
+                                        }
+                                    }}
+                                    
+                                    onCreateVillaHandler={() => {
+                                        if (onCreateVillaHandler) {
+                                            onCreateVillaHandler();
+                                        }
+                                    }}
+                                    />
+
+        case "edit-villa":
+            return <EditVilla />
+
+        case "add-new-villa":
+            return <CreateNewVilla onCreateVillaHandler={onCreateVillaHandler} />            
+
+        case "detail-villa":
+            return (
+                <header  className="header header-chat">
+        
+                    <article  className="detail-overview">
+
+                        <h1  className="h1-medium header-title">
+                            Villa detail description
+                        </h1>
+                        
+                    </article>
+                </header>
+            );
+    }
+    
+}
+
+function VillaManagement({ onSearchHandler, onCreateVillaHandler }: { onSearchHandler: () => void, onCreateVillaHandler?: () => void; }) {
+    return (
+        <header  className="header villa-management">
+
+            <article  className="detail-overview">
+
+                <h1  className="h1-medium header-title">
+                    Vila management
+                </h1>
+
+                <Button     variant="primary"
+                            behavior="hug-content"
+                            size="large"
+                            state="active"
+                            label="New villa"
+
+                            onClickHandler={() => {
+                                if (onCreateVillaHandler) {
+                                    onCreateVillaHandler();
+                                }
+                            }}
+                            />
+            </article>
+
+            <section className="search-field">
+                <section className="filter">
+                    <h4 className="h4-regular filter-label">
+                        Filter:
+                    </h4>
+
+                    <Chips  label="Tersedia"
+                            state={true}
+                            variant="active"
+                            
+                            onSelect={() => {
+                                
+                            }}/>
+
+                    <Chips  label="Tidak tersedia"
+                            state={true}
+                            variant="active"
+                            
+                            onSelect={() => {
+
+                            }}/>
+
+                </section>
+
+                <section className="search">
+                    <SearchBar  placeholder="Enter villa name"
+                                onInputHandler={() => {
+
+                                }}/>
+
+                    <Button     variant="primary"
+                                behavior="hug-content"
+                                size="large"
+                                state="active"
+                                label="Cari"
+
+                                onClickHandler={() => {
+                                    if (onSearchHandler) {
+                                        onSearchHandler();
+                                    }
+                                }}
+                                />
+                </section>
+
+
+            </section>
+        </header>
+    );
+}
+
+function EditVilla() {
+    const navigate = useNavigate();
+
+    return (
+        <header  className="header villa-management-edit-new">
+
+            <article  className="detail-overview">
+
+                <h1  className="h1-medium header-title">
+                    Edit villa
+                </h1>
+
+                <section className="actions">
+                <Button     variant="secondary"
+                            behavior="hug-content"
+                            size="large"
+                            state="active"
+                            label="Cancel"
+
+                            onClickHandler={() => {
+                                console.info("Add new villa");
+                            }}
+                            
+                            />
+                
+                <Button     variant="primary"
+                            behavior="hug-content"
+                            size="large"
+                            state="active"
+                            label="Save changes"
+
+                            onClickHandler={() => {
+                                console.info("Add new villa");
+                            }}
+                            
+                            />
+                </section>                
+            </article>
+        </header>
+    );
+}
+
+function CreateNewVilla({ onCreateVillaHandler }: { onCreateVillaHandler?: () => void }) {
+    const navigate = useNavigate();
+
+    return (
+        <header  className="header villa-management-edit-new">
+
+            <article  className="detail-overview">
+
+                <h1  className="h1-medium header-title">
+                    Add new villa
+                </h1>
+
+                <section className="actions">
+                    <Button     variant="secondary"
+                                behavior="hug-content"
+                                size="large"
+                                state="active"
+                                label="Cancel"
+
+                                onClickHandler={() => {
+                                    navigate({ to: "/villa-management" });
+                                }}
+                                
+                                />
+                    
+                    <Button     variant="primary"
+                                behavior="hug-content"
+                                size="large"
+                                state="active"
+                                label="Create new villa"
+
+                                onClickHandler={() => {
+                                    if (onCreateVillaHandler) {
+                                        onCreateVillaHandler();
+                                    }
+                                }}
+                                
+                                />
+                    </section>                
+            </article>
+        </header>
+    );
+}

@@ -1,0 +1,174 @@
+[
+    {
+        "_id": "659897d10b7c3b5328eb29fd",
+        "overallRatting": {
+            "detail": 4.7,
+            "totalReviews": 150,
+
+            "total_rating_1": 7,
+            "total_rating_2": 3,
+            "total_rating_3": 4,
+            "total_rating_4": 103,
+            "total_rating_5": 33
+        },
+
+        "reviews": [
+            {
+                "_id": "74f35ccd-b5f1-4f9a-a0a9-847910176b81",
+                "user": {
+                    "name": "John Doe",
+                    "photo": "https://randomuser.me/api/portraits/men/87.jpg"
+                },
+                "date": "30 November 2023",
+                "rating": 4.5,
+                "comment": "I have been using this product for a few weeks now, and I must say I am impressed. The quality is top-notch, and it exceeded my expectations. The price is also reasonable, making it a great value for money."
+            },
+            {
+                "_id": "65c59d6b-84d0-40cc-b4ef-024bf1f2766f",
+                "user": {
+                    "name": "Jane Smith",
+                    "photo": "https://randomuser.me/api/portraits/women/70.jpg"
+                },
+                "date": "1 Desember 2023",
+                "rating": 3.2,
+                "comment": "I bought this product on sale, and while it is not the best I've seen, it serves its purpose. The durability could be improved, but for the price I paid, I can't complain much. Overall, it's an okay purchase."
+            },
+            {
+                "_id": "a5b27e05-0625-4b66-adeb-fa65c39734e8",
+                "user": {
+                    "name": "Mike Johnson",
+                    "photo": "https://randomuser.me/api/portraits/men/34.jpg"
+                },
+                "date": "28 November 2023",
+                "rating": 3.8,
+                "comment": "I had high hopes for this product, but unfortunately, it fell short of my expectations. The performance is average, and there are some design flaws that could have been avoided. It's not terrible, but I expected better."
+            },
+            {
+                "_id": "f4353f46-f9a3-4fc2-89b0-0e6a2c69d725",
+                "user": {
+                    "name": "Emily Brown",
+                    "photo": "https://randomuser.me/api/portraits/women/12.jpg"
+                },
+                "date": "29 November 2023",
+                "rating": 5.0,
+                "comment": "I can't say enough good things about this product. It is truly outstanding. The craftsmanship is superb, and it functions flawlessly. I'm extremely satisfied with my purchase, and I highly recommend it to others."
+            },
+            {
+                "_id": "7a21b383-7e04-41c1-9f83-4dfac88f95ec",
+                "user": {
+                    "name": "David Wilson",
+                    "photo": "https://randomuser.me/api/portraits/men/59.jpg"
+                },
+                "date": "2 Desember 2023",
+                "rating": 2.5,
+                "comment": "I had high expectations for this product, but unfortunately, it failed to meet them. The quality is lacking, and it didn't last long before showing signs of wear and tear. I wouldn't recommend it."
+            },
+            {
+                "_id": "88c2a923-07b0-499a-8cdc-953e3d195fa9",
+                "user": {
+                    "name": "Sarah Taylor",
+                    "photo": "https://randomuser.me/api/portraits/women/17.jpg"
+                },
+                "date": "27 November 2023",
+                "rating": 4.0,
+                "comment": "For the price I paid, this product is a good deal. It serves its purpose well, and I haven't encountered any major issues. The shipping was prompt, and the customer service was helpful. Overall, I'm satisfied with my purchase."
+            },
+            {
+                "_id": "f3ec97d1-7d05-4185-a295-c2d01df1d0fd",
+                "user": {
+                    "name": "Mark Anderson",
+                    "photo": "https://randomuser.me/api/portraits/men/47.jpg"
+                },
+                "date": "3 Desember 2023",
+                "rating": 4.8,
+                "comment": "I'm extremely pleased with this product. The quality is exceptional, and it has exceeded my expectations. The customer service was also excellent, providing quick responses to my inquiries. I would highly recommend it to anyone in need of a reliable solution."
+            }
+        ]
+    },
+    {
+        "_id": "659899d51836f35db8910cbd",
+        "overallRatting": {
+            "detail": 4.7,
+            "totalReviews": 7,
+
+            "total_rating_1": 0,
+            "total_rating_2": 1,
+            "total_rating_3": 2,
+            "total_rating_4": 3,
+            "total_rating_5": 1
+        },
+
+        "reviews": [
+            {
+                "_id": "74f35ccd-b5f1-4f9a-a0a9-847910176b81",
+                "user": {
+                    "name": "John Doe",
+                    "photo": "https://randomuser.me/api/portraits/men/87.jpg"
+                },
+                "date": "30 November 2023",
+                "rating": 4.5,
+                "comment": "I have been using this product for a few weeks now, and I must say I am impressed. The quality is top-notch, and it exceeded my expectations. The price is also reasonable, making it a great value for money."
+            },
+            {
+                "_id": "65c59d6b-84d0-40cc-b4ef-024bf1f2766f",
+                "user": {
+                    "name": "Jane Smith",
+                    "photo": "https://randomuser.me/api/portraits/women/70.jpg"
+                },
+                "date": "1 Desember 2023",
+                "rating": 3.2,
+                "comment": "I bought this product on sale, and while it is not the best I've seen, it serves its purpose. The durability could be improved, but for the price I paid, I can't complain much. Overall, it's an okay purchase."
+            },
+            {
+                "_id": "a5b27e05-0625-4b66-adeb-fa65c39734e8",
+                "user": {
+                    "name": "Mike Johnson",
+                    "photo": "https://randomuser.me/api/portraits/men/34.jpg"
+                },
+                "date": "28 November 2023",
+                "rating": 3.8,
+                "comment": "I had high hopes for this product, but unfortunately, it fell short of my expectations. The performance is average, and there are some design flaws that could have been avoided. It's not terrible, but I expected better."
+            },
+            {
+                "_id": "f4353f46-f9a3-4fc2-89b0-0e6a2c69d725",
+                "user": {
+                    "name": "Emily Brown",
+                    "photo": "https://randomuser.me/api/portraits/women/12.jpg"
+                },
+                "date": "29 November 2023",
+                "rating": 5.0,
+                "comment": "I can't say enough good things about this product. It is truly outstanding. The craftsmanship is superb, and it functions flawlessly. I'm extremely satisfied with my purchase, and I highly recommend it to others."
+            },
+            {
+                "_id": "7a21b383-7e04-41c1-9f83-4dfac88f95ec",
+                "user": {
+                    "name": "David Wilson",
+                    "photo": "https://randomuser.me/api/portraits/men/59.jpg"
+                },
+                "date": "2 Desember 2023",
+                "rating": 2.5,
+                "comment": "I had high expectations for this product, but unfortunately, it failed to meet them. The quality is lacking, and it didn't last long before showing signs of wear and tear. I wouldn't recommend it."
+            },
+            {
+                "_id": "88c2a923-07b0-499a-8cdc-953e3d195fa9",
+                "user": {
+                    "name": "Sarah Taylor",
+                    "photo": "https://randomuser.me/api/portraits/women/17.jpg"
+                },
+                "date": "27 November 2023",
+                "rating": 4.0,
+                "comment": "For the price I paid, this product is a good deal. It serves its purpose well, and I haven't encountered any major issues. The shipping was prompt, and the customer service was helpful. Overall, I'm satisfied with my purchase."
+            },
+            {
+                "_id": "f3ec97d1-7d05-4185-a295-c2d01df1d0fd",
+                "user": {
+                    "name": "Mark Anderson",
+                    "photo": "https://randomuser.me/api/portraits/men/47.jpg"
+                },
+                "date": "3 Desember 2023",
+                "rating": 4.8,
+                "comment": "I'm extremely pleased with this product. The quality is exceptional, and it has exceeded my expectations. The customer service was also excellent, providing quick responses to my inquiries. I would highly recommend it to anyone in need of a reliable solution."
+            }
+        ]
+    }
+]

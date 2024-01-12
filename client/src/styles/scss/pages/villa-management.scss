@@ -1,0 +1,246 @@
+@use "./../../base";
+
+.villa-management {
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+
+.list-villa-container {
+    display: flex;
+    width: 1200px;
+    align-items: center;
+    align-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+// create new villa
+.create-new {
+    .villa-detail {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+
+        .upload-photo {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            position: relative;
+
+            .photo {
+                border-radius: 8px;
+                background-color: base.$neutral-200;
+                object-fit: cover;
+            }
+
+            .photo-small {
+                height: 200px;
+                width: 200px;
+            }
+
+            .photo-large {
+                height: 300px;
+                width: 300px;
+            }
+
+            .pick-photo {
+                display: inherit;
+                height: 50px;
+                padding: 10px 16px;
+                justify-content: center;
+                align-items: center;
+                gap: 6px;
+
+                color: base.$neutral-0;
+                background-color: base.$primary-400;
+                border-radius: 30px;
+                cursor: pointer;
+            }
+
+            .pick-photo:hover {
+                color: base.$neutral-0;
+                background-color: base.$primary-500;
+            }
+
+            .pick-photo-input {
+                opacity: 0;
+                position: absolute;
+            }
+        }
+
+        .form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 50px;
+            align-self: stretch;
+
+            h3 {
+                color: base.$neutral-700;
+            }
+
+            p {
+                color: base.$neutral-500;
+            }
+        }
+
+        .detail {
+            max-width: 300px;
+        }
+
+        .attraction {
+            max-width: 400px;
+
+            .upload-photo {
+                align-self: center;
+            }
+        }
+
+        .bedroom-bathroom-wrapper {
+            display: inherit;
+            flex-direction: column;
+            max-width: 400px;
+            gap: 50px;
+            
+            .bed-size {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+                align-self: stretch;
+                
+                h4 {
+                    color: base.$neutral-600;
+                }
+
+                .size-option {
+                    display: flex;
+                    align-items: flex-start;
+                    align-content: flex-start;
+                    gap: 16px;
+                }
+            }
+
+            .room-size {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 24px;
+            }
+        }
+
+        .indoor-outdoor-facility-wrapper {
+            display: inherit;
+            flex-direction: column;
+            max-width: 650px;
+            gap: 50px;
+            
+            .indoor-outdoor-facility-list {
+                width: 100%;
+            }
+        }
+    }
+    
+    .facility-detail {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        align-self: stretch;
+
+        .facility-option-list-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+        }
+                
+        .facility-list {
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            align-content: flex-start;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .other-facility {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+
+    .attraction-schedule, .bedroom-bathroom-detail {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .attraction-other-facility {
+        display: flex;
+        gap: 50px;
+        align-items: flex-start;
+    }
+
+    .label-option-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h4 {
+            color: base.$neutral-600;
+        }
+
+        p {
+            color: base.$neutral-500;
+        }
+    }
+}
+
+.villa-detail {
+    .reviews-villa {
+        width: 100%;
+        max-width: 670px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+
+        .label-total-reviews-wrapper {
+            width: 100%;
+            display: inherit;
+            justify-content: space-between;
+            align-items: center;
+
+            h3 {
+                color: base.$neutral-700;
+            }
+
+            p {
+                color: base.$neutral-500;
+            }
+        }
+
+        .filter-reviews-list {
+            display: flex;
+            align-self: flex-start;
+            gap: 16px;
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+    }
+}

@@ -1,0 +1,63 @@
+@use "./../../base";
+
+.input {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    min-height: 71px;
+
+    .label-option-wrapper {
+        height: 24px;
+        display: inherit;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .label-text {
+        color: base.$neutral-700;
+    }
+    
+    .option-text {
+        color: base.$neutral-500;
+    }
+    
+    .message {
+        color: base.$error-0;
+    }
+    
+    .text-field {
+        height: 50px;
+        padding: 10px 14px;
+        border-radius: 8px;
+    
+        background-color: base.$neutral-100;
+        border:  base.$neutral-200 1.5px solid;
+    
+        display: inherit;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 16px;
+    }
+    
+    .text-input {
+        width: 100%;
+        display: inherit;
+        background-color: base.$neutral-100;
+        color: base.$neutral-600;
+        border-width: 0;
+    }
+    
+    .text-input::placeholder {
+        color: base.$neutral-400;
+    }
+    
+    .invisible-shape {
+        height: 24px;
+        width: 40px;
+    }
+    
+    .icon {
+        height: 24px;
+        width: 24px;
+    }
+}

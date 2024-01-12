@@ -1,0 +1,51 @@
+@use "./../../base";
+
+.message-bar {
+    width: 250px;
+    padding: 10px 10px 10px 16px;
+    
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    border-radius: 16px;
+
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+
+    transition: opacity 500ms linear;
+
+    .icon {
+        height: 24px;
+        width: 24px;
+    }    
+}
+
+/* message variant: error, info, success */
+.message-bar-error {
+    color: base.$error-0;
+    border: 1.5px solid base.$error-0;
+    background-color: base.$error-200;
+}
+    
+.message-bar-info {
+    color: base.$info-0;
+    border: 1.5px solid base.$info-0;
+    background-color: base.$info-200;
+}
+
+.message-bar-success {
+    color: base.$success;
+    border: 1.5px solid base.$primary-400;
+    background-color: #F7FDF7;
+}
+
+// message bar state showed: true / false
+.show-message-bar-true {
+    opacity: 1;
+}
+
+.show-message-bar-false {
+    opacity: 0;
+}

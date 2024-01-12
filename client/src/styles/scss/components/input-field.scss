@@ -1,0 +1,75 @@
+@use "./../../base";
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+
+    cursor: pointer;
+    
+    .label {
+        cursor: inherit;
+        color: base.$neutral-700;
+    }
+
+    .text-field, .text-area {
+        display: flex;
+        width: 100%;
+        padding: 8px;
+        align-items: center;
+        gap: 10px;
+
+        cursor: inherit;
+
+        color: base.$neutral-600;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: base.$neutral-300;
+        background-color: base.$neutral-0;
+    }
+
+    .text-field {
+        min-height: 40px;
+    }
+
+    .text-area {
+        min-height: 70px;
+        max-height: 100px;
+    }
+
+    .text-field::placeholder {
+        color:  base.$neutral-500;
+        overflow-wrap: break-word;
+        white-space: normal;
+        text-overflow: ellipsis;
+    }
+
+    .text-field:focus {
+        border-bottom-color: base.$neutral-500;
+    }
+}
+
+// input width: short / width
+.input-field-wide {
+    width: 100%;
+    max-width: 300px;
+}
+
+.input-field-short {
+    width: 100%;
+    
+    .text-field {
+        max-width: 70px;
+        
+        input {
+            width: 100%;
+            background-color: inherit;
+            -webkit-appearance: textfield;
+        }
+
+        h4 {
+            color: base.$neutral-500;
+        }
+    }    
+}

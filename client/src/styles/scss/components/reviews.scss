@@ -1,0 +1,173 @@
+@use "./../../base";
+
+.reviews-card {
+    display: flex;
+    gap: 14px;
+
+    .photo {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+
+    .detail {
+        display: inherit;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 16px;
+
+        .name-date-wrapper {
+            width: 100%;
+            display: inherit;
+            justify-content: space-between;
+            align-items: center;
+
+            h4 {
+                color: base.$neutral-600;
+            }
+
+            p {
+                color: base.$neutral-500;
+            }
+        }
+
+        .rating-reviews-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .rating-reviews-wrapper {
+            display: inherit;
+            align-items: center;
+            gap: 16px;
+
+            .stars {
+                display: inherit;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+
+            p {
+                color: base.$neutral-500;
+            }
+
+            .star-icon {
+                height: 24px;
+                width: 24px;
+            }
+        }
+
+        .reviews-content {
+            color: base.$neutral-500
+        }
+    }
+}
+
+.rating-panel {
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    
+    .overall {
+        display: inherit;
+        width: 120px;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        p {
+            color: base.$neutral-500;
+        }
+    }
+
+    .point {
+        display: inherit;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+
+        .large-star-icon {
+            width: 40px;
+        }
+    }
+
+    .rating-bar-list {
+        display: flex;
+        flex-direction: column-reverse;
+        row-gap: 10px;
+    }
+
+    .rating-bar {
+        display: inherit;
+        align-items: center;
+        gap: 24px;
+        align-self: stretch;
+
+        .point-bar-container-wrapper {
+            display: inherit;
+            align-items: center;
+            gap: 8px;
+
+            .star-icon {
+                height: 24px;
+                width: 24px;
+            }
+
+            p {
+                color: base.$neutral-600;
+            }
+        }
+
+        .amount {
+            color: base.$neutral-500;
+        }
+
+        .bar-container {
+            width: 350px;
+            display: inherit;
+            gap: 10px;
+            border-radius: 8px;
+            background-color: base.$primary-0;
+            overflow: hidden;
+
+            .bar {
+                height: 10px;
+                background-color: base.$primary-400;
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+        }
+
+        // bar variant
+
+        .bar-container-1, .bar-container-2 {
+            background-color: base.$error-200;
+
+            .bar {
+                background-color: base.$error-0;
+            }
+        }
+
+        .bar-container-3 {
+            background-color: #FFEBCC;
+
+            .bar {
+                background-color: #FF9900;
+            }
+        }
+
+        .bar-container-4 {
+            background-color: base.$primary-0;
+
+            .bar {
+                background-color: base.$primary-300;
+            }
+        }
+    }
+}

@@ -1,0 +1,134 @@
+@use "./../../base";
+
+@mixin button-style(
+    $bg-color,
+    $color,
+    $border-width: none,
+    $border-style: none,
+    $border-color: none
+) {
+    background-color: $bg-color;
+    color: $color;
+    
+    border-width: $border-width;
+    border-style: $border-style;
+    border-color: $border-color;
+}
+
+.button {
+    font-size: var(--label);
+    font-weight: 500;
+    color: var(--neutral-0);
+
+    padding: 8px 14px;
+
+    display: flex;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: center;
+    column-gap: 16px;
+    
+    border-radius: 30px;
+    border-width: 0;
+    border-color: none;
+    cursor: pointer;
+    
+    /* spinner animation */
+    .spinner {
+        height: 14px;
+        width: 14px;
+        transition: ease-in 500ms opacity;
+    }
+
+
+    .spinner-loading-false {
+        opacity: 0;
+        display: none;
+    }
+
+    .spinner-loading-true {
+        opacity: 1;
+        animation-name: spining;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+}
+
+
+/* button variant: primary, secondary, tertiary, desctructive */
+.button-primary {
+    @include button-style(base.$primary-400, base.$neutral-0);
+}
+
+.button-secondary {
+    @include button-style(base.$neutral-0, base.$primary-400, 1.5px, solid, base.$primary-400);
+}
+
+.button-destructive {
+    @include button-style(base.$neutral-0, base.$error-0);
+}
+
+.button-tertiary {
+    @include button-style(base.$neutral-0, base.$primary-400);
+}
+
+/* button size: small, medium, large */
+.button-size-small {
+    min-width: 80px;
+    height: 35px;
+}
+
+.button-size-medium {
+    min-width: 100px;
+    height: 40px;
+}
+
+.button-size-large {
+    min-width: 100px;
+    height: 50px;
+}
+
+/* button behavior: hug-content, fill-container*/
+.button-behavior-hug-content {
+    width: fit-content;
+}
+
+.button-behavior-fill-container {
+    width: 100%;
+}
+
+/* button state: hover, disabled */
+.button-primary:hover {
+    @include button-style(base.$primary-500, base.$neutral-0);
+}
+    
+.button-secondary:hover {
+    @include button-style(base.$neutral-0, base.$primary-500, 1.5px, solid, base.$primary-500);
+}
+    
+.button-tertiary:hover {
+    @include button-style(base.$neutral-0, base.$primary-500);
+}
+    
+.button-destructive:hover {
+    @include button-style(base.$neutral-0, #CA0000);
+}
+
+.button-primary-disabled, .button-secondary-disabled {
+    @include button-style(base.$neutral-300, base.$neutral-0);
+}
+    
+.button-tertiary-disabled, .button-desctructive-disabled {
+    @include button-style(base.$neutral-0, base.$neutral-300);
+}
+
+@keyframes spining {
+    from {
+        transform: rotate(-360deg);
+    }
+    
+    to {
+        transform: rotate(360deg);
+    }
+}

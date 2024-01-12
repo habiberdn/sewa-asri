@@ -1,0 +1,27 @@
+@use "./../../base";
+
+.chips {
+    padding: 8px 12px;
+    height: 45px;
+    width: fit-content;
+    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 30px;
+    color: base.$neutral-500;
+    cursor: pointer;
+}
+
+.chips-active, .chips-passive {
+    border: 1.5px solid base.$neutral-300;
+    background-color: base.$neutral-0;
+}
+
+// chips state: true
+.chips-active-true {
+    color: base.$primary-400;
+    background-color: base.$primary-0;
+    border: 1.5px solid base.$primary-100;
+}

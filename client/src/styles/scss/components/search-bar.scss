@@ -1,0 +1,23 @@
+@use "./../../base";
+
+.search-bar {
+    display: flex;
+    width: 200px;
+    height: 35px;
+    max-height: 45px;
+    padding: 6px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 30px;
+    border: 1px solid base.$neutral-200;
+    background-color: base.$neutral-100;
+
+    color: base.$neutral-600;
+    text-align: center;
+}
+
+.search-bar::placeholder {
+    color: base.$neutral-400;
+}

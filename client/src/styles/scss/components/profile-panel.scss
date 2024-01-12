@@ -1,0 +1,86 @@
+@use "./../../base";
+
+.profile-panel, 
+.profile-panel .profile,
+.profile-panel .menu {
+    display: flex;
+}
+
+.profile-panel {
+    position: absolute;
+    top: 90px;
+    right: 20px;
+
+    width: 250px;
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+
+    border-radius: 10px;
+    border: 1px solid base.$neutral-200;
+    background: base.$neutral-0;
+    
+    .profile {
+        align-items: center;
+        gap: 16px;
+
+        .photo {
+            height: 60px;
+            width: 60px;
+            border-radius: 100%;
+            background-color: base.$neutral-200;
+        }
+        
+        .name-role-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+
+            .name {
+                color: base.$neutral-700;
+            }
+
+            .role {
+                color: base.$neutral-500;
+            }
+        }
+    }
+
+    .menu {
+        padding: 4px 8px;
+        align-items: center;
+        gap: 16px;
+        align-self: stretch;
+        border-radius: 8px;
+
+        .menu-icon {
+            height: 24px;
+            width: 24px;
+        }
+
+        .label-regular {
+            color: base.$neutral-500;
+            font-size: 14px;
+        }
+    }
+
+    .menu:hover {
+        background-color: base.$neutral-200;
+    }
+
+    .menu:last-child .label-regular {
+        color: base.$error-0;
+    }
+}
+
+// profile panel state: opened / closed
+
+.profile-panel-open {
+    display: flex;
+}
+
+.profile-panel-closed {
+    display: none;
+}

@@ -1,0 +1,51 @@
+@use "./../../base";
+
+.modal {
+    top: 30%;
+    left: 40%;
+    position: absolute;
+
+    width: 400px;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 24px;
+
+    border-radius: 8px;
+    border: 1px solid base.$neutral-200;
+    background: base.$neutral-0;
+    
+    box-shadow: 0px 10px 20px -14px rgba(92, 92, 92, 0.10);
+
+    .detail {
+        display: inherit;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    .title {
+        color: base.$neutral-700;
+    }
+
+    .description {
+        color: base.$neutral-600;
+    }
+
+    .actions {
+        display: inherit;
+        flex-direction: row;
+        column-gap: 16px;
+        justify-content: flex-end;
+    }
+}
+
+// modal state: opened / closed
+.modal-closed {
+    opacity: 0;
+    display: none;
+}
+
+.modal-opened {
+    opacity: 1;
+}

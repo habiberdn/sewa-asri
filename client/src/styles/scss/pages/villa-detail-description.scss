@@ -1,0 +1,157 @@
+@use "./../../base";
+
+.villa-detail-description {
+    width: 100%;
+    display: flex;
+    gap: 50px;
+
+    .villa-detail {
+        width: 100%;
+        max-width: 750px;
+        display: inherit;
+        gap: 50px;
+        flex: 3;
+
+        .photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 8px;
+            background-color: base.$neutral-200;
+            object-fit: cover;
+        }
+
+        .detail {
+            padding: 16px 16px 16px 0px;
+            height: 300px;
+            width: 100%;
+            display: inherit;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+
+            .created-at {
+                width: 100%;
+                display: inherit;
+                justify-content: space-between;
+                align-items: center;
+                color: base.$neutral-500;
+            }
+
+            .villaid-status-wrapper {
+                width: 100%;
+                display: inherit;
+                justify-content: space-between;
+                align-items: center;
+
+                .villaid {
+                    width: 200px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    color: base.$neutral-600;
+                }
+
+                .villa-status {
+                    display: inherit;
+                    padding: 2px 8px;
+                    align-items: center;
+                    gap: 8px;
+                    color: base.$neutral-600;
+
+                    .dot {
+                        height: 16px;
+                        width: 16px;
+                        border-radius: 30px;
+                    }
+
+                    .green-dot {
+                        background-color: base.$primary-300;
+                    }
+
+                    .red-dot {
+                        background-color: base.$error-0;
+                    }
+                }
+            }
+
+            .information {
+                width: 100%;
+                display: inherit;
+                flex-direction: column;
+                gap: 24px;
+
+                .name-price-facility {
+                    display: inherit;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    gap: 12px;
+                    align-self: stretch;
+
+                    .name {
+                        color: base.$neutral-700;
+                    }
+
+                    .price {
+                        display: inherit;
+                        align-items: center;
+                        gap: 6px;
+                        color: base.$neutral-600;
+                    }
+
+                    .facility {
+                        height: fit-content;
+                        width: 100%;
+                        display: inherit;
+                        align-items: center;
+                        gap: 50px;
+
+                        .icon {
+                            height: 24px;
+                            width: 24px;
+                        }
+
+                        .facility-detail {
+                            height: fit-content;
+                            display: flex;
+                            flex-direction: row;
+                            gap: 10px;
+                            color: base.$neutral-600;
+                        }
+                    }
+                }
+
+                .location {
+                    display: inherit;
+                    align-items: center;
+                    gap: 10px;
+
+                    img {
+                        height: 24px;
+                        width: 24px;
+                    }
+
+                    p {
+                        color: base.$neutral-500;
+                    }
+                }
+            }
+        }
+    }
+    
+    .description-detail {
+        width: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        h3 {
+            color: base.$neutral-700;
+        }
+
+        p {
+            color: base.$neutral-500;
+        }
+    }
+}

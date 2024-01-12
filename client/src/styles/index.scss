@@ -1,0 +1,313 @@
+@use "base";
+
+/* components */
+@import url("./css/components/button.css");
+@import url("./css/components/input.css");
+@import url("./css/components/header.css");
+@import url("./css/components/sidebar.css");
+@import url("./css/components/profile-panel.css");
+@import url("./css/components/message-bar.css");
+@import url("./css/components/search-bar.css");
+@import url("./css/components/card-villa.css");
+@import url("./css/components/chips.css");
+@import url("./css/components/input-field.css");
+@import url("./css/components/facility-option.css");
+@import url("./css/components/modal.css");
+@import url("./css/components/reviews.css");
+
+/* pages */
+@import url("./css/pages/auth.css");
+@import url("./css/pages/villa-management.css");
+@import url("./pages/dashboard.css");
+@import url("./css/pages/villa-detail-description.css");
+
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  /*
+    2. Remove default margin
+  */
+  * {
+    margin: 0;
+  }
+  /*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  /*
+    5. Improve media defaults
+  */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  /*
+    6. Remove built-in form typography styles
+  */
+  input, button, textarea, select {
+    font: inherit;
+    all: unset;
+  }
+  /*
+    7. Avoid text overflows
+  */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  /*
+    8. Create a root stacking context
+  */
+  #root, #__next {
+    isolation: isolate;
+  }
+
+  input:focus
+{
+	outline:0;
+}
+
+/* Box Sizing Reset
+-----------------------------------------------*/
+
+/* All of our custom controls should be what we expect them to be */
+input,
+textarea
+{
+	-webkit-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	box-sizing:content-box;
+  background-color: red;
+}
+
+/* These elements are usually rendered a certain way by the browser */
+button,
+input[type=reset],
+input[type=button],
+input[type=submit],
+input[type=checkbox],
+input[type=radio],
+select
+{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+/* Text Inputs
+-----------------------------------------------*/
+/* 
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=range],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week]
+{
+} */
+
+/* Button Controls
+-----------------------------------------------*/
+
+input[type=checkbox],
+input[type=radio]
+{
+	width:13px;
+	height:13px;
+}
+
+/* File Uploads
+-----------------------------------------------*/
+/* 
+input[type=file]
+{
+
+} */
+
+/* Search Input
+-----------------------------------------------*/
+
+/* Make webkit render the search input like a normal text field */
+/* input[type=search]
+{
+	-webkit-appearance:textfield;
+	-webkit-box-sizing:content-box;
+} */
+
+/* Turn off the recent search for webkit. It adds about 15px padding on the left */
+::-webkit-search-decoration
+{
+	display:none;
+}
+
+/* Buttons
+-----------------------------------------------*/
+
+button,
+input[type="reset"],
+input[type="button"],
+input[type="submit"]
+{
+	/* Fix IE7 display bug */
+	overflow:visible;
+	width:auto;
+}
+
+/* IE8 and FF freak out if this rule is within another selector */
+::-webkit-file-upload-button
+{	
+	padding:0;
+	border:0;
+	background:none;
+}
+
+/* Textarea
+-----------------------------------------------*/
+
+textarea 
+{
+	/* Move the label to the top */
+	vertical-align:top;
+	
+	/* Turn off scroll bars in IE unless needed */
+	overflow:auto;
+}
+
+/* Selects
+-----------------------------------------------*/
+
+select[multiple] 
+{
+	/* Move the label to the top */
+	vertical-align:top;
+}
+
+@mixin font($size, $weight, $line-height: inherit) {
+  font-size: $size;
+  font-weight: $weight;
+  font-family: 'Inter', sans-serif;
+  line-height: $line-height;
+}
+
+/* text styles */
+.h1-regular {
+  @include font(base.$h1, 400);
+}
+
+.h1-medium {
+  @include font(base.$h1, 500);
+}
+
+.h1-semibold {
+  @include font(base.$h1, 600);
+}
+
+.h1-bold {
+  @include font(base.$h1, 700);
+}
+
+.h2-regular {
+  @include font(base.$h2, 400);
+}
+
+.h2-medium {
+  @include font(base.$h2, 500);
+}
+
+.h2-semibold {
+  @include font(base.$h2, 600);
+}
+
+.h2-bold {
+  @include font(base.$h2, 700);
+}
+
+.h3-regular {
+  @include font(base.$h3, 400);
+}
+
+.h3-medium {
+  @include font(base.$h3, 500);
+}
+
+.h3-semibold {
+  @include font(base.$h3, 600);
+}
+
+.h3-bold {
+  @include font(base.$h3, 700);
+}
+
+.h4-regular {
+  @include font(base.$h4, 400);
+}
+
+.h4-medium {
+  @include font(base.$h4, 500);
+}
+
+.h4-semibold {
+  @include font(base.$h4, 600);
+}
+
+.h4-bold {
+  @include font(base.$h4, 700);
+}
+
+.p-regular {
+  @include font(base.$p, 400, 24px);
+}
+
+.p-medium {
+  @include font(base.$p, 500, 24px);
+}
+
+.p-semibold {
+  @include font(base.$p, 600, 24px);
+}
+
+.p-bold {
+  @include font(base.$p, 700, 24px);
+}
+
+.label-regular {
+  @include font(base.$label, 400);
+}
+
+.label-medium {
+  @include font(base.$label, 500);
+}
+
+.label-semibold {
+  @include font(base.$label, 600);
+}
+
+.label-bold {
+  @include font(base.$label, 700);
+}

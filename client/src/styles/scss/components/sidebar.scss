@@ -1,0 +1,103 @@
+@use "./../../base";
+
+.sidebar, .menu, .menus, .navigations {
+    display: flex;
+}
+
+.sidebar {
+    height: 100%;
+
+    padding-top: 24px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+
+    border-right: 1px solid base.$neutral-200;
+    background-color: base.$neutral-0;
+
+    transition: all 300ms;
+
+    .navigations {
+        height: 70px;
+        width: 100%;
+        align-items: center;
+
+        .sidebar-logo {
+            width: 120px;
+            max-width: 120px;
+        }
+    }
+    
+    .menus {
+        width: 100%;
+        flex-direction: column;
+        gap: 50px;
+        transition: all 300ms;
+
+        a {
+            text-decoration: none;
+            
+            .menu {
+                gap: 24px;
+            }
+        }
+
+        .menu-label {
+            height: 24px;
+            text-overflow: clip;
+            overflow: hidden;
+        
+            color: base.$neutral-500;
+        }
+    }
+
+    .menu-icon {
+        height: 24px;
+        width: 24px;
+    }
+}
+
+// sidebar status: opened / closed
+.sidebar-opened {
+    width: 250px;
+}
+
+.sidebar-closed {
+    width: 70px;    
+}
+
+.navigations-opened {
+    justify-content: space-between;
+}
+
+.navigations-closed {
+    justify-content: center;
+}
+
+.menus-opened {
+    align-items: flex-start;
+}
+
+.menus-closed {
+    align-items: center;
+}
+
+.sidebar .menus {
+    .dashboard-true h4, 
+    .chat-true h4, 
+    .reservation-schedule-true h4, 
+    .villa-management-true h4 {
+        color: base.$primary-400;
+    }
+
+    .dashboard-icon-false, 
+    .chat-icon-false, 
+    .reservation-schedule-icon-false, 
+    .villa-management-icon-false {
+        filter: grayscale(100%);
+    }
+}

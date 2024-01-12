@@ -1,0 +1,116 @@
+[
+    {
+        "_id": "6598977f3143e433a6238710",
+        "photo": "https://unsplash.com/photos/8v9Pi_tKQoA/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8dmlsbGElMjBpbmRvbmVzaWF8ZW58MHx8fHwxNzA0NTEzMTM3fDA&force=true&w=640",
+        "name": "Villa Serenade",
+        "description": "Villa Serenade adalah villa yang indah yang terletak di pegunungan di Banten. Villa ini memiliki 1 kamar tidur dan 1 kamar mandi, serta teras yang luas dengan pemandangan gunung yang menakjubkan. Villa ini dikelilingi oleh sawah yang hijau dan dilengkapi dengan fasilitas lengkap, termasuk Wi-Fi gratis, TV kabel, dan dapur lengkap.",
+        "price": 3700000,
+        "bedroom": {
+            "quantity": 1,
+            "width": 4,
+            "length": 2,
+            "bedSize": "double-bed",
+            "othersFacility": {
+                "window": "available",
+                "socket": "available",
+                "wardrobe": "available"
+            }
+        },
+        "bathroom": {
+            "quantity": 1,
+            "othersFacility": {
+                "waterHeater": "not available",
+                "shower": "not available",
+                "bathtube": "not available",
+                "squatToilet":  "not available",
+                "sittingToilet": "available"
+            }
+        },
+
+        "facility": {
+            "indoor": {
+                "ac": "not available",
+                "kitchen": "available",
+                "wifi": "not available",
+                "lounge": "available",
+                "entertainmentRoom": "not available",
+                "dinningRoom": "available"
+            },
+            "outdoor": {
+                "pool": "not available",
+                "garage": "not available",
+                "security": "available",
+                "park": "not available",
+                "bbqArea": "available"
+            }
+        },
+
+        "ratings": { "_id": "659897d10b7c3b5328eb29fd" },
+
+        "location": {
+            "city": "Serang Banten",
+            "address": "Sayar, Taktakan, Serang City, Banten 42162"
+        },
+
+        "attraction": null,
+
+        "isAvailable": true
+    },
+    {
+        "_id": "659899c905fef700ee1f926c",
+        "photo": "https://unsplash.com/photos/dKdrAFjsYuo/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NzZ8fHZpbGxhJTIwaW5kb25lc2lhfGVufDB8fHx8MTcwNDUxMDk1MXww&force=true&w=640",
+        "name": "Villa Flamboya",
+        "description": "Villa Serenade adalah villa yang indah yang terletak di pegunungan di Banten. Villa ini memiliki 1 kamar tidur dan 1 kamar mandi, serta teras yang luas dengan pemandangan gunung yang menakjubkan. Villa ini dikelilingi oleh sawah yang hijau dan dilengkapi dengan fasilitas lengkap, termasuk Wi-Fi gratis, TV kabel, dan dapur lengkap.",
+        "price": 4700000,
+        "bedroom": {
+            "quantity": 2,
+            "width": 4,
+            "length": 2,
+            "bedSize": "double-bed",
+            "othersFacility": {
+                "window": "available",
+                "socket": "available",
+                "wardrobe": "available"
+            }
+        },
+        "bathroom": {
+            "quantity": 2,
+            "othersFacility": {
+                "waterHeater": "available",
+                "shower": "not available",
+                "bathtube": "not available",
+                "squatToilet":  "available",
+                "sittingToilet": "available"
+            }
+        },
+
+        "facility": {
+            "indoor": {
+                "ac": "available",
+                "kitchen": "available",
+                "wifi": "not available",
+                "lounge": "available",
+                "entertainmentRoom": "not available",
+                "dinningRoom": "available"
+            },
+            "outdoor": {
+                "pool": "not available",
+                "garage": "available",
+                "security": "available",
+                "park": "not available",
+                "bbqArea": "available"
+            }
+        },
+
+        "ratings": { "_id": "659899d51836f35db8910cbd" },
+
+        "location": {
+            "city": "Banten",
+            "address": "Jl. Raya Sawarna Bayah, Sawarna, Kec. Bayah, Kabupaten Lebak, Banten 42393"
+        },
+
+        "attraction": null,
+
+        "isAvailable": true
+    }
+]
