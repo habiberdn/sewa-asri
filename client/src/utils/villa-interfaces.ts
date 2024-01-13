@@ -1,4 +1,4 @@
-type availbility = "available" | "not available" | string;
+import { BathroomFacilityInterface, BedroomFacilityInterface, IndoorFacilityInterface, OutdoorFacilityInterface } from "./facility-interfaces";
 
 interface VillaInterface {
     _id: string;
@@ -26,41 +26,17 @@ interface CreateVillaInterface {
         width: number;
         length: number;
         bedSize: string;
-        othersFacility: {
-            window: availbility;
-            socket: availbility;
-            wardrobe: availbility;
-        }
+        othersFacility: BedroomFacilityInterface;
     };
 
     bathroom: {
         quantity: number;
-        othersFacility: {
-            waterHeater: availbility;
-            shower: availbility;
-            bathtube: availbility;
-            squatToilet: availbility;
-            sittingToilet: availbility;
-        }
+        othersFacility: BathroomFacilityInterface;
     };
 
     facility: {
-        indoor: {
-            ac: availbility;
-            kitchen: availbility;
-            wifi: availbility;
-            lounge: availbility;
-            entertainmentRoom: availbility;
-            dinningRoom: availbility;
-        };
-
-        outdoor: {
-            pool: availbility;
-            garage: availbility;
-            security: availbility;
-            park: availbility;
-            bbqArea: availbility;
-        }
+        indoor: IndoorFacilityInterface;
+        outdoor: OutdoorFacilityInterface;
     };
 
     location: {
