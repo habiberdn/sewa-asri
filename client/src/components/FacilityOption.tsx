@@ -29,19 +29,14 @@ import securityIcon from "./../assets/icons/security.webp";
 import parkIcon from "./../assets/icons/park.webp";
 import bbqIcon from "./../assets/icons/bbq.webp";
 
-
-type FacilityName = "Single bed" | "Double bed" | "Jendela" | "Stop kontak" | "Lemari pakaian" | "Penghangat air" | "Pancuran air" | "Bak mandi" | "Toilet jongkok" | "Toilet duduk" | "AC (Air Conditioner)" | "Garasi parkir" | "Keamanan 24 jam" | "Taman" | "Area BBQ" | "Dapur untuk memasak" | "Wifi" | "Ruang tamu" | "Ruang hiburan" | "Ruang makan" | "Kolam renang";
-
-// type FacilityType = "bedroom" | "bathroom" | "indoor" | "outdoor";
-
-interface Facility {
-    name: FacilityName;
-    status?: "available" | "not available" | undefined;
+interface FacilityOptionProps {
+    name: string;
+    status?: string | undefined;
     currentValue?: string;
     onChangeFacilityHandler?: () => void;
 }
 
-export function FacilityOption({ name, status, currentValue, onChangeFacilityHandler }: Facility) {
+export function FacilityOption({ name, status, currentValue, onChangeFacilityHandler }: FacilityOptionProps) {
     if (name === "Single bed" || name === "Double bed") {
         return (
             <article    className={`facility-option facility-option-${name === currentValue && "checked"}`}
@@ -79,7 +74,7 @@ export function FacilityOption({ name, status, currentValue, onChangeFacilityHan
     );
 }
 
-function FacilityIcon({ name }: { name: FacilityName }) {
+function FacilityIcon({ name }: { name: string }) {
     const iconMap = {
         "Jendela": windowIcon,
         "Lemari pakaian": wardrobeIcon,
