@@ -2,23 +2,18 @@ import showerIcon from "./../assets/icons/shower-head.webp";
 import bedIcon from "./../assets/icons/double-bed-icon.webp";
 import locationIcon from "./../assets/icons/location.webp";
 
-// import { useRef, useState } from "react";
-// import { useNavigate } from "@tanstack/react-router";
 import { useParams } from "@tanstack/react-router";
-import { Chips, Header, Sidebar } from "../components";
-
-import { DetailVillaInterface } from "../utils/villa-interfaces";
-// import { IMessageBar, ICreateVilla } from '../utils/interface';
-
-// import { AttractionForm, UploadPhoto, VillaDetailForm } from "./Forms/VillaDetail";
-// import { BedroomDetail, BathroomDetail, IndoorDetail, OutdoorDetail } from "./Forms/Facility";
+import { Chips, FacilityOption, Header, Sidebar } from "../components";
 
 import villaJson from "./../data/villa.json";
 import ratingJson from "./../data/reviews.json";
 
 import { ReviewsCard, OverallRating } from "../components/Reviews";
 import { useState } from "react";
+
 import { FilterInterface } from "../utils/ratings-interfaces";
+import { DetailVillaInterface } from "../utils/villa-interfaces";
+import { IndoorFacilityInterface, OutdoorFacilityInterface } from "../utils/facility-interfaces";
 
 export function VillaDetailDescription() {
     const { id } = useParams({ strict: false });
@@ -44,6 +39,7 @@ export function VillaDetailDescription() {
 
                                 <section>
                                     <Reviews ratings={villa.ratings} />
+                                    <IndoorOutdoorFacility villa={villa} />
                                 </section>
                             </>
                         )
@@ -226,6 +222,79 @@ function Reviews({ ratings }: { ratings: { _id: string } }) {
 
             <section className="reviews-list">
                 { rating?.reviews.map((reviews) => <ReviewsCard reviews={reviews} key={reviews._id} />) }
+            </section>
+        </section>
+    );
+}
+
+function IndoorOutdoorFacility({ villa }: { villa: DetailVillaInterface }) {
+    const indoorFacilityMap: IndoorFacilityInterface = {
+        ac: { name: "AC (Air Conditioner)", status: "not available" },
+        kitchen: { name: "Dapur untuk memasak", status: "not available" },
+        wifi: { name: "Wifi", status: "not available" },
+        lounge: { name: "Ruang tamu", status: "not available" },
+        entertainmentRoom: { name: "Ruang hiburan", status: "not available" },
+        dinningRoom: { name: "Ruang makan", status: "not available" }
+    };
+
+    const outdoorFacilityMap: OutdoorFacilityInterface = {
+        pool: { name: "Kolam renang", status: "not available" },
+        garage: { name: "Garasi parkir", status: "not available" },
+        security: { name: "Keamanan 24 jam", status: "not available" },
+        park: { name: "Taman", status: "not available" },
+        bbqArea: { name: "Area BBQ", status: "not available" }
+    };
+
+    for (const facility in villa.facility.indoor) {
+        indoorFacilityMap[facility] = villa.facility.indoor[facility];
+    }
+
+    for (const facility in villa.facility.outdoor) {
+        outdoorFacilityMap[facility] = villa.facility.outdoor[facility];
+    }
+
+    const indoorFacilityKeys = Object.keys(indoorFacilityMap);
+    const outdoorFacilityKeys = Object.keys(outdoorFacilityMap);
+
+    return (
+        <section>
+            <h3 className="h3-medium">
+                Indoor and outdoor facility
+            </h3>
+
+            <section>
+
+                <article>
+                    <h4 className="h4-regular">
+                        Fasilitas indoor
+                    </h4>
+
+                    { 
+                        indoorFacilityKeys.map((facility, index) => (
+                            <FacilityOption     name={indoorFacilityMap[facility].name}
+                                                variant="option"
+                                                status={indoorFacilityMap[facility].status}
+                                                key={index + facility}
+                                                />
+                        ))
+                    }
+                </article>
+
+                <article>
+                    <h4 className="h4-regular">
+                        Fasilitas outdoor
+                    </h4>
+
+                    { 
+                        outdoorFacilityKeys.map((facility, index) => (
+                            <FacilityOption     name={outdoorFacilityMap[facility].name}
+                                                variant="option"
+                                                status={outdoorFacilityMap[facility].status}
+                                                key={index + facility}
+                                                />
+                        ))
+                    }
+                </article>
             </section>
         </section>
     );

@@ -1,30 +1,33 @@
 import { useState } from "react";
 import { InputField, FacilityOption } from "./../../components";
 
-import { IIndoorFacility, IOutdoorFacility  } from './../../utils/interface';
-
 import { CreateVillaInterface } from "../../utils/villa-interfaces";
-
-import { IBathroomFacility, IBedroomFacility } from "./../../utils/interface";
+import { BathroomFacilityInterface, BedroomFacilityInterface, IndoorFacilityInterface, OutdoorFacilityInterface } from "../../utils/facility-interfaces";
 
 export function BedroomDetail({ villaRef }: { villaRef: React.MutableRefObject<CreateVillaInterface> }) {
     const [bedSize, setBedSize] = useState<"Single bed" | "Double bed">("Single bed");
     
-    const [bedroomFacility, setBedroomFacility] = useState<IBedroomFacility>({
-        window: "not available",
-        wardrobe: "not available",
-        socket: "not available"
+    const [bedroomFacility, setBedroomFacility] = useState<BedroomFacilityInterface>({
+        window: { name: "Jendela", status: "not available" },
+        wardrobe: { name: "Lemari pakaian", status: "not available" },
+        socket: { name: "Stop kontak", status: "not available" }
     });
 
+    let facilityStatus = "not available";
+
     function setBedroomFacilityHandler(facility: string) {
+        if (bedroomFacility[facility].status == "not available") {
+            facilityStatus = "available";
+        }
+
         setBedroomFacility((prevState) => ({
             ...prevState,
-            [facility]: prevState[facility] === "not available" ? "available" : "not available",
+            [facility]: { name: bedroomFacility[facility].name, status: facilityStatus }
         }));
 
         villaRef.current.bedroom.othersFacility = {
             ...bedroomFacility,
-            [facility]: bedroomFacility[facility] === "not available" ? "available" : "not available",
+            [facility]: { name: bedroomFacility[facility].name, status: facilityStatus }
         };
     }
 
@@ -41,6 +44,7 @@ export function BedroomDetail({ villaRef }: { villaRef: React.MutableRefObject<C
 
                 <section className="size-option">
                     <FacilityOption     name="Single bed"
+                                        variant="selectable"
                                         currentValue={bedSize}
 
                                         onChangeFacilityHandler={() => {
@@ -50,6 +54,7 @@ export function BedroomDetail({ villaRef }: { villaRef: React.MutableRefObject<C
                                         />
 
                     <FacilityOption     name="Double bed"
+                                        variant="selectable"
                                         currentValue={bedSize}
 
                                         onChangeFacilityHandler={() => {
@@ -97,7 +102,8 @@ export function BedroomDetail({ villaRef }: { villaRef: React.MutableRefObject<C
 
                 <section className="facility-list">
                     <FacilityOption name="Jendela"
-                                    status={bedroomFacility.window}
+                                    variant="selectable"
+                                    status={bedroomFacility.window.status}
                                     currentValue={bedSize}
 
                                     onChangeFacilityHandler={() => {
@@ -106,7 +112,8 @@ export function BedroomDetail({ villaRef }: { villaRef: React.MutableRefObject<C
                                     />
                                     
                     <FacilityOption name="Stop kontak"
-                                    status={bedroomFacility.socket}
+                                    variant="selectable"
+                                    status={bedroomFacility.socket.status}
                                     currentValue={bedSize}
 
                                     onChangeFacilityHandler={() => {
@@ -115,7 +122,8 @@ export function BedroomDetail({ villaRef }: { villaRef: React.MutableRefObject<C
                                     />
 
                     <FacilityOption name="Lemari pakaian"
-                                    status={bedroomFacility.wardrobe}
+                                    variant="selectable"
+                                    status={bedroomFacility.wardrobe.status}
                                     currentValue={bedSize}
 
                                     onChangeFacilityHandler={() => {
@@ -129,23 +137,29 @@ export function BedroomDetail({ villaRef }: { villaRef: React.MutableRefObject<C
 }
 
 export function BathroomDetail({ villaRef }: { villaRef: React.MutableRefObject<CreateVillaInterface> }) {    
-    const [bathroomFacility, setBathroomFacility] = useState<IBathroomFacility>({
-        waterHeater: "not available",
-        shower: "not available",
-        bathtube: "not available",
-        sittingToilet: "not available",
-        squatToilet: "not available",
+    const [bathroomFacility, setBathroomFacility] = useState<BathroomFacilityInterface>({
+        waterHeater: { name: "Penghangat air", status: "not available" },
+        shower: { name: "Pancuran air", status: "not available" },
+        bathtube: { name: "Bak mandi", status: "not available" },
+        sittingToilet: { name: "Toilet duduk", status: "not available" },
+        squatToilet: { name: "Toilet jongkok", status: "not available" }
     });
 
+    let facilityStatus = "not available";
+
     function setBathroomFacilityHandler(facility: string) {
+        if (bathroomFacility[facility].status == "not available") {
+            facilityStatus = "available";
+        }
+
         setBathroomFacility((prevState) => ({
             ...prevState,
-            [facility]: prevState[facility] === "not available" ? "available" : "not available"
+            [facility]: { name: bathroomFacility[facility].name, status: facilityStatus }
         }));
 
         villaRef.current.bathroom.othersFacility = {
             ...bathroomFacility,
-            [facility]: bathroomFacility[facility] === "not available" ? "available" : "not available",
+            [facility]: { name: bathroomFacility[facility].name, status: facilityStatus }
         };
     }
 
@@ -168,7 +182,8 @@ export function BathroomDetail({ villaRef }: { villaRef: React.MutableRefObject<
 
                 <section className="facility-list">
                     <FacilityOption name="Penghangat air"
-                                    status={bathroomFacility.waterHeater}
+                                    variant="selectable"
+                                    status={bathroomFacility.waterHeater.status}
 
                                     onChangeFacilityHandler={() => {
                                         setBathroomFacilityHandler("waterHeater");
@@ -176,7 +191,8 @@ export function BathroomDetail({ villaRef }: { villaRef: React.MutableRefObject<
                                     />
                                     
                     <FacilityOption name="Pancuran air"
-                                    status={bathroomFacility.shower}
+                                    variant="selectable"
+                                    status={bathroomFacility.shower.status}
 
                                     onChangeFacilityHandler={() => {
                                         setBathroomFacilityHandler("shower");
@@ -184,7 +200,8 @@ export function BathroomDetail({ villaRef }: { villaRef: React.MutableRefObject<
                                     />
 
                     <FacilityOption name="Bak mandi"
-                                    status={bathroomFacility.bathtube}
+                                    variant="selectable"
+                                    status={bathroomFacility.bathtube.status}
 
                                     onChangeFacilityHandler={() => {
                                         setBathroomFacilityHandler("bathtube");
@@ -192,7 +209,8 @@ export function BathroomDetail({ villaRef }: { villaRef: React.MutableRefObject<
                                     />
 
                     <FacilityOption name="Toilet jongkok"
-                                    status={bathroomFacility.squatToilet}
+                                    variant="selectable"
+                                    status={bathroomFacility.squatToilet.status}
 
                                     onChangeFacilityHandler={() => {
                                         setBathroomFacilityHandler("squatToilet");
@@ -200,7 +218,8 @@ export function BathroomDetail({ villaRef }: { villaRef: React.MutableRefObject<
                                     />
 
                     <FacilityOption name="Toilet duduk"
-                                    status={bathroomFacility.sittingToilet}
+                                    variant="selectable"
+                                    status={bathroomFacility.sittingToilet.status}
 
                                     onChangeFacilityHandler={() => {
                                         setBathroomFacilityHandler("sittingToilet");
@@ -213,24 +232,30 @@ export function BathroomDetail({ villaRef }: { villaRef: React.MutableRefObject<
 }
 
 export function IndoorDetail({ villaRef }: { villaRef: React.MutableRefObject<CreateVillaInterface> }) {    
-    const [indoorFacility, setIndoorFacility] = useState<IIndoorFacility>({
-        ac: "not available",
-        kitchen: "not available",
-        wifi: "not available",
-        lounge: "not available",
-        entertainmentRoom: "not available",
-        dinningRoom: "not available"
+    const [indoorFacility, setIndoorFacility] = useState<IndoorFacilityInterface>({
+        ac: { name: "AC (Air Conditioner)", status: "not available" },
+        kitchen: { name: "Dapur untuk memasak", status: "not available" },
+        wifi: { name: "Wifi", status: "not available" },
+        lounge: { name: "Ruang tamu", status: "not available" },
+        entertainmentRoom: { name: "Ruang hiburan", status: "not available" },
+        dinningRoom: { name: "Ruang makan", status: "not available" }
     });
 
+    let facilityStatus = "not available";
+
     function setBathroomFacilityHandler(facility: string) {
+        if (indoorFacility[facility].status == "not available") {
+            facilityStatus = "available";
+        }
+
         setIndoorFacility((prevState) => ({
             ...prevState,
-            [facility]: prevState[facility] === "not available" ? "available" : "not available"
+            [facility]: { name: indoorFacility[facility].name, status: facilityStatus }
         }));
 
         villaRef.current.facility.indoor = {
             ...indoorFacility,
-            [facility]: indoorFacility[facility] === "not available" ? "available" : "not available",
+            [facility]: { name: indoorFacility[facility].name, status: facilityStatus }
         };
     }
 
@@ -249,7 +274,8 @@ export function IndoorDetail({ villaRef }: { villaRef: React.MutableRefObject<Cr
 
                 <section className="facility-list">
                     <FacilityOption name="AC (Air Conditioner)"
-                                    status={indoorFacility.ac}
+                                    variant="selectable"
+                                    status={indoorFacility.ac.status}
 
                                     onChangeFacilityHandler={() => {
                                         setBathroomFacilityHandler("ac");
@@ -257,7 +283,8 @@ export function IndoorDetail({ villaRef }: { villaRef: React.MutableRefObject<Cr
                                     />
                                     
                     <FacilityOption name="Dapur untuk memasak"
-                                    status={indoorFacility.kitchen}
+                                    variant="selectable"
+                                    status={indoorFacility.kitchen.status}
 
                                     onChangeFacilityHandler={() => {
                                         setBathroomFacilityHandler("kitchen");
@@ -265,7 +292,8 @@ export function IndoorDetail({ villaRef }: { villaRef: React.MutableRefObject<Cr
                                     />
 
                     <FacilityOption name="Wifi"
-                                    status={indoorFacility.wifi}
+                                    variant="selectable"
+                                    status={indoorFacility.wifi.status}
 
                                     onChangeFacilityHandler={() => {
                                         setBathroomFacilityHandler("wifi");
@@ -273,7 +301,8 @@ export function IndoorDetail({ villaRef }: { villaRef: React.MutableRefObject<Cr
                                     />
 
                     <FacilityOption name="Ruang tamu"
-                                    status={indoorFacility.lounge}
+                                    variant="selectable"
+                                    status={indoorFacility.lounge.status}
 
                                     onChangeFacilityHandler={() => {
                                         setBathroomFacilityHandler("lounge");
@@ -281,7 +310,8 @@ export function IndoorDetail({ villaRef }: { villaRef: React.MutableRefObject<Cr
                                     />
 
                     <FacilityOption name="Ruang hiburan"
-                                    status={indoorFacility.entertainmentRoom}
+                                    variant="selectable"
+                                    status={indoorFacility.entertainmentRoom.status}
 
                                     onChangeFacilityHandler={() => {
                                         setBathroomFacilityHandler("entertainmentRoom");
@@ -289,7 +319,8 @@ export function IndoorDetail({ villaRef }: { villaRef: React.MutableRefObject<Cr
                                     />
 
                     <FacilityOption name="Ruang makan"
-                                    status={indoorFacility.dinningRoom}
+                                    variant="selectable"
+                                    status={indoorFacility.dinningRoom.status}
 
                                     onChangeFacilityHandler={() => {
                                         setBathroomFacilityHandler("dinningRoom");
@@ -302,23 +333,29 @@ export function IndoorDetail({ villaRef }: { villaRef: React.MutableRefObject<Cr
 }
 
 export function OutdoorDetail({ villaRef }: { villaRef: React.MutableRefObject<CreateVillaInterface> }) {    
-    const [outdoorFacility, setOutdoorFacility] = useState<IOutdoorFacility>({
-        pool: "not available",
-        garage: "not available",
-        security: "not available",
-        park: "not available",
-        bbqArea: "not available"
+    const [outdoorFacility, setOutdoorFacility] = useState<OutdoorFacilityInterface>({
+        pool: { name: "Kolam renang", status: "not available" },
+        garage: { name: "Garasi parkir", status: "not available" },
+        security: { name: "Keamanan 24 jam", status: "not available" },
+        park: { name: "Taman", status: "not available" },
+        bbqArea: { name: "Area BBQ", status: "not available" }
     });
 
+    let facilityStatus = "not available";
+
     function setOutdoorFacilityHandler(facility: string) {
+        if (outdoorFacility[facility].status == "not available") {
+            facilityStatus = "available";
+        }
+
         setOutdoorFacility((prevState) => ({
             ...prevState,
-            [facility]: prevState[facility] === "not available" ? "available" : "not available"
+            [facility]: { name: outdoorFacility[facility].name, status: facilityStatus }
         }));
 
         villaRef.current.facility.outdoor = {
             ...outdoorFacility,
-            [facility]: outdoorFacility[facility] === "not available" ? "available" : "not available",
+            [facility]: { name: outdoorFacility[facility].name, status: facilityStatus }
         };
     }
 
@@ -337,7 +374,8 @@ export function OutdoorDetail({ villaRef }: { villaRef: React.MutableRefObject<C
 
                 <section className="facility-list">
                     <FacilityOption name="Kolam renang"
-                                    status={outdoorFacility.pool}
+                                    variant="selectable"
+                                    status={outdoorFacility.pool.status}
 
                                     onChangeFacilityHandler={() => {
                                         setOutdoorFacilityHandler("pool");
@@ -345,7 +383,8 @@ export function OutdoorDetail({ villaRef }: { villaRef: React.MutableRefObject<C
                                     />
                                     
                     <FacilityOption name="Garasi parkir"
-                                    status={outdoorFacility.garage}
+                                    variant="selectable"
+                                    status={outdoorFacility.garage.status}
 
                                     onChangeFacilityHandler={() => {
                                         setOutdoorFacilityHandler("garage");
@@ -353,7 +392,8 @@ export function OutdoorDetail({ villaRef }: { villaRef: React.MutableRefObject<C
                                     />
 
                     <FacilityOption name="Keamanan 24 jam"
-                                    status={outdoorFacility.security}
+                                    variant="selectable"
+                                    status={outdoorFacility.security.status}
 
                                     onChangeFacilityHandler={() => {
                                         setOutdoorFacilityHandler("security");
@@ -361,7 +401,8 @@ export function OutdoorDetail({ villaRef }: { villaRef: React.MutableRefObject<C
                                     />
 
                     <FacilityOption name="Taman"
-                                    status={outdoorFacility.park}
+                                    variant="selectable"
+                                    status={outdoorFacility.park.status}
 
                                     onChangeFacilityHandler={() => {
                                         setOutdoorFacilityHandler("park");
@@ -369,7 +410,8 @@ export function OutdoorDetail({ villaRef }: { villaRef: React.MutableRefObject<C
                                     />
 
                     <FacilityOption name="Area BBQ"
-                                    status={outdoorFacility.bbqArea}
+                                    variant="selectable"
+                                    status={outdoorFacility.bbqArea.status}
 
                                     onChangeFacilityHandler={() => {
                                         setOutdoorFacilityHandler("bbqArea");

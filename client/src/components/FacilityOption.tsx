@@ -31,39 +31,31 @@ import bbqIcon from "./../assets/icons/bbq.webp";
 
 interface FacilityOptionProps {
     name: string;
-    status?: string | undefined;
+    variant: "selectable" | "option";
+    status?: string;
     currentValue?: string;
     onChangeFacilityHandler?: () => void;
 }
 
-export function FacilityOption({ name, status, currentValue, onChangeFacilityHandler }: FacilityOptionProps) {
-    if (name === "Single bed" || name === "Double bed") {
-        return (
-            <article    className={`facility-option facility-option-${name === currentValue && "checked"}`}
-                        onClick={() => {
-                            if (onChangeFacilityHandler) {
-                                onChangeFacilityHandler();
-                            }
-                        }}>
+export function FacilityOption({ name, variant, status, currentValue, onChangeFacilityHandler }: FacilityOptionProps) {
+    const currentStatus = name === currentValue && "checked";
     
-                <img className="facility-icon"
-                     src={name === "Single bed" ? singleBedIcon : doubleBedIcon} />
-    
-                <h4 className="label-regular">
-                    { name }
-                </h4>
-            </article>
-        );
-    }
     return (
-        <article    className={`facility-option facility-option-${status}`}
+        <article    className={`facility-option facility-option-${variant} facility-option-${currentValue ? currentStatus : status}`}
                     onClick={() => {
                         if (onChangeFacilityHandler) {
                             onChangeFacilityHandler();
                         }
                     }}>
             
-            <FacilityIcon name={name} />
+            {
+                name === "Single bed" || name === "Double bed" ? (
+                    <img    className="facility-icon"
+                            src={name === "Single bed" ? singleBedIcon : doubleBedIcon} />
+                ) : (
+                    <FacilityIcon name={name} />
+                )
+            }
 
             <h4 className="label-regular">
                 { name }

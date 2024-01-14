@@ -10,12 +10,14 @@
     border: 1px solid var(--neutral-200, #EEE);
     background-color: var(--neutral-0, #FFF);
 
-    cursor: pointer;
-
     .facility-icon, .check-icon, .invisible-icon {
         height: 24px;
         width: 24px;
     }
+}
+
+.facility-option-selectable {
+    cursor: pointer;
 }
 
 .facility-option-checked {
