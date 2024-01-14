@@ -26,7 +26,7 @@ export function VillaDetailDescription() {
             <section  className="main-container">
                 <Header variant="main"/>
                 
-                <section  className="widget villa-detail">
+                <section  className="widget">
                     <Header variant="detail-villa" />
 
                     {
@@ -37,9 +37,13 @@ export function VillaDetailDescription() {
                                     <DescriptionDetail description={villa.description} />
                                 </section>
 
-                                <section>
+                                <section className="reviews-facility-nearest-attraction-detail">
                                     <Reviews ratings={villa.ratings} />
-                                    <IndoorOutdoorFacility villa={villa} />
+
+                                    <section className="facility-nearest-attraction-wrapper">
+                                        <IndoorOutdoorFacility villa={villa} />
+                                        <Attraction villa={villa} />
+                                    </section>
                                 </section>
                             </>
                         )
@@ -257,15 +261,16 @@ function IndoorOutdoorFacility({ villa }: { villa: DetailVillaInterface }) {
     const outdoorFacilityKeys = Object.keys(outdoorFacilityMap);
 
     return (
-        <section>
+        <section className="indoor-outdoor-facility-wrapper">
+
             <h3 className="h3-medium">
                 Indoor and outdoor facility
             </h3>
 
-            <section>
+            <section className="detail">
 
-                <article>
-                    <h4 className="h4-regular">
+                <article className="facility-list">
+                    <h4 className="h4-regular label">
                         Fasilitas indoor
                     </h4>
 
@@ -280,7 +285,7 @@ function IndoorOutdoorFacility({ villa }: { villa: DetailVillaInterface }) {
                     }
                 </article>
 
-                <article>
+                <article  className="facility-list">
                     <h4 className="h4-regular">
                         Fasilitas outdoor
                     </h4>
@@ -296,6 +301,65 @@ function IndoorOutdoorFacility({ villa }: { villa: DetailVillaInterface }) {
                     }
                 </article>
             </section>
+        </section>
+    );
+}
+
+function Attraction({ villa }: { villa: DetailVillaInterface }) {
+    const { attraction } = villa;
+
+    return (
+        <section className="nearest-attraction label">
+            <h3 className="h4-medium">
+                Nearest attraction
+            </h3>
+
+            <article className="attraction">
+                {
+                    attraction ? (
+                        <img src={attraction.photo} className="photo" />
+                    ) : (
+                        <div className="photo" />
+                    )
+                }
+                
+
+                <section className="detail">
+                    
+                    <article className="name-distance-wrapper">
+
+                        <h4 className="h4-regular">
+                            { 
+                                attraction ? (
+                                    attraction.name
+                                ) : (
+                                    "Tidak ada"
+                                )
+                            }
+                        </h4>
+
+                        <p className="label-regular">
+                            {
+                                attraction ? (
+                                    attraction.distance
+                                ) : (
+                                    "-"
+                                )
+                            }
+                        </p>
+                    </article>
+
+                    <p className="label-regular schedule">
+                        {
+                            attraction ? (
+                                `${attraction.open} WIB - ${attraction.close} WIB`
+                            ) : (
+                                "-"
+                            )
+                        }
+                    </p>
+                </section>
+            </article>
         </section>
     );
 }
