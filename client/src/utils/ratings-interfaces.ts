@@ -26,16 +26,17 @@ interface RatingsInterface {
     reviews: Array<ReviewsInterface>;
 }
 
-interface FilterInterface {
-    oldest: boolean;
-    newest: boolean;
-    best: boolean;
-    worst: boolean;
+interface FilterReviewsInterface {
+    all: { label: string; state: boolean };
+    oldest: { label: string; state: boolean };
+    newest: { label: string; state: boolean };
+    best: { label: string; state: boolean };
+    worst: { label: string; state: boolean };
 }
 
 export { 
     RatingsInterface, 
     ReviewsInterface, 
     OverallRatingInterface, 
-    FilterInterface 
+    FilterReviewsInterface 
 };

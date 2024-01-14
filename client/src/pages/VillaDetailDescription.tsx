@@ -11,7 +11,7 @@ import ratingJson from "./../data/reviews.json";
 import { ReviewsCard, OverallRating } from "../components/Reviews";
 import { useState } from "react";
 
-import { FilterInterface } from "../utils/ratings-interfaces";
+import { FilterReviewsInterface } from "../utils/ratings-interfaces";
 import { DetailVillaInterface } from "../utils/villa-interfaces";
 import { IndoorFacilityInterface, OutdoorFacilityInterface } from "../utils/facility-interfaces";
 
@@ -148,27 +148,30 @@ function DescriptionDetail({ description }: { description: string }) {
 }
 
 function Reviews({ ratings }: { ratings: { _id: string } }) {
-    const [filterReviews, setFilterReviews] = useState<FilterInterface>({
-        oldest: false,
-        newest: false,
-        best: true,
-        worst: false
+    const [filterReviews, setFilterReviews] = useState<FilterReviewsInterface>({
+        all: { label: "Semua", state: true },
+        oldest: { label: "Terlama", state: false },
+        newest: { label: "Terbaru", state: false },
+        best: { label: "Terbaik", state: false },
+        worst: { label: "Terburuk", state: false }
     });
+    const filterKeys = Object.keys(filterReviews);
 
     const rating = ratingJson.find((rating) => rating._id === ratings._id);
 
     function setFilterReviewsHandler(option: string) {
-        const filterMap = {
-            oldest: false,
-            newest: false,
-            best: false,
-            worst: false
+        const filterReviewsMap = {
+            all: { label: "Semua", state: false },
+            oldest: { label: "Terlama", state: false },
+            newest: { label: "Terbaru", state: false },
+            best: { label: "Terbaik", state: false },
+            worst: { label: "Terburuk", state: false }
         }
 
-        setFilterReviews((prevState) => ({
-            ...filterMap,
-            [option]: prevState[option] ? false : true
-        }));
+        setFilterReviews(() => ({
+            ...filterReviewsMap,
+            [option]: { label: filterReviews[option].label, state: true }
+        }))
     }
 
     return (
@@ -187,41 +190,20 @@ function Reviews({ ratings }: { ratings: { _id: string } }) {
             { rating?.overallRatting && <OverallRating overallRating={rating?.overallRatting}/> }
 
             <section className="filter-reviews-list">
-                <Chips  label="Terlama"
-                        variant="active"
-                        state={filterReviews.oldest}
-                        
-                        onSelect={() => {
-                            setFilterReviewsHandler("oldest");
-                        }}
-                        />
+                {
+                    filterKeys.map((filter, index) => (
+                        <Chips  label={filterReviews[filter].label}
+                                variant="active"
 
-                <Chips  label="Terbaru"
-                        variant="active"
-                        state={filterReviews.newest}
-                        
-                        onSelect={() => {
-                            setFilterReviewsHandler("newest");
-                        }}
-                        />
-
-                <Chips  label="Terbaik"
-                        variant="active"
-                        state={filterReviews.best}
-                        
-                        onSelect={() => {
-                            setFilterReviewsHandler("best");
-                        }}
-                        />
-
-                <Chips  label="Terburuk"
-                        variant="active"
-                        state={filterReviews.worst}
-                        
-                        onSelect={() => {
-                            setFilterReviewsHandler("worst");
-                        }}
-                        />
+                                state={filterReviews[filter].state}
+                                key={filter + index}
+                                
+                                onSelect={() => {
+                                    setFilterReviewsHandler(filter);
+                                }}
+                                />
+                    ))
+                }
             </section>
 
             <section className="reviews-list">
