@@ -163,8 +163,6 @@ export function Login() {
                                     isLoading={isLoading}
                                     />
 
-                        <h4  className="label-regular other" >atau</h4>
-
                         <Button     behavior="fill-container"  
                                     size="large"
                                     label="Buat akun"

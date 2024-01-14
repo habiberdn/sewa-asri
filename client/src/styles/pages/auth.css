@@ -32,7 +32,8 @@
 
 .widget {
     height: calc(100vh - 180px);
-    width: 1370px;
+    width: 100%;
+    max-width: 1370px;
     padding: 24px;
     flex-direction: column;
     align-items: flex-start;
