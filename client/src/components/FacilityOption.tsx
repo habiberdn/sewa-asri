@@ -8,7 +8,6 @@ import singleBedIcon from "./../assets/icons/single-bed-icon.webp";
 import doubleBedIcon from "./../assets/icons/double-bed-icon.webp";
 import move3dIcon from "./../assets/icons/move-3d.webp";
 
-
 // bathroom facility
 import squatToiletIcon from "./../assets/icons/squat-toilet.webp";
 import sittingToiletIcon from "./../assets/icons/sitting-toilet.webp";
@@ -113,7 +112,7 @@ function FacilityIcon({ name }: { name: string }) {
 
 function FacilitySpecificationIcon({ name }: { name: string }) {
     const iconMap = {
-        "Luas kamar": windowIcon
+        "Luas kamar": move3dIcon
     };
     
     return <img className="facility-icon" src={iconMap[name]} alt={name} />;
