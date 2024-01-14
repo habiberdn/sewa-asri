@@ -25,91 +25,32 @@ interface IHeader {
 export function Header({ variant, onHoverProfile, onSearchHandler, onCreateVillaHandler }: IHeader) {
     const user = getUser();
 
+    const dayMap = {
+        "0": "Minggu",
+        "1": "Senin",
+        "2": "Selasa",
+        "3": "Rabu",
+        "4": "Kamis",
+        "5": "Jumat",
+        "6": "Sabtu"
+    }
+
+    const monthMap = {
+        "0": "Januari",
+        "1": "Februari",
+        "2": "Maret",
+        "3": "April",
+        "4": "Mei",
+        "5": "Juni",
+        "6": "Juli",
+        "7": "Agustus",
+        "8": "Oktober",
+        "9": "September",
+        "10": "November",
+        "11": "Desember"
+    }
+
     const date = new Date;
-    let currentDate: Date = {
-        day: "Senin",
-        month: "Januari"
-    };
-
-    switch (date.getDay()) {
-        case 0:
-            currentDate.day = "Minggu";
-            break;
-
-        case 1:
-            currentDate.day = "Senin";
-            break;
-
-        case 2:
-            currentDate.day = "Selasa";
-            break;
-
-        case 3:
-            currentDate.day = "Rabu";
-            break;
-
-        case 4:
-            currentDate.day = "Kamis";
-            break;
-
-        case 5:
-            currentDate.day = "Jumat";
-            break;
-        
-        case 6:
-            currentDate.day = "Sabtu";
-            break;
-    }
-
-    switch (date.getMonth()) {
-        case 0:
-            currentDate.month = "Januari";
-            break;
-
-        case 1:
-            currentDate.month = "Februari";
-            break;
-
-        case 2:
-            currentDate.month = "Maret";
-            break;
-
-        case 3:
-            currentDate.month = "April";
-            break;
-
-        case 4:
-            currentDate.month = "Mei";
-            break;
-
-        case 5:
-            currentDate.month = "Juni";
-            break;
-        
-        case 6:
-            currentDate.month = "Juli";
-            break;
-        
-        case 7:
-            currentDate.month = "Agustus";
-            break;
-        
-        case 8:
-            currentDate.month = "Oktober";
-            break;
-        
-        case 9:
-            currentDate.month = "September";
-            break;
-        
-        case 10:
-            currentDate.month = "November";
-            break;
-        
-        case 1:
-            currentDate.month = "Desember";
-            break;
-    }
 
     switch (variant) {
         case "main":
@@ -125,11 +66,11 @@ export function Header({ variant, onHoverProfile, onSearchHandler, onCreateVilla
                         <article  className="header-main-date-detail">
         
                             <h4     className="label-regular date">
-                                { currentDate.day }, { date.getDate() }
+                                { dayMap[date.getDay().toString()] }, { date.getDate() }
                             </h4>
         
                             <h4     className="label-regular month">
-                                { currentDate.month }
+                                { monthMap[date.getMonth().toString()] }
                             </h4>
                         </article>
                     </section>
