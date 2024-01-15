@@ -224,7 +224,7 @@ function DropdownActions({
                 
                 onClick={() => {
                     navigate({ 
-                        to: "edit-villa/$id",
+                        to: "villa-detail-description/$id",
                         params: { id: _id }
                     });
                 }}>
@@ -245,10 +245,7 @@ function DropdownActions({
             <p  className="label-regular delete"
 
                 onClick={() => {
-                    navigate({ 
-                        to: "villa-detail-description/$id",
-                        params: { id: _id }
-                    });
+                    
                 }}>
                 Delete
             </p>
