@@ -47,29 +47,39 @@ export function InputField({
         <>
         {
             placeholderLabel ? (
-                <label className="text-field" htmlFor={label}>
-                    <input  className="label-regular"
-                            id={label}
-                            placeholder={placeholder}
-                            required={true} 
+                <>
+                    <label className="label label-regular" htmlFor={label}>
+                        { label }
+                    </label>
+                    
+                    <label className="text-field" htmlFor={label}>
+                        <input  className="label-regular"
+                                id={label}
+                                placeholder={placeholder}
+                                required={true} 
 
-                            type={variant === "number" ? "number" : "text"}
+                                type={variant === "number" ? "number" : "text"}
 
-                            min={1}
-                            defaultValue={value}
-                            
-                            onChange={(event) => {
-                                if (onChangeInputHandler) {
-                                    onChangeInputHandler(event);
-                                }
-                            }}
-                            />
-                    <h4 className="label-regular">
-                        { placeholderLabel }
-                    </h4>
-                </label>
+                                min={1}
+                                defaultValue={value}
+                                
+                                onChange={(event) => {
+                                    if (onChangeInputHandler) {
+                                        onChangeInputHandler(event);
+                                    }
+                                }}
+                                />
+                        <h4 className="label-regular">
+                            { placeholderLabel }
+                        </h4>
+                    </label>
+                </>
             ) : (
-                <label className="label" htmlFor={label}>
+                <>                        
+                    <label className="label label-regular" htmlFor={label}>
+                        { label }
+                    </label>
+
                     <input  className="text-field label-regular"
                             id={label}
                             placeholder={placeholder}
@@ -86,10 +96,7 @@ export function InputField({
                                 }
                             }}
                             />
-                    <h4 className="label-regular">
-                        { placeholderLabel }
-                    </h4>
-                </label>
+                </>
             )
         }
         </>
