@@ -3,17 +3,9 @@ import bellIcon from "./../assets/icons/bell.png";
 import { Button, Chips, SearchBar } from ".";
 import { getUser } from "../utils/userStore";
 import { useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
 
 type Variant = "main" | "dashboard" | "chat" | "reservation-schedule" | "villa-management" | "add-new-villa" | "edit-villa" | "detail-villa";
-
-type Day = "Senin" | "Selasa" | "Rabu" | "Kamis" | "Jumat" | "Sabtu" | "Minggu";
-
-type Month = "Januari" | "Februari" | "Maret" | "April" | "Mei" | "Juni" | "Juli" | "Agustus" | "September" | "Oktober" | "November" | "Desember";
-
-interface Date {
-    day: Day;
-    month: Month;
-}
 
 interface IHeader {
     variant: Variant; 
@@ -196,8 +188,6 @@ export function Header({ variant, onHoverProfile, onSearchHandler, onCreateVilla
                         <h1  className="h1-medium header-title">
                             Reservation schedule
                         </h1>
-
-                        
                     </article>
                 </header>
             );
@@ -241,6 +231,8 @@ export function Header({ variant, onHoverProfile, onSearchHandler, onCreateVilla
 }
 
 function VillaManagement({ onSearchHandler, onCreateVillaHandler }: { onSearchHandler: () => void, onCreateVillaHandler?: () => void; }) {
+    const [filterAvailability, setFilterAvailability] = useState<"Tersedia" | "Tidak tersedia">("Tersedia");
+
     return (
         <header  className="header villa-management">
 
@@ -271,19 +263,19 @@ function VillaManagement({ onSearchHandler, onCreateVillaHandler }: { onSearchHa
                     </h4>
 
                     <Chips  label="Tersedia"
-                            state={true}
+                            state={ filterAvailability === "Tersedia" ? true : false }
                             variant="active"
                             
                             onSelect={() => {
-                                
+                                setFilterAvailability("Tersedia")
                             }}/>
 
                     <Chips  label="Tidak tersedia"
-                            state={true}
+                            state={ filterAvailability === "Tidak tersedia" ? true : false }
                             variant="active"
                             
                             onSelect={() => {
-
+                                setFilterAvailability("Tidak tersedia")
                             }}/>
 
                 </section>
@@ -307,7 +299,6 @@ function VillaManagement({ onSearchHandler, onCreateVillaHandler }: { onSearchHa
                                 }}
                                 />
                 </section>
-
 
             </section>
         </header>
@@ -334,9 +325,8 @@ function EditVilla() {
                             label="Cancel"
 
                             onClickHandler={() => {
-                                console.info("Add new villa");
+                                navigate({ to: "/villa-management" });
                             }}
-                            
                             />
                 
                 <Button     variant="primary"
@@ -348,7 +338,6 @@ function EditVilla() {
                             onClickHandler={() => {
                                 console.info("Add new villa");
                             }}
-                            
                             />
                 </section>                
             </article>
@@ -378,7 +367,6 @@ function CreateNewVilla({ onCreateVillaHandler }: { onCreateVillaHandler?: () =>
                                 onClickHandler={() => {
                                     navigate({ to: "/villa-management" });
                                 }}
-                                
                                 />
                     
                     <Button     variant="primary"
@@ -392,7 +380,6 @@ function CreateNewVilla({ onCreateVillaHandler }: { onCreateVillaHandler?: () =>
                                         onCreateVillaHandler();
                                     }
                                 }}
-                                
                                 />
                     </section>                
             </article>

@@ -13,6 +13,7 @@ import { ReservationSchedule } from "./ReservationSchedule";
 import { VillaManagement } from "./VillaManagement";
 import { CreateVilla } from "./CreateVilla";
 import { VillaDetailDescription } from "./VillaDetailDescription";
+import { EditVilla } from "./EditVilla";
 import { BedroomDetail, BathroomDetail, AttractionForm } from "./Form";
 
 export {
@@ -32,5 +33,6 @@ export {
     BedroomDetail,
     BathroomDetail,
     AttractionForm,
-    VillaDetailDescription
+    VillaDetailDescription,
+    EditVilla
 }

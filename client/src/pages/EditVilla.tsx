@@ -10,10 +10,14 @@ import { CreateVillaInterface } from '../utils/villa-interfaces';
 import { AttractionForm, VillaDetailForm } from "./Forms/VillaDetail";
 import { BedroomDetail, BathroomDetail, IndoorDetail, OutdoorDetail } from "./Forms/Facility";
 
+import villaJson from "./../data/villa.json";
+import { useParams } from "@tanstack/react-router";
+
 // import { Villa } from '../utils/interface';
 
-export function CreateVilla() {
-    // const navigate = useNavigate();
+export function EditVilla() {
+    const { id } = useParams({ strict: false });
+    const villa: CreateVillaInterface | undefined = villaJson.find((villa) => villa._id === id);
 
     const villaRef = useRef<CreateVillaInterface>({
         name: "",
@@ -72,6 +76,12 @@ export function CreateVilla() {
         isAvailable: false
     });
 
+    if (villa) {
+        villaRef.current = villa;
+    }
+
+    console.info(villaRef)
+
     const [messagebar, setMessagebar] = useState<IMessageBar>({
         showMessageBar: false,
         variant: "error",
@@ -101,7 +111,7 @@ export function CreateVilla() {
                 
                 <section  className="widget create-new">
 
-                    <Header variant="add-new-villa" 
+                    <Header variant="edit-villa" 
                             onCreateVillaHandler={() => {
                                 onCreateVilla();
                             }}/>

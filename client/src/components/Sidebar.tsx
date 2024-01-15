@@ -7,7 +7,7 @@ import closeIcon from "./../assets/icons/close.png"
 import logo from "./../assets/logo.png";
 
 import { useRef, useState } from "react";
-import { Link, useRouter } from "@tanstack/react-router";
+import { Link, useParams, useRouter } from "@tanstack/react-router";
 
 // type Sidebar = {
 
@@ -73,6 +73,8 @@ export function Sidebar() {
 }
 
 function Menu({ sidebarStatus, routePath }: MenuType) {
+    const { id } = useParams({ strict: false });
+
     const currentRouteRef = useRef<CurrentRouteRef>({
         dashboard: false,
         chat: false,
@@ -86,6 +88,7 @@ function Menu({ sidebarStatus, routePath }: MenuType) {
         "/reservation-schedule": { reservationSchedule: true },
         "/villa-management": { villaManagement: true },
         "/villa-management/create-new-villa": { villaManagement: true },
+        [`/villa-management/villa-detail-description/${id}`]: { villaManagement: true }
     };
     
     currentRouteRef.current = {

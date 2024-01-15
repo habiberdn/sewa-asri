@@ -1,12 +1,12 @@
 import useSWRMutation from "swr/mutation";
-import { VillaDetail } from "../utils/interface";
+import { CreateVillaInterface } from "../utils/villa-interfaces";
 
 const API = "https://wild-lime-newt-wig.cyclic.app/api/v1";
 
 interface Argument {
     userId: string;
     token: string;
-    villa: VillaDetail;
+    villa: CreateVillaInterface;
 }
 
 function useCreateVilla() {
@@ -20,11 +20,7 @@ function useCreateVilla() {
             },
 
             body: JSON.stringify({
-                "photo": arg.villa.photo,
-                "name": arg.villa.name,
-                "price": arg.villa.price,
-                "bedroomQuantity": arg.villa.bedroomQuantity,
-                "bathroomQuantity": arg.villa.bathroomQuantity
+                ...arg
             })
         }).then(res => res.json())
     }

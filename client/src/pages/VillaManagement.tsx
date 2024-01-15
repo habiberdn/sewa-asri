@@ -10,7 +10,7 @@ import { ModalLogout, IMessageBar } from '../utils/interface';
 import { useLogout } from '../hooks/useAuth';
 import { getUser } from '../utils/userStore';
 
-import { VillaInterfaces } from '../utils/villa-interfaces';
+import { DetailVillaInterface, VillaInterface } from '../utils/villa-interfaces';
 
 const cookies = new Cookies("auth-token", { path: '/' });
 
@@ -144,7 +144,7 @@ export function VillaManagement() {
     );
 }
 
-function ListVilla({ data }: { data: Array<VillaInterfaces> }) {
+function ListVilla({ data }: { data: Array<VillaInterface | DetailVillaInterface> }) {
     return (
         <section className='list-villa-container'>
             {

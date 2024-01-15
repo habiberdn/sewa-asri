@@ -3,6 +3,8 @@ import { InputField } from "./../../components";
 import { CreateVillaInterface } from "../../utils/villa-interfaces";
 
 export function VillaDetailForm({ villaRef }: { villaRef: React.MutableRefObject<CreateVillaInterface> }) {
+    const villa = villaRef.current;
+
     return (
         <article className="form detail">
             <h3 className="h3-medium">
@@ -13,6 +15,7 @@ export function VillaDetailForm({ villaRef }: { villaRef: React.MutableRefObject
                             placeholder="Villa Pesona Lestari"
                             variant="text"
                             width="wide"
+                            value={villa.name && villa.name}
 
                             onChangeInputHandler={(event) => {
                                 villaRef.current.name = event.target.value;
@@ -23,6 +26,7 @@ export function VillaDetailForm({ villaRef }: { villaRef: React.MutableRefObject
                             placeholder="Villa Pesona Lestari merupakan villa yang bernuansa"
                             variant="text-area"
                             width="wide"
+                            value={villa.description && villa.description}
 
                             onChangeInputHandler={(event) => {
                                 villaRef.current.description = event.target.value;
@@ -33,6 +37,7 @@ export function VillaDetailForm({ villaRef }: { villaRef: React.MutableRefObject
                             placeholder="4700000"
                             variant="number"
                             width="wide"
+                            value={villa.price && villa.price}
 
                             onChangeInputHandler={(event) => {
                                 villaRef.current.price = Number.parseInt(event.target.value);
@@ -43,6 +48,7 @@ export function VillaDetailForm({ villaRef }: { villaRef: React.MutableRefObject
                             placeholder="Bandung"
                             variant="text"
                             width="wide"
+                            value={villa.location && villa.location.city}
 
                             onChangeInputHandler={(event) => {
                                 villaRef.current.location.city = event.target.value;
@@ -55,6 +61,7 @@ export function VillaDetailForm({ villaRef }: { villaRef: React.MutableRefObject
                                 placeholderLabel="m"
                                 variant="number"
                                 width="short"
+                                value={villa.bedroom && villa.bedroom.width}
 
                                 onChangeInputHandler={(event) => {
                                     villaRef.current.bathroom.quantity = Number.parseInt(event.target.value);
@@ -66,6 +73,7 @@ export function VillaDetailForm({ villaRef }: { villaRef: React.MutableRefObject
                                 placeholderLabel="m"
                                 variant="number"
                                 width="short"
+                                value={villa.bedroom && villa.bedroom.length}
 
                                 onChangeInputHandler={(event) => {
                                     villaRef.current.bedroom.quantity = Number.parseInt(event.target.value);
@@ -77,7 +85,7 @@ export function VillaDetailForm({ villaRef }: { villaRef: React.MutableRefObject
                             placeholder="Jl. Kp. Cibobos, Karangkamulyan, Kec. Cihara, Kabupaten Lebak, Banten 42392"
                             variant="text-area"
                             width="wide"
-                            value={villaRef.current.location.address}
+                            value={villa.location && villa.location.address}
 
                             onChangeInputHandler={(event) => {
                                 villaRef.current.location.address = event.target.value;
@@ -94,7 +102,7 @@ export function AttractionForm({ villaRef }: { villaRef: React.MutableRefObject<
         <article className="form attraction">
             <section className="label-option-wrapper">
                 <h3 className="h3-medium">
-                    Detail villa
+                    Nearest attraction
                 </h3>
 
                 <p className="label-regular">

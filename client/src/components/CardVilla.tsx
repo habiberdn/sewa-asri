@@ -4,8 +4,8 @@ import pinIcon from "./../assets/icons/location.webp";
 import chevronIcon from "./../assets/icons/chevron-down.webp";
 import { useState } from "react";
 
-import { VillaInterfaces } from "../utils/villa-interfaces";
 import { useNavigate } from "@tanstack/react-router";
+import { DetailVillaInterface, VillaInterface } from "../utils/villa-interfaces";
 
 interface Status {
     isAvailable: boolean;
@@ -15,8 +15,7 @@ interface Status {
 interface DropdownActions {
     _id: string;
     dropdown: "opened" | "closed";
-    onEditHandler?: () => void;
-    onDeleteHandler?: () => void;
+    onMouseLeaveHandler: () => void;
 }
 
 interface DropdownStatus {
@@ -29,9 +28,11 @@ export function CardVilla({
     data, 
     onChangeAvailabilityHandler 
 }: { 
-    data: VillaInterfaces, 
+    data: VillaInterface | DetailVillaInterface, 
     onChangeAvailabilityHandler?: () => void; 
 }) {
+    const navigate = useNavigate();
+
     const [dropdownStatus, setDropdownStatus] = useState<"opened" | "closed">("closed");
     const [dropdownActions, setDropdownActions] = useState<"opened" | "closed">("closed");
     const [isAvailable, setIsAvailable] = useState<boolean>(true);
@@ -115,13 +116,9 @@ export function CardVilla({
                     
                     <DropdownActions    _id={data._id} 
                                         dropdown={dropdownActions}
-                                        
-                                        onEditHandler={() => {
-                                            setDropdownActions("closed")
-                                        }}
-                                        
-                                        onDeleteHandler={() => {
-                                            setDropdownActions("closed")
+
+                                        onMouseLeaveHandler={() => {
+                                            setDropdownActions("closed");
                                         }}
                                         />
                 </section>
@@ -211,19 +208,15 @@ function DropdownStatus({ dropdown, onMouseLeaveHandler, onChangeAvailabilityHan
 function DropdownActions({
     _id,
     dropdown,
-    onDeleteHandler,
-    onEditHandler
+    onMouseLeaveHandler
 }: DropdownActions) {
     const navigate = useNavigate();
 
     return (
         <section    className={`dropdown-actions dropdown-actions-${dropdown}`}
                     onMouseLeave={() => {
-                        if (onEditHandler) {
-                            onEditHandler();
-                        } 
-                        else if (onDeleteHandler) {
-                            onDeleteHandler();
+                        if (onMouseLeaveHandler) {
+                            onMouseLeaveHandler();
                         }
                     }}>
 
@@ -231,7 +224,7 @@ function DropdownActions({
                 
                 onClick={() => {
                     navigate({ 
-                        to: "villa-detail-description/$id",
+                        to: "edit-villa/$id",
                         params: { id: _id }
                     });
                 }}>
@@ -241,20 +234,22 @@ function DropdownActions({
             <p  className="label-regular edit"
 
                 onClick={() => {
-                    if (onEditHandler) {
-                        onEditHandler();
-                    }
-            }}>
+                    navigate({ 
+                        to: "edit-villa/$id",
+                        params: { id: _id }
+                    });
+                }}>
                 Edit
             </p>
 
             <p  className="label-regular delete"
 
                 onClick={() => {
-                    if (onDeleteHandler) {
-                        onDeleteHandler();
-                    }
-            }}>
+                    navigate({ 
+                        to: "villa-detail-description/$id",
+                        params: { id: _id }
+                    });
+                }}>
                 Delete
             </p>
         </section>
