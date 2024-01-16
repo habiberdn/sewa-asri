@@ -4,7 +4,9 @@ import { Header, Sidebar, MessageBar, UploadPhoto } from "../components";
 import { IMessageBar } from "../utils/interface";
 import { CreateVillaInterface } from '../utils/villa-interfaces';
 
-import { AttractionForm, VillaDetailForm } from "./Forms/VillaDetail";
+import { VillaDetailForm } from "./Forms/VillaDetail";
+import { AttractionForm } from "./Forms/Attraction";
+
 import { BedroomDetail, BathroomDetail, IndoorDetail, OutdoorDetail } from "./Forms/Facility";
 
 export function CreateVilla() {
