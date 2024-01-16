@@ -35,7 +35,7 @@ export function CardVilla({
 
     const [dropdownStatus, setDropdownStatus] = useState<"opened" | "closed">("closed");
     const [dropdownActions, setDropdownActions] = useState<"opened" | "closed">("closed");
-    const [isAvailable, setIsAvailable] = useState<boolean>(true);
+    const [isAvailable, setIsAvailable] = useState<boolean>(data.isAvailable);
 
     return (
         <article className="card-villa" key={data._id}>
