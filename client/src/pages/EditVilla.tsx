@@ -117,7 +117,7 @@ export function EditVilla() {
                             }}/>
 
                     <section className="villa-detail">
-                        <UploadPhoto    villaRef={villaRef} 
+                        <UploadPhoto    photo={villaRef.current.photo} 
                                         variant="large" 
                                         label="villa-photo"
 
