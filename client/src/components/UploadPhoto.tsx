@@ -1,38 +1,36 @@
-import { useEffect, useState } from "react";
-import { CreateVillaInterface } from "./../utils/villa-interfaces";
+import { useState } from "react";
 
 export function UploadPhoto({ 
-    villaRef, 
+    photo, 
     label,
     variant,
     onUploadImageHandler
 }: { 
-    villaRef: React.MutableRefObject<CreateVillaInterface>;
+    photo: any;
     label: string;
     variant: "small" | "large";
     onUploadImageHandler?: (image: File) => void;
 }) {
-    const [image, setImage] = useState<string | File>("");
+    const [image, setImage] = useState("");
 
     function setImageHandler(image: string) {
         setImage(image);
-        villaRef.current.photo = image;
+        photo = image;
     }
-
-    useEffect(() => {
-        if (villaRef.current.photo) {
-            setImage(villaRef.current.photo);
-        }
-    }, []);
 
     return (
         <section className={`upload-photo upload-photo-${variant}`}>
             {
-                villaRef.current.photo ? (
-                    <img    src={typeof image === "string" ? image : ""} 
+                image || photo ? (
+                    <img    src={image ? image : photo} 
                             className={`photo photo-${variant}`} />
                 ) : (
-                    <div className={`photo photo-${variant}`} />
+                    <div className={`photo photo-${variant}`}>
+                        
+                        <h4 className="h4-regular">
+                            No photo
+                        </h4>
+                    </div>
                 )
             }
             
