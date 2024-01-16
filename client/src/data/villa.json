@@ -9,7 +9,7 @@
             "quantity": 1,
             "width": 4,
             "length": 2,
-            "bedSize": "double-bed",
+            "bedSize": "Double bed",
             "othersFacility": {
                 "window": { "name": "Jendela", "status": "available" },
                 "socket": { "name": "Stop kontak", "status": "not available" },
@@ -54,7 +54,7 @@
 
         "attraction": null,
 
-        "isAvailable": true
+        "isAvailable": false
     },
     {
         "_id": "659899c905fef700ee1f926c",
@@ -66,7 +66,7 @@
             "quantity": 2,
             "width": 4,
             "length": 2,
-            "bedSize": "double-bed",
+            "bedSize": "Single bed",
             "othersFacility": {
                 "window": { "name": "Jendela", "status": "available" },
                 "socket": { "name": "Stop kontak", "status": "not available" },
@@ -109,7 +109,13 @@
             "address": "Jl. Raya Sawarna Bayah, Sawarna, Kec. Bayah, Kabupaten Lebak, Banten 42393"
         },
 
-        "attraction": null,
+        "attraction": {
+            "photo": "https://unsplash.com/photos/fBFSj2-zUUU/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8YWlyJTIwdGVyanVufGVufDB8fHx8MTcwNTM2ODUwMnww&force=true&w=640",
+            "name": "Air terjun kapas biru",
+            "open": "09.00",
+            "close": "15.00",
+            "distance": "200"
+        },
 
         "isAvailable": true
     }

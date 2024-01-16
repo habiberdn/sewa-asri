@@ -58,10 +58,9 @@ export function VillaDetailForm({ villaRef }: { villaRef: React.MutableRefObject
             <section className="bedroom-bathroom-detail">
                 <InputField     label="Bathroom"
                                 placeholder="1"
-                                placeholderLabel="m"
                                 variant="number"
                                 width="short"
-                                value={villa.bedroom && villa.bedroom.width}
+                                value={villa.bedroom && villa.bedroom.quantity}
 
                                 onChangeInputHandler={(event) => {
                                     villaRef.current.bathroom.quantity = Number.parseInt(event.target.value);
@@ -70,10 +69,9 @@ export function VillaDetailForm({ villaRef }: { villaRef: React.MutableRefObject
 
                 <InputField     label="Bedroom"
                                 placeholder="1"
-                                placeholderLabel="m"
                                 variant="number"
                                 width="short"
-                                value={villa.bedroom && villa.bedroom.length}
+                                value={villa.bedroom && villa.bedroom.quantity}
 
                                 onChangeInputHandler={(event) => {
                                     villaRef.current.bedroom.quantity = Number.parseInt(event.target.value);
@@ -98,6 +96,8 @@ export function VillaDetailForm({ villaRef }: { villaRef: React.MutableRefObject
 }
 
 export function AttractionForm({ villaRef }: { villaRef: React.MutableRefObject<CreateVillaInterface> }) {
+    const attraction = villaRef.current.attraction;
+
     return (
         <article className="form attraction">
             <section className="label-option-wrapper">
@@ -110,7 +110,7 @@ export function AttractionForm({ villaRef }: { villaRef: React.MutableRefObject<
                 </p>
             </section>
 
-            <UploadPhoto    villaRef={villaRef} 
+            <UploadPhoto    photo={attraction?.photo} 
                             variant="small"
                             label="attraction-photo"
                             
@@ -123,6 +123,7 @@ export function AttractionForm({ villaRef }: { villaRef: React.MutableRefObject<
                             placeholder="Air terjun"
                             variant="text"
                             width="wide"
+                            value={attraction ? attraction.name : undefined}
 
                             onChangeInputHandler={(event) => {
                                 villaRef.current.name = event.target.value;
@@ -134,6 +135,7 @@ export function AttractionForm({ villaRef }: { villaRef: React.MutableRefObject<
                                 placeholder="04.00"
                                 variant="text"
                                 width="short"
+                                value={attraction ? attraction.open : undefined}
 
                                 onChangeInputHandler={(event) => {
                                     if (villaRef.current.attraction) {
@@ -146,6 +148,7 @@ export function AttractionForm({ villaRef }: { villaRef: React.MutableRefObject<
                                 placeholder="15.00"
                                 variant="text"
                                 width="short"
+                                value={attraction ? attraction.close : undefined}
 
                                 onChangeInputHandler={(event) => {
                                     if (villaRef.current.attraction) {
@@ -160,12 +163,12 @@ export function AttractionForm({ villaRef }: { villaRef: React.MutableRefObject<
                             placeholderLabel="m"
                             variant="number"
                             width="short"
+                            value={attraction ? attraction.distance : undefined}
 
                             onChangeInputHandler={(event) => {
                                 villaRef.current.location.city = event.target.value;
                             }}
                             />
         </article>
-
     );
 }
