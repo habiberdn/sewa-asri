@@ -9,36 +9,36 @@
             "quantity": 1,
             "width": 4,
             "length": 2,
-            "bedSize": "double-bed",
+            "bedSize": "Double bed",
             "othersFacility": {
-                "window": { "name": "AC (Air Conditioner)", "status": "not available" },
-                "socket": { "name": "AC (Air Conditioner)", "status": "not available" },
-                "wardrobe": { "name": "AC (Air Conditioner)", "status": "not available" }
+                "window": { "name": "Jendela", "status": "available" },
+                "socket": { "name": "Stop kontak", "status": "not available" },
+                "wardrobe": { "name": "Lemari pakaian", "status": "available" }
             }
         },
         "bathroom": {
             "quantity": 1,
             "othersFacility": {
-                "waterHeater": { "name": "AC (Air Conditioner)", "status": "not available" },
-                "shower": { "name": "AC (Air Conditioner)", "status": "not available" },
-                "bathtube": { "name": "AC (Air Conditioner)", "status": "not available" },
-                "squatToilet":  { "name": "AC (Air Conditioner)", "status": "not available" },
-                "sittingToilet": { "name": "AC (Air Conditioner)", "status": "not available" }
+                "waterHeater": { "name": "Penghangat air", "status": "not available" },
+                "shower": { "name": "Pancuran air", "status": "available" },
+                "bathtube": { "name": "Bak mandi", "status": "not available" },
+                "squatToilet":  { "name": "Toilet jongkok", "status": "not available" },
+                "sittingToilet": { "name": "Toilet duduk", "status": "available" }
             }
         },
 
         "facility": {
             "indoor": {
                 "ac": { "name": "AC (Air Conditioner)", "status": "not available" },
-                "kitchen": { "name": "Dapur untuk memasak", "status": "not available" },
+                "kitchen": { "name": "Dapur untuk memasak", "status": "available" },
                 "wifi": { "name": "Wifi", "status": "not available" },
-                "lounge": { "name": "Ruang tamu", "status": "not available" },
+                "lounge": { "name": "Ruang tamu", "status": "available" },
                 "entertainmentRoom": { "name": "Ruang hiburan", "status": "not available" },
                 "dinningRoom": { "name": "Ruang makan", "status": "not available" }
             },
             "outdoor": {
                 "pool": { "name": "Kolam renang", "status": "not available" },
-                "garage": { "name": "Garasi parkir", "status": "not available" },
+                "garage": { "name": "Garasi parkir", "status": "available" },
                 "security": { "name": "Keamanan 24 jam", "status": "not available" },
                 "park": { "name": "Taman", "status": "not available" },
                 "bbqArea": { "name": "Area BBQ", "status": "not available" }
@@ -49,12 +49,12 @@
 
         "location": {
             "city": "Serang Banten",
-            "address": "Sayar, Taktakan, Serang City, Banten 42162"
+            "address": "36CQ+CHV, JL Raya Bayah, Malimping, Bayah Bar., Kec. Bayah, Kabupaten Lebak, Banten 42393"
         },
 
         "attraction": null,
 
-        "isAvailable": true
+        "isAvailable": false
     },
     {
         "_id": "659899c905fef700ee1f926c",
@@ -66,21 +66,21 @@
             "quantity": 2,
             "width": 4,
             "length": 2,
-            "bedSize": "double-bed",
+            "bedSize": "Single bed",
             "othersFacility": {
-                "window": { "name": "AC (Air Conditioner)", "status": "not available" },
-                "socket": { "name": "AC (Air Conditioner)", "status": "not available" },
-                "wardrobe": { "name": "AC (Air Conditioner)", "status": "not available" }
+                "window": { "name": "Jendela", "status": "available" },
+                "socket": { "name": "Stop kontak", "status": "not available" },
+                "wardrobe": { "name": "Lemari pakaian", "status": "available" }
             }
         },
         "bathroom": {
             "quantity": 2,
             "othersFacility": {
-                "waterHeater": { "name": "AC (Air Conditioner)", "status": "not available" },
-                "shower": { "name": "AC (Air Conditioner)", "status": "not available" },
-                "bathtube": { "name": "AC (Air Conditioner)", "status": "not available" },
-                "squatToilet":  { "name": "AC (Air Conditioner)", "status": "not available" },
-                "sittingToilet": { "name": "AC (Air Conditioner)", "status": "not available" }
+                "waterHeater": { "name": "Penghangat air", "status": "not available" },
+                "shower": { "name": "Pancuran air", "status": "available" },
+                "bathtube": { "name": "Bak mandi", "status": "not available" },
+                "squatToilet":  { "name": "Toilet jongkok", "status": "not available" },
+                "sittingToilet": { "name": "Toilet duduk", "status": "available" }
             }
         },
 
@@ -109,7 +109,13 @@
             "address": "Jl. Raya Sawarna Bayah, Sawarna, Kec. Bayah, Kabupaten Lebak, Banten 42393"
         },
 
-        "attraction": null,
+        "attraction": {
+            "photo": "https://unsplash.com/photos/fBFSj2-zUUU/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8YWlyJTIwdGVyanVufGVufDB8fHx8MTcwNTM2ODUwMnww&force=true&w=640",
+            "name": "Air terjun kapas biru",
+            "open": "09.00",
+            "close": "15.00",
+            "distance": "200"
+        },
 
         "isAvailable": true
     }

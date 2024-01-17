@@ -6,6 +6,7 @@ import wardrobeIcon from "./../assets/icons/wardrobe.webp";
 import socketIcon from "./../assets/icons/socket.webp";
 import singleBedIcon from "./../assets/icons/single-bed-icon.webp";
 import doubleBedIcon from "./../assets/icons/double-bed-icon.webp";
+import move3dIcon from "./../assets/icons/move-3d.webp";
 
 // bathroom facility
 import squatToiletIcon from "./../assets/icons/squat-toilet.webp";
@@ -37,6 +38,11 @@ interface FacilityOptionProps {
     onChangeFacilityHandler?: () => void;
 }
 
+interface FacilitySpecificationProps {
+    name: string;
+    value: string;
+}
+
 export function FacilityOption({ name, variant, status, currentValue, onChangeFacilityHandler }: FacilityOptionProps) {
     const currentStatus = name === currentValue && "checked";
     
@@ -61,7 +67,19 @@ export function FacilityOption({ name, variant, status, currentValue, onChangeFa
                 { name }
             </h4>
 
-            { status === "available" && <img className="check-icon" src={checkIcon} /> }
+            { (status === "available" && variant === "selectable" ) && <img className="check-icon" src={checkIcon} /> }
+        </article>
+    );
+}
+
+export function FacilitySpecification({ name, value }: FacilitySpecificationProps) {
+    return (
+        <article    className={`facility-option`}>
+            <FacilitySpecificationIcon name={name} />
+
+            <h4 className="label-regular">
+                { name } { value }
+            </h4>
         </article>
     );
 }
@@ -87,6 +105,14 @@ function FacilityIcon({ name }: { name: string }) {
         "Keamanan 24 jam": securityIcon,
         "Taman": parkIcon,
         "Area BBQ": bbqIcon
+    };
+    
+    return <img className="facility-icon" src={iconMap[name]} alt={name} />;
+}
+
+function FacilitySpecificationIcon({ name }: { name: string }) {
+    const iconMap = {
+        "Luas kamar": move3dIcon
     };
     
     return <img className="facility-icon" src={iconMap[name]} alt={name} />;

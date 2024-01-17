@@ -32,7 +32,11 @@
             position: relative;
 
             .photo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 border-radius: 8px;
+                color: base.$neutral-500;
                 background-color: base.$neutral-200;
                 object-fit: cover;
             }
@@ -206,6 +210,13 @@
     }
 }
 
+.bedroom-bathroom-specification-address-detail-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+}
+
     .reviews-villa {
         width: 100%;
         max-width: 670px;
@@ -246,8 +257,10 @@
         }
     }
 
-    .indoor-outdoor-facility-wrapper {
+    .indoor-outdoor-facility-wrapper, 
+    .bedroom-bathroom-specification-wrapper {
         width: 100%;
+        max-width: 650px;
         display: flex;
         flex-direction: column;
         gap: 24px;
@@ -333,5 +346,21 @@
                     color: base.$neutral-500;
                 }
             }
+        }
+    }
+
+    .address-detail {
+        width: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        h3 {
+            color: base.$neutral-700;
+        }
+
+        p {
+            color: base.$neutral-600;
         }
     }

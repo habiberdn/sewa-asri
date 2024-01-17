@@ -22,7 +22,8 @@ import {
     ReservationSchedule,
     VillaManagement,
     CreateVilla,
-    VillaDetailDescription
+    VillaDetailDescription,
+    EditVilla
 } from ".";
 
 const rootRoute = new RootRoute();
@@ -173,7 +174,7 @@ const createVillaRoute = new Route({
     getParentRoute: () => rootRoute,
     path: 'villa-management/create-new-villa',
     component: CreateVilla,
-    beforeLoad: ({ location }) => checkAuth({ location }),
+    beforeLoad: ({ location }) => checkAuth({ location })
     
 });
 
@@ -181,8 +182,14 @@ const villaDetailDescriptionRoute = new Route({
     getParentRoute: () => rootRoute,
     path: 'villa-management/villa-detail-description/$id',
     component: VillaDetailDescription,
-    beforeLoad: ({ location }) => checkAuth({ location }),
-    
+    beforeLoad: ({ location }) => checkAuth({ location })
+});
+
+const editvillaRoute = new Route({
+    getParentRoute: () => rootRoute,
+    path: 'villa-management/edit-villa/$id',
+    component: EditVilla,
+    beforeLoad: ({ location }) => checkAuth({ location })
 });
 
 const routeTree = rootRoute.addChildren([
@@ -202,7 +209,8 @@ const routeTree = rootRoute.addChildren([
     reservationScheduleRoute,
     villaManagementRoute,
     createVillaRoute,
-    villaDetailDescriptionRoute
+    villaDetailDescriptionRoute,
+    editvillaRoute
 ]);
 
 const router = new Router({ routeTree });

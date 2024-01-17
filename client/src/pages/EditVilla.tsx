@@ -1,4 +1,7 @@
+// import villaJson from "./../data/villa.json";
+
 import { useRef, useState } from "react";
+// import { useNavigate } from "@tanstack/react-router";
 import { Header, Sidebar, MessageBar, UploadPhoto } from "../components";
 
 import { IMessageBar } from "../utils/interface";
@@ -9,7 +12,15 @@ import { AttractionForm } from "./Forms/Attraction";
 
 import { BedroomDetail, BathroomDetail, IndoorDetail, OutdoorDetail } from "./Forms/Facility";
 
-export function CreateVilla() {
+import villaJson from "./../data/villa.json";
+import { useParams } from "@tanstack/react-router";
+
+// import { Villa } from '../utils/interface';
+
+export function EditVilla() {
+    const { id } = useParams({ strict: false });
+    const villa: CreateVillaInterface | undefined = villaJson.find((villa) => villa._id === id);
+
     const villaRef = useRef<CreateVillaInterface>({
         name: "",
         description: "",
@@ -20,7 +31,7 @@ export function CreateVilla() {
             quantity: 1,
             width: 1,
             length: 1,
-            bedSize: "Single bed",
+            bedSize: "single-bed",
             othersFacility: {
                 window: { name: "Jendela", status: "not available" },
                 socket: { name: "Stop kontak", status: "not available" },
@@ -42,15 +53,15 @@ export function CreateVilla() {
         facility: {
             indoor: {
                 ac: { name: "AC (Air Conditioner)", status: "not available" },
-                kitchen: { name: "Dapur untuk memasak", status: "not available" },
+                kitchen: { name: "Dapur untuk memasak", status: "available" },
                 wifi: { name: "Wifi", status: "not available" },
-                lounge: { name: "Ruang tamu", status: "not available" },
+                lounge: { name: "Ruang tamu", status: "available" },
                 entertainmentRoom: { name: "Ruang hiburan", status: "not available" },
                 dinningRoom: { name: "Ruang makan", status: "not available" }
             },
             outdoor: {
                 pool: { name: "Kolam renang", status: "not available" },
-                garage: { name: "Garasi parkir", status: "not available" },
+                garage: { name: "Garasi parkir", status: "available" },
                 security: { name: "Keamanan 24 jam", status: "not available" },
                 park: { name: "Taman", status: "not available" },
                 bbqArea: { name: "Area BBQ", status: "not available" }
@@ -66,6 +77,12 @@ export function CreateVilla() {
 
         isAvailable: false
     });
+
+    if (villa) {
+        villaRef.current = villa;
+    }
+
+    console.info(villaRef)
 
     const [messagebar, setMessagebar] = useState<IMessageBar>({
         showMessageBar: false,
@@ -96,7 +113,7 @@ export function CreateVilla() {
                 
                 <section  className="widget create-new">
 
-                    <Header variant="add-new-villa" 
+                    <Header variant="edit-villa" 
                             onCreateVillaHandler={() => {
                                 onCreateVilla();
                             }}/>

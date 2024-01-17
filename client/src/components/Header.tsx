@@ -3,17 +3,9 @@ import bellIcon from "./../assets/icons/bell.png";
 import { Button, Chips, SearchBar } from ".";
 import { getUser } from "../utils/userStore";
 import { useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
 
 type Variant = "main" | "dashboard" | "chat" | "reservation-schedule" | "villa-management" | "add-new-villa" | "edit-villa" | "detail-villa";
-
-type Day = "Senin" | "Selasa" | "Rabu" | "Kamis" | "Jumat" | "Sabtu" | "Minggu";
-
-type Month = "Januari" | "Februari" | "Maret" | "April" | "Mei" | "Juni" | "Juli" | "Agustus" | "September" | "Oktober" | "November" | "Desember";
-
-interface Date {
-    day: Day;
-    month: Month;
-}
 
 interface IHeader {
     variant: Variant; 
@@ -25,91 +17,32 @@ interface IHeader {
 export function Header({ variant, onHoverProfile, onSearchHandler, onCreateVillaHandler }: IHeader) {
     const user = getUser();
 
+    const dayMap = {
+        "0": "Minggu",
+        "1": "Senin",
+        "2": "Selasa",
+        "3": "Rabu",
+        "4": "Kamis",
+        "5": "Jumat",
+        "6": "Sabtu"
+    }
+
+    const monthMap = {
+        "0": "Januari",
+        "1": "Februari",
+        "2": "Maret",
+        "3": "April",
+        "4": "Mei",
+        "5": "Juni",
+        "6": "Juli",
+        "7": "Agustus",
+        "8": "Oktober",
+        "9": "September",
+        "10": "November",
+        "11": "Desember"
+    }
+
     const date = new Date;
-    let currentDate: Date = {
-        day: "Senin",
-        month: "Januari"
-    };
-
-    switch (date.getDay()) {
-        case 0:
-            currentDate.day = "Minggu";
-            break;
-
-        case 1:
-            currentDate.day = "Senin";
-            break;
-
-        case 2:
-            currentDate.day = "Selasa";
-            break;
-
-        case 3:
-            currentDate.day = "Rabu";
-            break;
-
-        case 4:
-            currentDate.day = "Kamis";
-            break;
-
-        case 5:
-            currentDate.day = "Jumat";
-            break;
-        
-        case 6:
-            currentDate.day = "Sabtu";
-            break;
-    }
-
-    switch (date.getMonth()) {
-        case 0:
-            currentDate.month = "Januari";
-            break;
-
-        case 1:
-            currentDate.month = "Februari";
-            break;
-
-        case 2:
-            currentDate.month = "Maret";
-            break;
-
-        case 3:
-            currentDate.month = "April";
-            break;
-
-        case 4:
-            currentDate.month = "Mei";
-            break;
-
-        case 5:
-            currentDate.month = "Juni";
-            break;
-        
-        case 6:
-            currentDate.month = "Juli";
-            break;
-        
-        case 7:
-            currentDate.month = "Agustus";
-            break;
-        
-        case 8:
-            currentDate.month = "Oktober";
-            break;
-        
-        case 9:
-            currentDate.month = "September";
-            break;
-        
-        case 10:
-            currentDate.month = "November";
-            break;
-        
-        case 1:
-            currentDate.month = "Desember";
-            break;
-    }
 
     switch (variant) {
         case "main":
@@ -125,11 +58,11 @@ export function Header({ variant, onHoverProfile, onSearchHandler, onCreateVilla
                         <article  className="header-main-date-detail">
         
                             <h4     className="label-regular date">
-                                { currentDate.day }, { date.getDate() }
+                                { dayMap[date.getDay().toString()] }, { date.getDate() }
                             </h4>
         
                             <h4     className="label-regular month">
-                                { currentDate.month }
+                                { monthMap[date.getMonth().toString()] }
                             </h4>
                         </article>
                     </section>
@@ -255,8 +188,6 @@ export function Header({ variant, onHoverProfile, onSearchHandler, onCreateVilla
                         <h1  className="h1-medium header-title">
                             Reservation schedule
                         </h1>
-
-                        
                     </article>
                 </header>
             );
@@ -300,6 +231,8 @@ export function Header({ variant, onHoverProfile, onSearchHandler, onCreateVilla
 }
 
 function VillaManagement({ onSearchHandler, onCreateVillaHandler }: { onSearchHandler: () => void, onCreateVillaHandler?: () => void; }) {
+    const [filterAvailability, setFilterAvailability] = useState<"Tersedia" | "Tidak tersedia">("Tersedia");
+
     return (
         <header  className="header villa-management">
 
@@ -330,19 +263,19 @@ function VillaManagement({ onSearchHandler, onCreateVillaHandler }: { onSearchHa
                     </h4>
 
                     <Chips  label="Tersedia"
-                            state={true}
+                            state={ filterAvailability === "Tersedia" ? true : false }
                             variant="active"
                             
                             onSelect={() => {
-                                
+                                setFilterAvailability("Tersedia")
                             }}/>
 
                     <Chips  label="Tidak tersedia"
-                            state={true}
+                            state={ filterAvailability === "Tidak tersedia" ? true : false }
                             variant="active"
                             
                             onSelect={() => {
-
+                                setFilterAvailability("Tidak tersedia")
                             }}/>
 
                 </section>
@@ -366,7 +299,6 @@ function VillaManagement({ onSearchHandler, onCreateVillaHandler }: { onSearchHa
                                 }}
                                 />
                 </section>
-
 
             </section>
         </header>
@@ -393,9 +325,8 @@ function EditVilla() {
                             label="Cancel"
 
                             onClickHandler={() => {
-                                console.info("Add new villa");
+                                navigate({ to: "/villa-management" });
                             }}
-                            
                             />
                 
                 <Button     variant="primary"
@@ -407,7 +338,6 @@ function EditVilla() {
                             onClickHandler={() => {
                                 console.info("Add new villa");
                             }}
-                            
                             />
                 </section>                
             </article>
@@ -437,7 +367,6 @@ function CreateNewVilla({ onCreateVillaHandler }: { onCreateVillaHandler?: () =>
                                 onClickHandler={() => {
                                     navigate({ to: "/villa-management" });
                                 }}
-                                
                                 />
                     
                     <Button     variant="primary"
@@ -451,7 +380,6 @@ function CreateNewVilla({ onCreateVillaHandler }: { onCreateVillaHandler?: () =>
                                         onCreateVillaHandler();
                                     }
                                 }}
-                                
                                 />
                     </section>                
             </article>

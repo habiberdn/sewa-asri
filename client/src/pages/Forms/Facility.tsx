@@ -5,13 +5,11 @@ import { CreateVillaInterface } from "../../utils/villa-interfaces";
 import { BathroomFacilityInterface, BedroomFacilityInterface, IndoorFacilityInterface, OutdoorFacilityInterface } from "../../utils/facility-interfaces";
 
 export function BedroomDetail({ villaRef }: { villaRef: React.MutableRefObject<CreateVillaInterface> }) {
-    const [bedSize, setBedSize] = useState<"Single bed" | "Double bed">("Single bed");
+    const villa = villaRef.current;
+
+    const [bedSize, setBedSize] = useState<string>(villa ? villa.bedroom.bedSize : "Single Bed");
     
-    const [bedroomFacility, setBedroomFacility] = useState<BedroomFacilityInterface>({
-        window: { name: "Jendela", status: "not available" },
-        wardrobe: { name: "Lemari pakaian", status: "not available" },
-        socket: { name: "Stop kontak", status: "not available" }
-    });
+    const [bedroomFacility, setBedroomFacility] = useState<BedroomFacilityInterface>(villa.bedroom.othersFacility);
 
     let facilityStatus = "not available";
 
@@ -25,7 +23,7 @@ export function BedroomDetail({ villaRef }: { villaRef: React.MutableRefObject<C
             [facility]: { name: bedroomFacility[facility].name, status: facilityStatus }
         }));
 
-        villaRef.current.bedroom.othersFacility = {
+        villa.bedroom.othersFacility = {
             ...bedroomFacility,
             [facility]: { name: bedroomFacility[facility].name, status: facilityStatus }
         };
@@ -71,6 +69,7 @@ export function BedroomDetail({ villaRef }: { villaRef: React.MutableRefObject<C
                                 placeholderLabel="m"
                                 variant="number"
                                 width="short"
+                                value={villa.bedroom && villa.bedroom.width}
 
                                 onChangeInputHandler={(event) => {
                                     villaRef.current.bedroom.width = Number.parseInt(event.target.value);
@@ -82,6 +81,7 @@ export function BedroomDetail({ villaRef }: { villaRef: React.MutableRefObject<C
                                 placeholderLabel="m"
                                 variant="number"
                                 width="short"
+                                value={villa.bedroom && villa.bedroom.length}
 
                                 onChangeInputHandler={(event) => {
                                     villaRef.current.bedroom.length = Number.parseInt(event.target.value);
@@ -137,13 +137,9 @@ export function BedroomDetail({ villaRef }: { villaRef: React.MutableRefObject<C
 }
 
 export function BathroomDetail({ villaRef }: { villaRef: React.MutableRefObject<CreateVillaInterface> }) {    
-    const [bathroomFacility, setBathroomFacility] = useState<BathroomFacilityInterface>({
-        waterHeater: { name: "Penghangat air", status: "not available" },
-        shower: { name: "Pancuran air", status: "not available" },
-        bathtube: { name: "Bak mandi", status: "not available" },
-        sittingToilet: { name: "Toilet duduk", status: "not available" },
-        squatToilet: { name: "Toilet jongkok", status: "not available" }
-    });
+    const villa = villaRef.current;
+
+    const [bathroomFacility, setBathroomFacility] = useState<BathroomFacilityInterface>(villa.bathroom.othersFacility);
 
     let facilityStatus = "not available";
 
@@ -232,14 +228,9 @@ export function BathroomDetail({ villaRef }: { villaRef: React.MutableRefObject<
 }
 
 export function IndoorDetail({ villaRef }: { villaRef: React.MutableRefObject<CreateVillaInterface> }) {    
-    const [indoorFacility, setIndoorFacility] = useState<IndoorFacilityInterface>({
-        ac: { name: "AC (Air Conditioner)", status: "not available" },
-        kitchen: { name: "Dapur untuk memasak", status: "not available" },
-        wifi: { name: "Wifi", status: "not available" },
-        lounge: { name: "Ruang tamu", status: "not available" },
-        entertainmentRoom: { name: "Ruang hiburan", status: "not available" },
-        dinningRoom: { name: "Ruang makan", status: "not available" }
-    });
+    const villa = villaRef.current;
+
+    const [indoorFacility, setIndoorFacility] = useState<IndoorFacilityInterface>(villa.facility.indoor);
 
     let facilityStatus = "not available";
 
@@ -332,14 +323,10 @@ export function IndoorDetail({ villaRef }: { villaRef: React.MutableRefObject<Cr
     );
 }
 
-export function OutdoorDetail({ villaRef }: { villaRef: React.MutableRefObject<CreateVillaInterface> }) {    
-    const [outdoorFacility, setOutdoorFacility] = useState<OutdoorFacilityInterface>({
-        pool: { name: "Kolam renang", status: "not available" },
-        garage: { name: "Garasi parkir", status: "not available" },
-        security: { name: "Keamanan 24 jam", status: "not available" },
-        park: { name: "Taman", status: "not available" },
-        bbqArea: { name: "Area BBQ", status: "not available" }
-    });
+export function OutdoorDetail({ villaRef }: { villaRef: React.MutableRefObject<CreateVillaInterface> }) { 
+    const villa = villaRef.current;
+   
+    const [outdoorFacility, setOutdoorFacility] = useState<OutdoorFacilityInterface>(villa.facility.outdoor);
 
     let facilityStatus = "not available";
 

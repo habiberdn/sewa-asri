@@ -2,7 +2,7 @@ import React from "react";
 
 interface InputField {
     label: string;
-    value?: string;
+    value?: string | number;
     placeholder: string;
     placeholderLabel?: string;
     width: "short" | "wide";
@@ -20,23 +20,20 @@ export function InputField({
     onChangeInputHandler 
 }: InputField) {
 
-    switch (variant) {
-        case "text":
-        return (
-            <article className={`input-field input-field-${width}`}>
-        
-                <label  className="label label-regular"
-                        htmlFor={label}>
-                    { label }
-                </label>
-                    
-                <input  className="text-field label-regular"
-                        type="text" 
+    const inputMarkup = {
+        "text-area": 
+        <>
+            <label  className="label label-regular"
+                    htmlFor={label}>
+                { label }
+            </label>
+                
+            <textarea   className="text-area p-regular"
                         id={label}
                         placeholder={placeholder}
                         required={true} 
-                        minLength={10}
-                        maxLength={40}
+                        
+                        defaultValue={value}
         
                         onChange={(event) => {
                             if (onChangeInputHandler) {
@@ -44,71 +41,27 @@ export function InputField({
                             }
                         }}
                         />
-            </article>
-        );
+        </>,
 
-        case "text-area":
-        return (
-            <article className={`input-field input-field-${width}`}>
-        
-                <label  className="label label-regular"
-                        htmlFor={label}>
-                    { label }
-                </label>
+        "text-number":
+        <>
+        {
+            placeholderLabel ? (
+                <>
+                    <label className="label label-regular" htmlFor={label}>
+                        { label }
+                    </label>
                     
-                <textarea   className="text-area p-regular"
-                            id={label}
-                            placeholder={placeholder}
-                            required={true} 
-                            minLength={10}
-                            
-                            defaultValue={value}
-            
-                            onChange={(event) => {
-                                if (onChangeInputHandler) {
-                                    onChangeInputHandler(event);
-                                }
-                            }}
-                />
-            </article>
-        );
-    
-        case "number":
-        return (
-            <article className={`input-field input-field-${width}`}>
-
-                <label  className="label label-regular"
-                        htmlFor={label}>
-                    { label }
-                </label>
-                
-                {
-                    placeholderLabel ? (
-                        <label className="text-field" htmlFor={label}>
-                            <input  className="label-regular"
-                                    type="number"
-                                    id={label}
-                                    placeholder={placeholder}
-                                    required={true} 
-                                    min={1}
-                                    
-                                    onChange={(event) => {
-                                        if (onChangeInputHandler) {
-                                            onChangeInputHandler(event);
-                                        }
-                                    }}
-                                    />
-                            <h4 className="label-regular">
-                                { placeholderLabel }
-                            </h4>
-                        </label>
-                    ) : (
-                        <input  className="text-field label-regular"
-                                type="number"
+                    <label className="text-field" htmlFor={label}>
+                        <input  className="label-regular"
                                 id={label}
                                 placeholder={placeholder}
                                 required={true} 
+
+                                type={variant === "number" ? "number" : "text"}
+
                                 min={1}
+                                defaultValue={value}
                                 
                                 onChange={(event) => {
                                     if (onChangeInputHandler) {
@@ -116,11 +69,43 @@ export function InputField({
                                     }
                                 }}
                                 />
-                    )
-                }
-            </article>
-        );
+                        <h4 className="label-regular">
+                            { placeholderLabel }
+                        </h4>
+                    </label>
+                </>
+            ) : (
+                <>                        
+                    <label className="label label-regular" htmlFor={label}>
+                        { label }
+                    </label>
+
+                    <input  className="text-field label-regular"
+                            id={label}
+                            placeholder={placeholder}
+                            required={true} 
+
+                            type={variant === "number" ? "number" : "text"}
+
+                            min={1}
+                            defaultValue={value}
+                            
+                            onChange={(event) => {
+                                if (onChangeInputHandler) {
+                                    onChangeInputHandler(event);
+                                }
+                            }}
+                            />
+                </>
+            )
+        }
+        </>
     }
 
-    
+    return (
+        <article className={`input-field input-field-${width}`}>
+
+            { variant === "text-area" ? inputMarkup["text-area"] : inputMarkup["text-number"] }
+        </article>
+    );
 }

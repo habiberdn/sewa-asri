@@ -14,6 +14,7 @@ import { useState } from "react";
 import { FilterReviewsInterface } from "../utils/ratings-interfaces";
 import { DetailVillaInterface } from "../utils/villa-interfaces";
 import { IndoorFacilityInterface, OutdoorFacilityInterface } from "../utils/facility-interfaces";
+import { FacilitySpecification } from "../components/FacilityOption";
 
 export function VillaDetailDescription() {
     const { id } = useParams({ strict: false });
@@ -44,6 +45,11 @@ export function VillaDetailDescription() {
                                         <IndoorOutdoorFacility villa={villa} />
                                         <Attraction villa={villa} />
                                     </section>
+                                </section>
+
+                                <section className="bedroom-bathroom-specification-address-detail-wrapper">
+                                    <BedroomBathroomSpecification villa={villa} />
+                                    <AddressDetail address={villa.location.address} />
                                 </section>
                             </>
                         )
@@ -343,5 +349,80 @@ function Attraction({ villa }: { villa: DetailVillaInterface }) {
                 </section>
             </article>
         </section>
+    );
+}
+
+function BedroomBathroomSpecification({ villa }: { villa: DetailVillaInterface }) {
+    const bedroomFacilityKeys = Object.keys(villa.bedroom.othersFacility);
+    const bathroomFacilityKeys = Object.keys(villa.bathroom.othersFacility);
+
+    return (
+        <section className="bedroom-bathroom-specification-wrapper">
+
+            <h3 className="h3-medium">
+                Bedroom and bathroom specification
+            </h3>
+
+            <section className="detail">
+
+                <article className="facility-list">
+                    <h4 className="h4-regular label">
+                        Bedroom specification
+                    </h4>
+
+                    <FacilityOption     name={villa.bedroom.bedSize === "single-bed" ? "Single bed" : "Double bed"}
+                                        variant="option"
+                                        status={villa.bedroom.bedSize}
+                                        />
+ 
+                    <FacilitySpecification  name={"Luas kamar"}
+                                            value={`${villa.bedroom.length}m x ${villa.bedroom.width}m`}
+                                            />
+                    
+
+                    {
+                        bedroomFacilityKeys.map((facility, index) => (
+                            villa.bedroom.othersFacility[facility].status === "available" &&
+                            <FacilityOption     name={villa.bedroom.othersFacility[facility].name}
+                                                variant="option"
+                                                status={villa.bedroom.othersFacility[facility].status}
+                                                key={index + facility}
+                                                />
+                        ))
+                    }
+                </article>
+
+                <article  className="facility-list">
+                    <h4 className="h4-regular  label">
+                        Bathroom specification
+                    </h4>
+
+                    { 
+                        bathroomFacilityKeys.map((facility, index) => (
+                            villa.bathroom.othersFacility[facility].status === "available" &&
+                            <FacilityOption     name={villa.bathroom.othersFacility[facility].name}
+                                                variant="option"
+                                                status={villa.bathroom.othersFacility[facility].status}
+                                                key={index + facility}
+                                                />
+                        ))
+                    }
+                </article>
+            </section>
+        </section>
+    );
+}
+
+function AddressDetail({ address }: { address: string }) {
+    return (
+        <article className="address-detail">
+            <h3 className="h3-medium">
+                Address detail
+            </h3>
+
+            <p className="p-regular">
+                { address }
+            </p>
+        </article>
     );
 }
