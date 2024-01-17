@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
-
 const villaSchema = new mongoose.Schema({
-    image : {
-        type:String
-    },
     name :{
         type:String,
         required: [true, 'A user must have a name'],
@@ -14,15 +10,14 @@ const villaSchema = new mongoose.Schema({
     price :{
         type:Number,
     },
-    bedroomQuantity:{
-        type:Number,
-        required: [true, 'A user must have a bedroom'],
-        min: [1, 'bedroomQuantity must be above 1'],
+    image : [String],
+    bedroom:{
+        type:mongoose.Schema.ObjectId,
+        ref:'Bedroom',
     },
-    bathroomQuantity:{
-        type:Number,
-        required: [true, 'A user must have a bethroom'],
-        min: [1, 'bathroomQuantity must be above 1'],
+    bathroom:{
+        type:mongoose.Schema.ObjectId,
+        ref:'Bathroom',
     },
     bookmarkId:{
         type:mongoose.Schema.ObjectId,
@@ -35,9 +30,28 @@ const villaSchema = new mongoose.Schema({
     createdAt:{
         type:Date,
         default:Date.now(),
+    },
+    fasility:{
+        type:mongoose.Schema.ObjectId,
+        ref:'FasilityVilla',
+    },
+    location :{
+        type:mongoose.Schema.ObjectId,
+        ref:'Location',
+    },
+    attraction :{
+        type:mongoose.Schema.ObjectId,
+        ref:'Attraction',
+    },
+    isAvailable:{
+        type: Boolean,
+        default : true 
     }
+
 })
 
 const villa = mongoose.model('Villa', villaSchema);
 
 module.exports = villa;
+
+//location(model), isAvailable, bedroom(model),bathroom,fasility,attraction

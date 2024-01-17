@@ -8,6 +8,7 @@ userRouter
     .route("/")
     .get(villaController.getAllVilla)
 
+userRouter.use(authController.protect)
 userRouter.use(authController.restrictTo('manager')) 
 userRouter
     .route("/:id")
