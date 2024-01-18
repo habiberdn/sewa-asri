@@ -31,8 +31,6 @@ export function CardVilla({
     data: VillaInterface | DetailVillaInterface, 
     onChangeAvailabilityHandler?: () => void; 
 }) {
-    const navigate = useNavigate();
-
     const [dropdownStatus, setDropdownStatus] = useState<"opened" | "closed">("closed");
     const [dropdownActions, setDropdownActions] = useState<"opened" | "closed">("closed");
     const [isAvailable, setIsAvailable] = useState<boolean>(data.isAvailable);
