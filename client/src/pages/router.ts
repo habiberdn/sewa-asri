@@ -7,7 +7,7 @@ interface SearchParamsVerification {
     otp?: number | null;
 }
 
-import { Route, RootRoute, Router, redirect } from "@tanstack/react-router";
+import { Route, RootRoute, Router, redirect, NotFoundRoute } from "@tanstack/react-router";
 import { 
     Login, 
     Dashboard, 
@@ -23,7 +23,8 @@ import {
     VillaManagement,
     CreateVilla,
     VillaDetailDescription,
-    EditVilla
+    EditVilla,
+    PageNotFound
 } from ".";
 
 const rootRoute = new RootRoute();
@@ -41,6 +42,11 @@ async function checkAuth({ location }) {
         });
     }
 }
+
+const notFoundRoute = new NotFoundRoute({
+    getParentRoute: () => rootRoute,
+    component: PageNotFound
+});
 
 const homeRoute = new Route({
     getParentRoute: () => rootRoute,
@@ -213,9 +219,8 @@ const routeTree = rootRoute.addChildren([
     editvillaRoute
 ]);
 
-const router = new Router({ routeTree });
+const router = new Router({ routeTree, notFoundRoute });
 
 export {
-    router,
-    // createAccountVerification
+    router
 };

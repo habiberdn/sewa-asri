@@ -3,7 +3,8 @@
 /* components */
 @import url("./css/components/button.css");
 @import url("./css/components/input.css");
-@import url("./css/components/header.css");
+@import url("./css/components/widget-header.css");
+@import url("./css/components/page-header.css");
 @import url("./css/components/sidebar.css");
 @import url("./css/components/profile-panel.css");
 @import url("./css/components/message-bar.css");
@@ -18,8 +19,9 @@
 /* pages */
 @import url("./css/pages/auth.css");
 @import url("./css/pages/villa-management.css");
-@import url("./css/dashboard.css");
+@import url("./css/pages/dashboard.css");
 @import url("./css/pages/villa-detail-description.css");
+@import url("./css/pages/page-not-found.css");
 
 /* Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');

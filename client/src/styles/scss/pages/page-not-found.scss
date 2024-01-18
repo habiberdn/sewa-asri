@@ -1,0 +1,24 @@
+.page-not-found {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+
+    .not-found-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-self: center;
+        gap: 24px;
+        color: var(--neutral-600, #4D4D4D);
+
+        .status-code {
+            text-align: center;
+            font-family: Inter;
+            font-size: 64px;
+            font-style: normal;
+            font-weight: 500;
+        }
+    }
+}
