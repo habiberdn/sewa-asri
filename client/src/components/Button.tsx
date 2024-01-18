@@ -11,11 +11,6 @@ type ButtonProps = {
     isLoading?: boolean;
 }
 
-interface Bookmark {
-    userId: string;
-    data: [villaId: string]
-}
-
 export function Button({ 
             behavior = "hug-content",
             size, 
