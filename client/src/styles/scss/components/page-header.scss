@@ -1,39 +1,6 @@
 @use "./../../base";
 
-.header, 
-.header-main-date, 
-.header-main-date-detail,
-.profile-notification-wrapper,
-.account,
-.header-main,
-.header-dashboard,
-.header-overview,
-.overview-card,
-.overview,
-.detail-overview,
-.guest-profile,
-.villa-management-edit-new .actions {
-    display: flex;
-}
-
-.header {
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    column-gap: 50px;
-    background-color: base.$neutral-0;
-
-    .header-title {
-        color: base.$neutral-700;
-    }
-
-    .overview {
-        align-items: flex-start;
-        gap: 24px;
-    }
-}
-
-/* Header variant */
+/* page header variant: auth & main */
 .header-auth {
     width: 100%;
     height: 90px;
@@ -69,6 +36,27 @@
 
         .month {
             color: base.$neutral-500;
+        }
+    }
+
+    .profile-notification-wrapper {
+        align-items: center;
+        gap: 32px;
+
+        .account {
+            align-items: center;
+            gap: 16px;
+            
+            .photo-profile {
+                height: 60px;
+                width: 60px;
+                border-radius: 100%;
+                background-color: base.$neutral-200;
+            }
+            
+            .name {
+                color: base.$neutral-600;
+            }
         }
     }
 }
