@@ -33,45 +33,6 @@
     }
 }
 
-/* Header variant */
-.header-main {
-    width: 100%;
-    height: 90px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 50px;
-    border-bottom: 1px solid base.$neutral-200;
-
-    .icon {
-        height: 24px;
-        width: 24px;
-    }
-
-    .header-overview {
-        display: inherit;
-        gap: 24px;
-    }    
-
-    .header-main-date {
-        align-items: center;
-        gap: 24px;
-    }
-
-    .header-main-date-detail {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2px;
-
-        .date {
-            color: base.$neutral-600;
-        }
-
-        .month {
-            color: base.$neutral-500;
-        }
-    }
-}
-
 .header-dashboard {
     display: inherit;
     flex-direction: column;
@@ -124,6 +85,13 @@
         align-items: center;
         gap: 16px;
 
+        .photo-profile {
+            height: 60px;
+            width: 60px;
+            border-radius: 100%;
+            background-color: base.$neutral-200;
+        }
+
         .name {
             color: base.$neutral-600;
         }
@@ -134,33 +102,37 @@
     }
 }
 
-.profile-notification-wrapper {
-    align-items: center;
-    gap: 32px;
-}
-
-.account {
-    align-items: center;
-    gap: 16px;
-    
-    .name {
-        color: base.$neutral-600;
-    }
-}
-
-.photo-profile {
-    height: 60px;
-    width: 60px;
-    border-radius: 100%;
-    background-color: base.$neutral-200;
-}
-
 .villa-management {
     .detail-overview {
         flex-direction: column;
         width: 100%;
         align-items: flex-start;
         gap: 24px;
+    }
+    
+    .search-field {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        .filter {
+            width: 350px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .search {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .filter-label {
+            color: base.$neutral-600;
+        }
     }
 }
 
@@ -178,30 +150,5 @@
         flex-direction: row;
         align-items: center;
         column-gap: 16px;
-    }
-}
-
-.search-field {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-    .filter {
-        width: 350px;
-        display: flex;
-        align-items: center;
-        gap: 16px;
-    }
-
-    .search {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-    }
-    
-    .filter-label {
-        color: base.$neutral-600;
     }
 }
