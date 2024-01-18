@@ -34,7 +34,7 @@
 }
 
 /* Header variant */
-.header-main {
+.header-auth {
     width: 100%;
     height: 90px;
     justify-content: space-between;
@@ -52,12 +52,12 @@
         gap: 24px;
     }    
 
-    .header-main-date {
+    .header-auth-date {
         align-items: center;
         gap: 24px;
     }
 
-    .header-main-date-detail {
+    .header-auth-date-detail {
         flex-direction: column;
         align-items: flex-start;
         gap: 2px;
@@ -68,6 +68,53 @@
 
         .month {
             color: base.$neutral-500;
+        }
+    }
+}
+
+.header-main {
+    width: 100%;
+    display: flex;
+    height: 100px;
+    padding: 10px 48px;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        width: 140px;
+        height: 78.315px;
+    }
+
+    .navigations {
+        display: inherit;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+
+        .menus {
+            display: inherit;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+
+            .link {
+                text-decoration: none;
+                padding: 4px 8px;
+                color: base.$neutral-600;
+            }
+
+            .link:hover {
+                color: base.$primary-400;
+            }
+        }
+
+        .actions {
+            display: inherit;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
         }
     }
 }
