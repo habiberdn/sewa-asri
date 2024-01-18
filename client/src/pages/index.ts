@@ -15,7 +15,7 @@ import { CreateVilla } from "./CreateVilla";
 import { VillaDetailDescription } from "./VillaDetailDescription";
 import { EditVilla } from "./EditVilla";
 // import { BedroomDetail, BathroomDetail, AttractionForm } from "./Form";
-import { PageNotFound } from "./PageNotFound";
+// import { PageNotFound } from "./PageNotFound";
 
 export {
     Login,
@@ -36,5 +36,5 @@ export {
     // AttractionForm,
     VillaDetailDescription,
     EditVilla,
-    PageNotFound
+    // PageNotFound
 }
