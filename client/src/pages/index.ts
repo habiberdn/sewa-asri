@@ -14,7 +14,8 @@ import { VillaManagement } from "./VillaManagement";
 import { CreateVilla } from "./CreateVilla";
 import { VillaDetailDescription } from "./VillaDetailDescription";
 import { EditVilla } from "./EditVilla";
-import { BedroomDetail, BathroomDetail, AttractionForm } from "./Form";
+// import { BedroomDetail, BathroomDetail, AttractionForm } from "./Form";
+import { PageNotFound } from "./PageNotFound";
 
 export {
     Login,
@@ -30,9 +31,10 @@ export {
     ReservationSchedule,
     VillaManagement,
     CreateVilla,
-    BedroomDetail,
-    BathroomDetail,
-    AttractionForm,
+    // BedroomDetail,
+    // BathroomDetail,
+    // AttractionForm,
     VillaDetailDescription,
-    EditVilla
+    EditVilla,
+    PageNotFound
 }
