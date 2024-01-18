@@ -2,16 +2,15 @@ import { Button, Chips, SearchBar } from ".";
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 
-type Variant = "dashboard" | "chat" | "reservation-schedule" | "villa-management" | "add-new-villa" | "edit-villa" | "detail-villa";
+type Variant = "dashboard" | "chat" | "reservation-schedule" | "villa-management" | "add-new-villa" | "edit-villa" | "villa-detail";
 
 interface WidgetHeaderInterface {
     variant: Variant; 
     onCreateVillaHandler?: () => void;
-    onHoverProfile?: () => void;
     onSearchHandler?: () => void;
 }
 
-export function WidgetHeader({ variant, onHoverProfile, onSearchHandler, onCreateVillaHandler }: WidgetHeaderInterface) {
+export function WidgetHeader({ variant, onSearchHandler, onCreateVillaHandler }: WidgetHeaderInterface) {
     const headerVariantMap = {
         main: <Dashboard />,
         chat: <Chat />,
