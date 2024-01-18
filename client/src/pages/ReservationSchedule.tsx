@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/UserContext";
 import { useNavigate } from "@tanstack/react-router";
-import { Header, Modal, Sidebar } from "../components";
+import { WidgetHeader, PageHeader, Modal, Sidebar } from "../components";
 
 export function ReservationSchedule() {
     const { auth } = useContext(AuthContext);
@@ -15,11 +15,11 @@ export function ReservationSchedule() {
                 <Sidebar />
 
                 <section  className="main-container">
-                    <Header variant="main" />
+                    <PageHeader variant="auth" />
 
                     <section  className="widget">
 
-                        <Header variant="reservation-schedule" />
+                        <WidgetHeader variant="reservation-schedule" />
                     </section>
                 </section>
             </main>

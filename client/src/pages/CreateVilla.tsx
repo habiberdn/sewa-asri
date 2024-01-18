@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Header, Sidebar, MessageBar, UploadPhoto } from "../components";
+import { WidgetHeader, Sidebar, MessageBar, UploadPhoto, PageHeader } from "../components";
 
 import { IMessageBar } from "../utils/interface";
 import { CreateVillaInterface } from '../utils/villa-interfaces';
@@ -92,11 +92,11 @@ export function CreateVilla() {
             <Sidebar />
 
             <section  className="main-container">
-                <Header variant="main"/>
+                <PageHeader variant="auth"/>
                 
                 <section  className="widget create-new">
 
-                    <Header variant="add-new-villa" 
+                    <WidgetHeader variant="add-new-villa" 
                             onCreateVillaHandler={() => {
                                 onCreateVilla();
                             }}/>

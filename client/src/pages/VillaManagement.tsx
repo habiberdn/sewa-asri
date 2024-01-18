@@ -4,7 +4,7 @@ import villaJson from "./../data/villa.json";
 
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { Header, Modal, Sidebar, ProfilePanel, MessageBar, CardVilla } from "../components";
+import { WidgetHeader, PageHeader, Modal, Sidebar, ProfilePanel, MessageBar, CardVilla } from "../components";
 
 import { ModalLogout, IMessageBar } from '../utils/interface';
 import { useLogout } from '../hooks/useAuth';
@@ -77,13 +77,13 @@ export function VillaManagement() {
             <Sidebar />
 
             <section  className="main-container">
-                <Header variant="main" 
+                <PageHeader variant="auth" 
                         onHoverProfile={() => setProfilePanel("opened")} 
                         />
                 
                 <section  className="widget">
 
-                    <Header variant="villa-management"
+                    <WidgetHeader variant="villa-management"
                             
                             onCreateVillaHandler={() => {
                                 navigate({ to: "create-new-villa" });

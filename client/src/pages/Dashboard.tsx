@@ -1,7 +1,7 @@
 import Cookies from 'universal-cookie';
 
 import { useState } from "react";
-import { Header, Sidebar, ProfilePanel, Modal, MessageBar } from "../components";
+import { WidgetHeader, Sidebar, ProfilePanel, Modal, MessageBar, PageHeader } from "../components";
 import { getUser } from "../utils/userStore";
 import { useLogout } from "../hooks/useAuth";
 import { useNavigate } from '@tanstack/react-router';
@@ -70,10 +70,10 @@ export function Dashboard() {
             <Sidebar />
 
             <section  className="main-container">
-                <Header variant="main" onHoverProfile={() => setProfilePanel("opened")} />
+                <PageHeader variant="auth" onHoverProfile={() => setProfilePanel("opened")} />
 
                 <section  className="widget">
-                    <Header variant="dashboard" />
+                    <WidgetHeader variant="dashboard" />
                 </section>
 
                 <ProfilePanel   state={profilePanel} 

@@ -3,7 +3,7 @@ import bedIcon from "./../assets/icons/double-bed-icon.webp";
 import locationIcon from "./../assets/icons/location.webp";
 
 import { useParams } from "@tanstack/react-router";
-import { Chips, FacilityOption, Header, Sidebar } from "../components";
+import { Chips, FacilityOption, WidgetHeader, PageHeader, Sidebar } from "../components";
 
 import villaJson from "./../data/villa.json";
 import ratingJson from "./../data/reviews.json";
@@ -25,10 +25,10 @@ export function VillaDetailDescription() {
             <Sidebar />
 
             <section  className="main-container">
-                <Header variant="main"/>
+                <PageHeader variant="auth"/>
                 
                 <section  className="widget">
-                    <Header variant="detail-villa" />
+                    <WidgetHeader variant="villa-detail" />
 
                     {
                         villa && (
