@@ -17,7 +17,7 @@ const outdoorSchema = new mongoose.Schema({
         type: Boolean,
         default : false
     },
-    bbgarea: {
+    bbqarea: {
         type: Boolean,
         default : false
     }
