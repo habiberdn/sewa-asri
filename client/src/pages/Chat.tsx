@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/UserContext";
 import { useNavigate } from "@tanstack/react-router";
-import { WidgetHeader, PageHeader, Modal, Sidebar } from "../components";
+import { WidgetHeader, PageHeader, Sidebar } from "../components";
 
 export function Chat() {
     const { auth } = useContext(AuthContext);
