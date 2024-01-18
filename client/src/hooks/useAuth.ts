@@ -1,23 +1,5 @@
 import useSWRMutation from 'swr/mutation';
-// const API = `${process.env.VITE_API_URL}api/v1/user`;
 const API = "https://wild-lime-newt-wig.cyclic.app/api/v1/user";
-
-interface User {
-    _id: string;
-    name: string;
-    email: string;
-    isVerify: boolean;
-    photo: "https://randomuser.me/api/portraits/lego/1.jpg" | string;
-    role: string;
-}
-
-interface Response {
-    status: string;
-    token: string;
-    data: {
-        user: User;
-    } | undefined;
-}
 
 function useLogin() {
     async function fetcher(url:string, { arg }: { arg: { email:string, password:string }}) {
