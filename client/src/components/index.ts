@@ -13,6 +13,7 @@ import { FacilityOption } from "./FacilityOption";
 import { UploadPhoto } from "./UploadPhoto";
 import { PageHeader } from "./PageHeader";
 import { Footer } from "./Footer";
+import { TestimonialCard } from "./TestimonialCard";
 
 export {
     Button,
@@ -29,5 +30,6 @@ export {
     FacilityOption,
     UploadPhoto,
     PageHeader,
-    Footer
+    Footer,
+    TestimonialCard
 };
