@@ -12,6 +12,7 @@ import { InputField } from "./InputField";
 import { FacilityOption } from "./FacilityOption";
 import { UploadPhoto } from "./UploadPhoto";
 import { PageHeader } from "./PageHeader";
+import { Footer } from "./Footer";
 
 export {
     Button,
@@ -27,5 +28,6 @@ export {
     InputField,
     FacilityOption,
     UploadPhoto,
-    PageHeader
+    PageHeader,
+    Footer
 };

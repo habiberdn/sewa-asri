@@ -1,0 +1,59 @@
+@use "./../../base";
+
+.footer {
+    display: flex;
+    height: 380px;
+    width: 100%;
+    padding: 32px 48px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ECF9EC;;
+
+    .product {
+        display: flex;
+        width: 450px;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: flex-end;
+        gap: 16px;
+        color: base.$neutral-600;
+
+        .logo {
+            width: 120px;
+            height: 41.18px;
+            align-self: auto;
+        }
+    }
+
+    .company {
+        display: flex;
+        width: 450px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        color: base.$neutral-600;
+
+        .logo {
+            width: 70px;
+            height: 48.509px;
+            align-self: auto;
+        }
+    }
+
+    .links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 16px;
+
+        h4 {
+            color: base.$primary-500;
+        }
+
+        a {
+            text-decoration: none;
+            color: base.$neutral-600
+        }
+    }
+}
