@@ -6,6 +6,7 @@ export function TestimonialCard() {
             </p>
 
             <section className="detail">
+                <div aria-label="circle" className="circle" />
 
                 <img    src="https://i.pinimg.com/564x/b7/ee/1e/b7ee1ed702d5c2f24663e767accafd02.jpg"
                         className="photo" />

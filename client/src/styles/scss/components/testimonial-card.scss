@@ -9,6 +9,9 @@
     align-items: flex-start;
     gap: 24px;
 
+    position: relative;
+    overflow: hidden;
+
     border-radius: 24px 10px;
     border: 1px solid base.$neutral-200;
     background: base.$neutral-0;
@@ -24,6 +27,17 @@
         align-items: center;
         flex-direction: row;
         gap: 16px;
+
+        .circle {
+            height: 100px;
+            width: 100px;
+
+            border-radius: 100px;
+            position: absolute;
+            right: -45px;
+            top: -79px;
+            background-color: base.$primary-400;
+        }
 
         .photo {
             width: 60px;
