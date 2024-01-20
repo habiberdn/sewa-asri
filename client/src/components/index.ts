@@ -14,6 +14,7 @@ import { UploadPhoto } from "./UploadPhoto";
 import { PageHeader } from "./PageHeader";
 import { Footer } from "./Footer";
 import { TestimonialCard } from "./TestimonialCard";
+import { Badge } from "./Badge";
 
 export {
     Button,
@@ -31,5 +32,6 @@ export {
     UploadPhoto,
     PageHeader,
     Footer,
-    TestimonialCard
+    TestimonialCard,
+    Badge
 };
