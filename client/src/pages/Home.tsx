@@ -22,6 +22,7 @@ export function Home() {
             </section>
             
             <OurFeature />
+            <TotalNumberGrowth />
         </main>
         </>
     );
@@ -149,5 +150,74 @@ function ChatFeature() {
                 </article>
             </section>
         </main>
+    );
+}
+
+function TotalNumberGrowth() {
+    return (
+        <section className="total-number-growth">
+
+            <article className="total-reservation">
+                <h1 className="h1-semibold">
+                    Rp137Jt
+                </h1>
+
+                <p className="p-regular">
+                    Total keuntungan  yang diperoleh pemilik Villa
+                </p>
+            </article>
+
+            <section className="list-registred-villa-downloaded">
+
+                <article className="total">
+                    
+                    <section className="dot-label-wrapper">
+
+                        <div aria-label="dot" className="dot"/>
+
+                        <h3 className="h3-medium">
+                            80+
+                        </h3>
+                    </section>
+
+                    <p className="label-regular">
+                        Villa yang tersedia
+                    </p>
+                </article>
+
+                <article className="total">
+                    
+                    <section className="dot-label-wrapper">
+
+                        <div aria-label="dot" className="dot"/>
+
+                        <h3 className="h3-medium">
+                            3000+
+                        </h3>
+                    </section>
+
+                    <p className="label-regular">
+                        Aplikasi di unduh
+                    </p>
+                </article>
+
+                <article className="total">
+                    
+                    <section className="dot-label-wrapper">
+
+                        <div aria-label="dot" className="dot"/>
+
+                        <h3 className="h3-medium">
+                            1300+
+                        </h3>
+                    </section>
+
+                    <p className="label-regular">
+                        Pengguna yang terdaftar
+                    </p>
+                </article>
+            </section>
+
+        </section>
     );
 }

@@ -147,3 +147,74 @@
         }
     }
 }
+
+.home-container {
+    .total-number-growth {
+        width: 100%;
+        padding: 24px 0px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+
+        border-top: 1px solid $neutral-200;
+        border-bottom: 1px solid $neutral-200;
+
+        .total-reservation {
+            width: 100%;
+            max-width: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            h1 {
+                color: $primary-500;
+            }
+
+            p {
+                color: $neutral-500;
+            }
+        }
+
+        .list-registred-villa-downloaded {
+            height: 100%;
+            width: 100%;
+            max-width: 500px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+
+            display: grid;
+            gap: 32px 50px;
+        }
+
+        .total {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .dot-label-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                .dot {
+                    height: 16px;
+                    width: 16px;
+
+                    border-radius: 100px;
+                    border: 2px solid $primary-0;
+                    background: $primary-400;
+                }
+
+                h3 {
+                    color: $primary-500;
+                }
+            }
+
+            p {
+                padding-left: 26px;
+                color: $neutral-500;
+            }
+        }
+    }
+}
