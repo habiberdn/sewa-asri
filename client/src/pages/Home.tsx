@@ -1,8 +1,16 @@
+import { PageHeader } from "../components";
 export function Home() {
+
     return (
-        <main>
-            <h1>Kelola jadwal reservasi dengan praktis</h1>
-            <h4>Dengan Sewa Asri Tenant kamu dapat mengelola jadwal reservasi dan menerima pembayaran lewat, sssss</h4>
+        <main className="dashboard-container">
+            <section className="main-container ">
+                <PageHeader />
+                <section className="hero-section">
+                    <article>
+                        <h1>Kelola Jadwal Reservasi dan Villa Dengan Sewa Asri Tenant</h1>
+                    </article>
+                </section>
+            </section>
         </main>
     );
 }

@@ -68,7 +68,7 @@ function Auth({ user, dayMap, monthMap, onHoverProfile }: AuthHeaderInterface) {
 
             <section  className="header-auth-date">
 
-                <img    src={calendarIcon}
+                <img src={calendarIcon}
                         className="icon"
                         />
 

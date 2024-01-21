@@ -25,6 +25,7 @@
 @import url("./css/pages/dashboard.css");
 @import url("./css/pages/villa-detail-description.css");
 @import url("./css/pages/page-not-found.css");
+// @import url("./scss/pages/home.scss");
 
 /* Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -213,11 +214,11 @@ select[multiple]
 	vertical-align:top;
 }
 
-@mixin font($size, $weight, $line-height: inherit) {
+@mixin font($size, $weight) {
   font-size: $size;
   font-weight: $weight;
   font-family: 'Inter', sans-serif;
-  line-height: $line-height;
+  // line-height: $line-height;
 }
 
 /* text styles */
