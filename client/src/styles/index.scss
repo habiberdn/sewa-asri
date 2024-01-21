@@ -1,4 +1,4 @@
-@use "base";
+@import 'base';
 
 /* components */
 @import url("./css/components/button.css");
@@ -214,106 +214,106 @@ select[multiple]
 	vertical-align:top;
 }
 
-@mixin font($size, $weight, $line-height: inherit) {
-  font-size: $size;
-  font-weight: $weight;
-  font-family: 'Inter', sans-serif;
-  line-height: $line-height;
-}
+  @mixin font($size, $weight, $line-height: inherit) {
+    font-size: $size;
+    font-weight: $weight;
+    font-family: 'Inter', sans-serif;
+    line-height: $line-height;
+  }
 
 /* text styles */
 .h1-regular {
-  @include font(base.$h1, 400);
+  @include font($h1,400);
 }
 
 .h1-medium {
-  @include font(base.$h1, 500);
+  @include font($h1, 500);
 }
 
 .h1-semibold {
-  @include font(base.$h1, 600);
+  @include font($h1, 600);
 }
 
 .h1-bold {
-  @include font(base.$h1, 700);
+  @include font($h1, 700);
 }
 
 .h2-regular {
-  @include font(base.$h2, 400);
+  @include font($h2, 400);
 }
 
 .h2-medium {
-  @include font(base.$h2, 500);
+  @include font($h2, 500);
 }
 
 .h2-semibold {
-  @include font(base.$h2, 600);
+  @include font($h2, 600);
 }
 
 .h2-bold {
-  @include font(base.$h2, 700);
+  @include font($h2, 700);
 }
 
 .h3-regular {
-  @include font(base.$h3, 400);
+  @include font($h3, 400);
 }
 
 .h3-medium {
-  @include font(base.$h3, 500);
+  @include font($h3, 500);
 }
 
 .h3-semibold {
-  @include font(base.$h3, 600);
+  @include font($h3, 600);
 }
 
 .h3-bold {
-  @include font(base.$h3, 700);
+  @include font($h3, 700);
 }
 
 .h4-regular {
-  @include font(base.$h4, 400);
+  @include font($h4, 400);
 }
 
 .h4-medium {
-  @include font(base.$h4, 500);
+  @include font($h4, 500);
 }
 
 .h4-semibold {
-  @include font(base.$h4, 600);
+  @include font($h4, 600);
 }
 
 .h4-bold {
-  @include font(base.$h4, 700);
+  @include font($h4, 700);
 }
 
 .p-regular {
-  @include font(base.$p, 400, 24px);
+  @include font($p, 400, 24px);
 }
 
 .p-medium {
-  @include font(base.$p, 500, 24px);
+  @include font($p, 500, 24px);
 }
 
 .p-semibold {
-  @include font(base.$p, 600, 24px);
+  @include font($p, 600, 24px);
 }
 
 .p-bold {
-  @include font(base.$p, 700, 24px);
+  @include font($p, 700, 24px);
 }
 
 .label-regular {
-  @include font(base.$label, 400);
+  @include font($label, 400);
 }
 
 .label-medium {
-  @include font(base.$label, 500);
+  @include font($label, 500);
 }
 
 .label-semibold {
-  @include font(base.$label, 600);
+  @include font($label, 600);
 }
 
 .label-bold {
-  @include font(base.$label, 700);
+  @include font($label, 700);
 }

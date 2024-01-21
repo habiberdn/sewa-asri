@@ -1,12 +1,14 @@
-@use "./../../base";
-
-.hero-section {
+.home-container {
+    height: 100%;
     width: 100%;
-    height: 90px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 48px;
-    border-bottom: 1px solid base.$neutral-200;
-    border: 1px solid ;
+
+    .home-hero-section {
+        width: 100%;
+        height: 90px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 50px 0px 50px;
+        border: 1px solid #0000;
+    }
 }

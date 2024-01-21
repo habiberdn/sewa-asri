@@ -1,6 +1,6 @@
 @use "./../../base";
 
-.form, .content, .detail, .hero-section, .actions, .widget, .widget, .main-container {
+.form, .content, .detail, .auth-hero-section, .actions, .widget, .widget, .main-container {
     display: flex;
     flex-direction: column;
 }
@@ -46,7 +46,7 @@
         scrollbar-width: none;
     }
 
-    .hero-section {
+    .auth-hero-section {
         width: 750px;
         height: 500px;
         row-gap: 24px;

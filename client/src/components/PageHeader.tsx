@@ -11,7 +11,7 @@ interface PageHeaderInterface {
     onHoverProfile?: () => void;
 }
 
-interface AuthHeaderInterface extends PageHeaderInterface { 
+interface AuthHeaderInterface extends PageHeaderInterface {
     user: {
         name: string;
         photo: string;
@@ -50,10 +50,10 @@ export function PageHeader({ variant = "main", onHoverProfile }: PageHeaderInter
 
     const headerVariantMap = {
         auth: <Auth user={user}
-                    dayMap={dayMap} 
-                    monthMap={monthMap}
-                    onHoverProfile={onHoverProfile}
-                    />,
+            dayMap={dayMap}
+            monthMap={monthMap}
+            onHoverProfile={onHoverProfile}
+        />,
         main: <Main />
     }
 
@@ -64,55 +64,55 @@ function Auth({ user, dayMap, monthMap, onHoverProfile }: AuthHeaderInterface) {
     const date = new Date;
 
     return (
-        <header  className="header header-auth">
+        <header className=" header-auth">
 
-            <section  className="header-auth-date">
+            <section className="header-auth-date">
 
                 <img src={calendarIcon}
-                        className="icon"
-                        />
+                    className="icon"
+                />
 
-                <article  className="header-auth-date-detail">
+                <article className="header-auth-date-detail">
 
-                    <h4     className="label-regular date">
-                        { dayMap[date.getDay().toString()] }, { date.getDate() }
+                    <h4 className="label-regular date">
+                        {dayMap[date.getDay().toString()]}, {date.getDate()}
                     </h4>
 
-                    <h4     className="label-regular month">
-                        { monthMap[date.getMonth().toString()] }
+                    <h4 className="label-regular month">
+                        {monthMap[date.getMonth().toString()]}
                     </h4>
                 </article>
             </section>
 
-            <nav  className="profile-notification-wrapper">
+            <nav className="profile-notification-wrapper">
 
-                <img    src={bellIcon}
-                        className="icon"
+                <img src={bellIcon}
+                    className="icon"
 
-                        onClick={() => {
-                            console.info("Notifications");
-                        }}
-                        />
+                    onClick={() => {
+                        console.info("Notifications");
+                    }}
+                />
 
-                <article    className="account"
-                            onMouseEnter={() => {
-                                if (onHoverProfile) {
-                                    onHoverProfile()
-                                }
-                            }}
-                            >
+                <article className="account"
+                    onMouseEnter={() => {
+                        if (onHoverProfile) {
+                            onHoverProfile()
+                        }
+                    }}
+                >
 
-                    <img    src={
-                                user?.photo === "default.jpg" ? 
-                                "https://randomuser.me/api/portraits/men/16.jpg" 
-                                : 
-                                user?.photo
-                            }
-                            className="photo-profile"
-                            />
+                    <img src={
+                        user?.photo === "default.jpg" ?
+                            "https://randomuser.me/api/portraits/men/16.jpg"
+                            :
+                            user?.photo
+                    }
+                        className="photo-profile"
+                    />
 
-                    <h4     className={`p-regular name`}>
-                        { user?.name }
+                    <h4 className={`p-regular name`}>
+                        {user?.name}
                     </h4>
                 </article>
             </nav>
@@ -126,8 +126,8 @@ function Main() {
     return (
         <header className="header-main">
 
-            <img    className='logo'
-                    src={logo} />
+            <img className='logo'
+                src={logo} />
 
             <nav className='navigations'>
 
@@ -148,27 +148,27 @@ function Main() {
 
 
                 <section className='actions'>
-                    <Button     variant="primary"
-                                behavior="hug-content"
-                                size="large"
-                                state="active"
-                                label="Login"
+                    <Button variant="primary"
+                        behavior="hug-content"
+                        size="large"
+                        state="active"
+                        label="Login"
 
-                                onClickHandler={() => {
-                                    navigate({ to: "/login" });
-                                }}
-                                />
-                    
-                    <Button     variant="secondary"
-                                behavior="hug-content"
-                                size="large"
-                                state="active"
-                                label="Register"
+                        onClickHandler={() => {
+                            navigate({ to: "/login" });
+                        }}
+                    />
 
-                                onClickHandler={() => {
-                                    navigate({ to: "/login" });
-                                }}
-                                />
+                    <Button variant="secondary"
+                        behavior="hug-content"
+                        size="large"
+                        state="active"
+                        label="Register"
+
+                        onClickHandler={() => {
+                            navigate({ to: "/login" });
+                        }}
+                    />
                 </section>
             </nav>
         </header>
