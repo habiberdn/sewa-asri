@@ -15,6 +15,7 @@ import { CreateVilla } from "./CreateVilla";
 import { VillaDetailDescription } from "./VillaDetailDescription";
 import { EditVilla } from "./EditVilla";
 import { PageNotFound } from "./PageNotFound";
+import { AboutUs } from "./AboutUs";
 
 export {
     Login,
@@ -32,5 +33,6 @@ export {
     CreateVilla,
     VillaDetailDescription,
     EditVilla,
-    PageNotFound
+    PageNotFound,
+    AboutUs
 }
