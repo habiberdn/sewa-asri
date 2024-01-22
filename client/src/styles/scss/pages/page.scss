@@ -1,5 +1,6 @@
 @import "./../../base";
 
+// page hero section
 .page-container {
     padding: 0 48px;
     height: 100%;
@@ -161,8 +162,13 @@
         row-gap: 80px;
     }
 
-    .history-section-wrapper, .product-section-wrapper {
+    .history-section-wrapper, 
+    .product-section-wrapper {
         row-gap: 50px;
+    }
+
+    .testimonial-section-wrapper {
+        row-gap: 32px;
     }
 }
 
