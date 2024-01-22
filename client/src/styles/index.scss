@@ -19,7 +19,7 @@
 @import url("./css/components/footer.css");
 @import url("./css/components/testimonial-card.css");
 @import url("./css/components/badge.css");
-// @import url("./css/components/code-editor.css");
+@import url("./css/components/code-editor.css");
 
 /* pages */
 @import url("./css/pages/auth.css");
@@ -30,7 +30,7 @@
 @import url("./css/pages/home.css");
 
 /* Google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
 
 #root {
   height: 100vh;

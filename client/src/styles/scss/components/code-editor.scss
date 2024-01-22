@@ -1,0 +1,154 @@
+@import "./../../base";
+
+.mockup-code-editor {
+    display: flex;
+    width: 580px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    
+    .team {
+        min-width: 275px;
+
+        display: flex;
+        padding: 14px 24px 14px 16px;
+        gap: 16px;
+
+        position: absolute;
+
+        border-radius: 24px;
+        border: 1px solid $neutral-200;
+        background: #FFF;
+        box-shadow: 0px 4px 20px 0px rgba(217, 217, 217, 0.25);
+
+        .photo {
+            width: 70px;
+            height: 70px;
+        }
+        
+        .detail {
+            display: flex;
+            padding: 4px 0px;
+            justify-content: center;
+            flex-direction: column;
+            gap: 6px;
+
+            p:first-child {
+                color: $neutral-700;
+            }
+
+            p:last-child {
+                color: $neutral-600;
+                font-family: 'Inter', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .team-client {
+        left: 12px;
+        bottom: 25px;
+    }
+
+    .team-backend {
+        right: 12px;
+        bottom: 25px;
+    }
+}
+
+.code-editor {
+    width: 500px;
+
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid $primary-300;
+
+    .header-directory {
+        display: flex;
+        width: 100%;
+        padding: 16px;
+        gap: 10px;
+
+        border-bottom: 1px solid $primary-200;
+        background-color: $primary-0;
+
+        .logo {
+            width: 20px;
+            height: 20px;
+        }
+
+        .path {
+            font-family: Inter;
+            font-size: 13px;
+            font-weight: 500;
+            color: $neutral-600;
+        }
+    }
+
+    .lines-of-code-canvas-wrapper {
+        display: flex;
+
+        .lines-of-code {
+            display: flex;
+            height: 290px;
+            width: 50px;
+            padding: 16px 10px;
+            flex-direction: column;
+            justify-content: center;
+            gap: 16px;
+
+            background-color: $primary-0;
+        }
+
+        p {
+            color: $primary-400;
+            text-align: center;
+            font-family: Inter;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+
+    .canvas {
+        width: 100%;
+        display: flex;
+        padding: 10px 16px;
+        align-items: flex-start;
+
+        background-color: #F7FCF7;
+
+        .code {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            p {
+                display: inline-block;
+                text-align: left;
+                font-size: 14px;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 500;
+                color: #808080;
+
+                span {
+                    display: inline;
+                }
+            }
+
+            span {
+                min-height: 20px;
+                display: flex;
+            }
+        }
+    }
+
+    .tab {
+        height: 20px;
+        width: 20px;
+    }
+}

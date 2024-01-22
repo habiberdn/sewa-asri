@@ -7,7 +7,7 @@ import { TestimonialCard } from "../components";
 import chat1Mockup from "./../assets/mockup/Chat-1.webp";
 import chat2Mockup from "./../assets/mockup/Chat-2-cropped.webp";
 
-import { Badge, PageHeader } from "../components";
+import { Badge, PageHeader, MockupCodeEditor } from "../components";
 
 export function Home() {
 

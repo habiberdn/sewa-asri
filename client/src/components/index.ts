@@ -15,6 +15,7 @@ import { PageHeader } from "./PageHeader";
 import { Footer } from "./Footer";
 import { TestimonialCard } from "./TestimonialCard";
 import { Badge } from "./Badge";
+import { MockupCodeEditor } from "./CodeEditor";
 
 export {
     Button,
@@ -33,5 +34,6 @@ export {
     PageHeader,
     Footer,
     TestimonialCard,
-    Badge
+    Badge,
+    MockupCodeEditor
 };
