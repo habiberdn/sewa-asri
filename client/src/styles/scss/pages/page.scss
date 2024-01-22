@@ -1,0 +1,423 @@
+@import "./../../base";
+
+.page-container {
+    padding: 0 48px;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    margin: 50px 0px 50px ;
+
+    display: grid;
+    row-gap: 100px;
+
+    .hero-section {
+        display: flex;
+        flex-direction: row;
+        width: 1340px;
+        height: 400px;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        flex-shrink: 0;
+
+        .header-description-wrapper {
+            width: 100%;
+            max-width: 650px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            h1 {
+                font-family: Inter;
+                font-size: 49px;
+                font-weight: 700;
+                line-height: 80px; 
+                color: $neutral-700;
+            }
+
+            .highlight {
+                color: $primary-400;
+            }
+
+            p {
+                color: $neutral-600;
+                font-family: Inter;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 30px; 
+            }
+
+        }
+    }
+}
+
+// section wrapper
+.page-container {
+    .section-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+
+            h4 {
+                color: $primary-500;
+            }
+
+            h2 {
+                color: $neutral-700;
+            }
+        }
+
+        .main {
+            display: flex;
+            align-items: center;
+            column-gap: 48px;
+
+            .mockup {
+                position: relative;
+                width: 100%;
+                max-width: 670px;
+            }
+
+            .floating-mockup {
+                position: absolute;
+            }
+        }
+
+        .main:nth-child(3) {
+            flex-direction: row-reverse;
+        }
+
+        .content {
+            width: 100%;
+            display: flex;
+            padding: 50px 0px;
+            flex-direction: column;
+            justify-content: center;
+            gap: 24px;
+
+            h2 {
+                color: $neutral-700;
+            }
+
+            .supporting-headline-badge-wrapper {
+                width: 100%;
+
+                display: flex;
+                flex-direction: column;
+                row-gap: 16px;
+
+                .supporting-headline {
+                    line-height: 30px;
+                    color: $neutral-600;
+                }
+
+                .badge-list {
+                    width: 100%;
+                    display: flex;
+                    gap: 16px;
+                    flex-wrap: wrap;
+                }
+            }
+        }
+
+        .testimonial {
+            display: flex;
+            padding: 24px;
+            justify-content: center;
+            align-items: center;
+            column-gap: 24px;
+        }
+    }
+
+    .cta {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 60px 0px 60px;
+        gap: 15px;
+
+        .headline {
+            color: $neutral-700;
+        }
+
+        .supporting-headline {
+            color: $neutral-600;
+        }
+    }
+}
+
+// section variant: mockup & history
+.page-container {
+    .mockup-section-wrapper {
+        row-gap: 80px;
+    }
+
+    .history-section-wrapper, .product-section-wrapper {
+        row-gap: 50px;
+    }
+}
+
+// history section wrapper
+.page-container {
+    .history-section-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .team-list {
+            width: 100%;
+            max-width: 900px;
+            
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .team-profile {
+            display: flex;
+            width: 250px;
+            height: 350px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 10px;
+            background-color: #ECF9EC;
+
+            position: relative;
+
+            .avatar {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .detail {
+                min-width: 180px;
+
+                display: flex;
+                padding: 14px 16px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+
+                position: absolute;
+                bottom: -24px;
+
+                border-radius: 8px;
+                border: 1px solid $neutral-200;
+                background-color: $neutral-0;
+
+                p:first-child {
+                    color: $neutral-700;
+                }
+
+                p:last-child {
+                    color: $neutral-600;
+                }
+            }
+        }
+
+        .team-profile:nth-child(1) .detail {
+            width: 320px;
+        }
+
+        .history-detail {
+            max-width: 900px;
+            color: $neutral-600;
+            text-align: justify;
+            
+            // font-family: Inter;
+            // font-size: 18px;
+            // font-style: normal;
+            // font-weight: 400;
+            // line-height: 28px;
+        }
+    }
+}
+
+// product section wrapper
+.page-container {
+    .mockup-section-wrapper {
+        .main {
+            .product-mockup {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                column-gap: 32px;
+
+                .android-mockup {
+                    width: 100%;
+                    border-radius: 32px;
+                    box-shadow: 0px 2px 20px 6px rgba(153, 153, 153, 0.20);
+                }
+                
+                .floating-mockup:nth-child(2) {
+                    max-width: 160px;
+                    
+                    left: 25px;
+                    top: 20px;
+                }
+
+                .floating-mockup:nth-child(3) {
+                    max-width: 380px;
+                    
+                    right: 16px;
+                    top: 80px;
+                }
+            }
+
+            .floating-mockup {
+                border-radius: 16px;
+                border: 1px solid $neutral-200;
+                box-shadow: -10px 10px 25px 16px rgba(213, 213, 213, 0.10);
+            }
+        }
+    }
+}
+
+// application section wrapper
+.page-container {
+    .mockup-section-wrapper {
+        .main {
+            .app-mockup {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                column-gap: 32px;
+
+                .main-mockup {
+                    width: 100%;
+                    max-width: 580px;
+                    object-fit: cover;
+    
+                    border-radius: 16px;
+                    border: 1px solid $neutral-200;
+                    background-color: $neutral-0;
+                }
+    
+                .floating-mockup {
+                    position: absolute;
+                    border-radius: 16px;
+                    border: 1px solid $neutral-200;
+                    box-shadow: -10px 10px 25px 16px rgba(213, 213, 213, 0.10);
+                }
+            }
+        }
+
+        .main:nth-child(2) {
+            .app-mockup {
+                .floating-mockup {
+                    max-width: 250px;
+                    z-index: 2;
+                    top: 40px;
+                    right: 20px;
+                }
+            }
+        }
+
+        .main:nth-child(3) {
+            .app-mockup {
+                .floating-mockup {
+                    max-width: 380px;
+                    z-index: 2;
+                    bottom: 20px;
+                    right: 20px;
+                }
+            }
+        }
+
+        .main:nth-child(4) {
+            .app-mockup {
+                .floating-mockup {
+                    max-width: 330px;
+                    z-index: 2;
+                    bottom: 20px;
+                    right: 20px;
+                }
+            }
+        }
+    }
+}
+
+// total number growth
+.page-container {
+    .total-number-growth {
+        width: 100%;
+        padding: 24px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+
+        border-top: 1px solid $neutral-200;
+        border-bottom: 1px solid $neutral-200;
+
+        .total-reservation {
+            width: 100%;
+            max-width: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            h1 {
+                color: $primary-500;
+            }
+
+            p {
+                color: $neutral-500;
+            }
+        }
+
+        .list-registred-villa-downloaded {
+            height: 100%;
+            width: 100%;
+            max-width: 500px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+
+            display: grid;
+            gap: 32px 50px;
+        }
+
+        .total {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .dot-label-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                .dot {
+                    height: 16px;
+                    width: 16px;
+
+                    border-radius: 100px;
+                    border: 2px solid $primary-0;
+                    background: $primary-400;
+                }
+
+                h3 {
+                    color: $primary-500;
+                }
+            }
+
+            p {
+                padding-left: 26px;
+                color: $neutral-500;
+            }
+        }
+    }
+}
