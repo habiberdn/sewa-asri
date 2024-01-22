@@ -59,8 +59,11 @@
         width: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
 
         .header {
+            max-width: 420px;
+
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -73,6 +76,7 @@
 
             h2 {
                 color: $neutral-700;
+                text-align: center;
             }
         }
 
