@@ -1,4 +1,6 @@
-@use "./../../base";
+@import '../../base';
+
+
 
 .villa-detail-description {
     width: 100%;
@@ -16,7 +18,7 @@
             width: 300px;
             height: 300px;
             border-radius: 8px;
-            background-color: base.$neutral-200;
+            background-color: $neutral-200;
             object-fit: cover;
         }
 
@@ -34,7 +36,7 @@
                 display: inherit;
                 justify-content: space-between;
                 align-items: center;
-                color: base.$neutral-500;
+                color: $neutral-500;
             }
 
             .villaid-status-wrapper {
@@ -48,7 +50,7 @@
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
-                    color: base.$neutral-600;
+                    color: $neutral-600;
                 }
 
                 .villa-status {
@@ -56,7 +58,7 @@
                     padding: 2px 8px;
                     align-items: center;
                     gap: 8px;
-                    color: base.$neutral-600;
+                    color: $neutral-600;
 
                     .dot {
                         height: 16px;
@@ -65,11 +67,11 @@
                     }
 
                     .green-dot {
-                        background-color: base.$primary-300;
+                        background-color: $primary-300;
                     }
 
                     .red-dot {
-                        background-color: base.$error-0;
+                        background-color: $error-0;
                     }
                 }
             }
@@ -89,14 +91,14 @@
                     align-self: stretch;
 
                     .name {
-                        color: base.$neutral-700;
+                        color: $neutral-700;
                     }
 
                     .price {
                         display: inherit;
                         align-items: center;
                         gap: 6px;
-                        color: base.$neutral-600;
+                        color: $neutral-600;
                     }
 
                     .facility {
@@ -116,7 +118,7 @@
                             display: flex;
                             flex-direction: row;
                             gap: 10px;
-                            color: base.$neutral-600;
+                            color: $neutral-600;
                         }
                     }
                 }
@@ -132,7 +134,7 @@
                     }
 
                     p {
-                        color: base.$neutral-500;
+                        color: $neutral-500;
                     }
                 }
             }
@@ -147,11 +149,11 @@
         gap: 10px;
 
         h3 {
-            color: base.$neutral-700;
+            color: $neutral-700;
         }
 
         p {
-            color: base.$neutral-500;
+            color: $neutral-500;
         }
     }
 }

@@ -15,7 +15,7 @@
         padding: 10px 50px 0px 50px;
         border: 1px solid #0000;
     }
-    
+
     .our-feature-section {
         width: 100%;
         display: flex;
@@ -82,7 +82,7 @@
                 flex-direction: column;
                 justify-content: center;
                 gap: 24px;
-            
+
                 h2 {
                     color: $neutral-700;
                 }
@@ -93,7 +93,7 @@
                     display: flex;
                     flex-direction: column;
                     row-gap: 16px;
-                    
+
                     .supporting-headline {
                         line-height: 30px;
                         color: $neutral-600;
@@ -149,10 +149,38 @@
 }
 
 .home-container {
+
+    .testimonials {
+        padding-bottom: 50px;
+
+        .label {
+            padding: 50px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+
+            h4 {
+                color: $primary-500;
+                text-align: center;
+            }
+
+            .p-label {
+                text-align: center;
+            }
+
+        }
+        .testimonial{
+            display: flex;
+            gap: 50px;
+            transform: translateY(30px);
+        }
+    }
+
     .total-number-growth {
         width: 100%;
         padding: 24px 0px;
-
         display: flex;
         justify-content: center;
         align-items: center;
@@ -217,4 +245,6 @@
             }
         }
     }
+
+
 }

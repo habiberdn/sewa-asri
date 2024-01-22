@@ -1,1 +1,7 @@
-{"version":3,"sourceRoot":"","sources":["../../scss/pages/page-not-found.scss"],"names":[],"mappings":"AAAA,gBACI,YACA,WACA,aACA,sBACA,UAEA,mCACI,aACA,sBACA,mBACA,kBACA,SACA,kCAEA,gDACI,kBACA,kBACA,eACA,kBACA","file":"page-not-found.css"}
+{
+"version": 3,
+"mappings": "AAAA,eAAgB,CACZ,MAAM,CAAE,IAAI,CACZ,KAAK,CAAE,IAAI,CACX,OAAO,CAAE,IAAI,CACb,cAAc,CAAE,MAAM,CACtB,GAAG,CAAE,KAAK,CAEV,kCAAmB,CACf,OAAO,CAAE,IAAI,CACb,cAAc,CAAE,MAAM,CACtB,WAAW,CAAE,MAAM,CACnB,UAAU,CAAE,MAAM,CAClB,GAAG,CAAE,IAAI,CACT,KAAK,CAAE,2BAA2B,CAElC,+CAAa,CACT,UAAU,CAAE,MAAM,CAClB,WAAW,CAAE,KAAK,CAClB,SAAS,CAAE,IAAI,CACf,UAAU,CAAE,MAAM,CAClB,WAAW,CAAE,GAAG",
+"sources": ["../../scss/pages/page-not-found.scss"],
+"names": [],
+"file": "page-not-found.css"
+}

@@ -24,12 +24,12 @@ interface DropdownStatus {
     onChangeAvailabilityHandler?: () => void;
 }
 
-export function CardVilla({ 
-    data, 
-    onChangeAvailabilityHandler 
-}: { 
-    data: VillaInterface | DetailVillaInterface, 
-    onChangeAvailabilityHandler?: () => void; 
+export function CardVilla({
+    data,
+    onChangeAvailabilityHandler
+}: {
+    data: VillaInterface | DetailVillaInterface,
+    onChangeAvailabilityHandler?: () => void;
 }) {
     const [dropdownStatus, setDropdownStatus] = useState<"opened" | "closed">("closed");
     const [dropdownActions, setDropdownActions] = useState<"opened" | "closed">("closed");
@@ -37,13 +37,13 @@ export function CardVilla({
 
     return (
         <article className="card-villa" key={data._id}>
-            <img    src={data.photo}
-                    className="photo"
-                    loading="lazy"
-                     />
+            <img src={data.photo}
+                className="photo"
+                loading="lazy"
+            />
 
             <section className="content">
-                
+
                 <section className="villaid-status-wrapper">
 
                     <p className="label-regular villaid"
@@ -52,38 +52,38 @@ export function CardVilla({
                             // copyToClipboard(text)
                             console.info(text);
                         }}>
-                        Villa ID: { data._id }
+                        Villa ID: {data._id}
                     </p>
-                    
-                    <Status     isAvailable={isAvailable}
 
-                                dropdownHandler={() => {
-                                    setDropdownStatus("opened");
-                                }}
-                                />
+                    <Status isAvailable={isAvailable}
+
+                        dropdownHandler={() => {
+                            setDropdownStatus("opened");
+                        }}
+                    />
 
                     <DropdownStatus dropdown={dropdownStatus}
-                                    onMouseLeaveHandler={() => {
-                                        setDropdownStatus("closed");
-                                    }}
-                                    onChangeAvailabilityHandler={() => {
-                                        if (onChangeAvailabilityHandler) {
-                                            onChangeAvailabilityHandler();
-                                        }
-                                        isAvailable ? setIsAvailable(false) : setIsAvailable(true);
-                                        setDropdownStatus("closed");
-                                    }} />
+                        onMouseLeaveHandler={() => {
+                            setDropdownStatus("closed");
+                        }}
+                        onChangeAvailabilityHandler={() => {
+                            if (onChangeAvailabilityHandler) {
+                                onChangeAvailabilityHandler();
+                            }
+                            isAvailable ? setIsAvailable(false) : setIsAvailable(true);
+                            setDropdownStatus("closed");
+                        }} />
                 </section>
 
-                <section    className="name-price-wrapper">
+                <section className="name-price-wrapper">
 
                     <h3 className="h3-regular name">
-                        { data.name }
+                        {data.name}
                     </h3>
 
                     <section className="price-wrapper">
                         <h4 className="h4-regular">
-                            Rp. { data.price }
+                            Rp. {data.price}
                         </h4>
 
                         <p className="label-regular">/ malam</p>
@@ -93,32 +93,32 @@ export function CardVilla({
                 <section className="city-actions-wrapper">
                     <section className="city">
 
-                        <img    src={pinIcon} 
-                                className="location-icon"
-                                />
+                        <img src={pinIcon}
+                            className="location-icon"
+                        />
                         <p className="label-regular">
-                            { data.location.city }
+                            {data.location.city}
                         </p>
                     </section>
 
-                    <Button     variant="tertiary"
-                                behavior="hug-content"
-                                size="small"
-                                state="active"
-                                label="Actions"
+                    <Button variant="tertiary"
+                        behavior="hug-content"
+                        size="small"
+                        state="active"
+                        label="Actions"
 
-                                onClickHandler={() => {
-                                    setDropdownActions("opened");
-                                }}
-                                />
-                    
-                    <DropdownActions    _id={data._id} 
-                                        dropdown={dropdownActions}
+                        onClickHandler={() => {
+                            setDropdownActions("opened");
+                        }}
+                    />
 
-                                        onMouseLeaveHandler={() => {
-                                            setDropdownActions("closed");
-                                        }}
-                                        />
+                    <DropdownActions _id={data._id}
+                        dropdown={dropdownActions}
+
+                        onMouseLeaveHandler={() => {
+                            setDropdownActions("closed");
+                        }}
+                    />
                 </section>
             </section>
         </article>
@@ -130,13 +130,13 @@ function Status({
     dropdownHandler
 }: Status) {
     return (
-        <section    className="villa-availability"
-        
-                    onClick={() => {
-                        if (dropdownHandler) {
-                            dropdownHandler();
-                        }
-                    }}>
+        <section className="villa-availability"
+
+            onClick={() => {
+                if (dropdownHandler) {
+                    dropdownHandler();
+                }
+            }}>
             {
                 isAvailable ? (
                     <>
@@ -149,52 +149,52 @@ function Status({
                 ) : (
                     <>
                         <div className="dot red-dot" />
-                        
+
                         <p className="label-regular label">
                             Tidak tersedia
                         </p>
                     </>
                 )
             }
-            
-            <img    src={chevronIcon}
-                    className="chevron" />
+
+            <img src={chevronIcon}
+                className="chevron" />
         </section>
     );
 }
 
 function DropdownStatus({ dropdown, onMouseLeaveHandler, onChangeAvailabilityHandler }: DropdownStatus) {
     return (
-        <section    className={`dropdown-status dropdown-status-${dropdown}`}
-                    onMouseLeave={() => {
-                        if (onMouseLeaveHandler) {
-                            onMouseLeaveHandler();
-                        }
-                    }}>
+        <section className={`dropdown-status dropdown-status-${dropdown}`}
+            onMouseLeave={() => {
+                if (onMouseLeaveHandler) {
+                    onMouseLeaveHandler();
+                }
+            }}>
 
-            <article    className="option"
-                        onClick={() => {
-                            if (onChangeAvailabilityHandler) {
-                                onChangeAvailabilityHandler();
-                            }
-                        }}>
+            <article className="option"
+                onClick={() => {
+                    if (onChangeAvailabilityHandler) {
+                        onChangeAvailabilityHandler();
+                    }
+                }}>
 
                 <div className="dot green-dot" />
-                        
+
                 <p className="label-regular label">
                     Tersedia
                 </p>
             </article>
 
-            <article    className="option"
-                        onClick={() => {
-                            if (onChangeAvailabilityHandler) {
-                                onChangeAvailabilityHandler();
-                            }
-                        }}>
+            <article className="option"
+                onClick={() => {
+                    if (onChangeAvailabilityHandler) {
+                        onChangeAvailabilityHandler();
+                    }
+                }}>
 
                 <div className="dot red-dot" />
-                        
+
                 <p className="label-regular label">
                     Tidak tersedia
                 </p>
@@ -211,17 +211,17 @@ function DropdownActions({
     const navigate = useNavigate();
 
     return (
-        <section    className={`dropdown-actions dropdown-actions-${dropdown}`}
-                    onMouseLeave={() => {
-                        if (onMouseLeaveHandler) {
-                            onMouseLeaveHandler();
-                        }
-                    }}>
+        <section className={`dropdown-actions dropdown-actions-${dropdown}`}
+            onMouseLeave={() => {
+                if (onMouseLeaveHandler) {
+                    onMouseLeaveHandler();
+                }
+            }}>
 
-            <p  className="label-regular view"
-                
+            <p className="label-regular view"
+
                 onClick={() => {
-                    navigate({ 
+                    navigate({
                         to: "villa-detail-description/$id",
                         params: { id: _id }
                     });
@@ -229,10 +229,10 @@ function DropdownActions({
                 View detail
             </p>
 
-            <p  className="label-regular edit"
+            <p className="label-regular edit"
 
                 onClick={() => {
-                    navigate({ 
+                    navigate({
                         to: "edit-villa/$id",
                         params: { id: _id }
                     });
@@ -240,10 +240,10 @@ function DropdownActions({
                 Edit
             </p>
 
-            <p  className="label-regular delete"
+            <p className="label-regular delete"
 
                 onClick={() => {
-                    
+
                 }}>
                 Delete
             </p>

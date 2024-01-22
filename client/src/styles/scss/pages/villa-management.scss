@@ -1,4 +1,5 @@
-@use "./../../base";
+@import '../../base';
+
 
 .villa-management {
     position: relative;
@@ -36,8 +37,8 @@
                 align-items: center;
                 justify-content: center;
                 border-radius: 8px;
-                color: base.$neutral-500;
-                background-color: base.$neutral-200;
+                color: $neutral-500;
+                background-color: $neutral-200;
                 object-fit: cover;
             }
 
@@ -59,15 +60,15 @@
                 align-items: center;
                 gap: 6px;
 
-                color: base.$neutral-0;
-                background-color: base.$primary-400;
+                color: $neutral-0;
+                background-color: $primary-400;
                 border-radius: 30px;
                 cursor: pointer;
             }
 
             .pick-photo:hover {
-                color: base.$neutral-0;
-                background-color: base.$primary-500;
+                color: $neutral-0;
+                background-color: $primary-500;
             }
 
             .pick-photo-input {
@@ -85,11 +86,11 @@
             align-self: stretch;
 
             h3 {
-                color: base.$neutral-700;
+                color: $neutral-700;
             }
 
             p {
-                color: base.$neutral-500;
+                color: $neutral-500;
             }
         }
 
@@ -119,7 +120,7 @@
                 align-self: stretch;
                 
                 h4 {
-                    color: base.$neutral-600;
+                    color: $neutral-600;
                 }
 
                 .size-option {
@@ -201,11 +202,11 @@
         align-items: center;
 
         h4 {
-            color: base.$neutral-600;
+            color: $neutral-600;
         }
 
         p {
-            color: base.$neutral-500;
+            color: $neutral-500;
         }
     }
 }
@@ -233,11 +234,11 @@
             align-items: center;
 
             h3 {
-                color: base.$neutral-700;
+                color: $neutral-700;
             }
 
             p {
-                color: base.$neutral-500;
+                color: $neutral-500;
             }
         }
 
@@ -271,7 +272,7 @@
             gap: 50px;
 
             .label {
-                color: base.$neutral-600;
+                color: $neutral-600;
             }
 
             .facility-list {
@@ -302,7 +303,7 @@
         gap: 24px;
 
         .label {
-            color: base.$neutral-700;
+            color: $neutral-700;
         }
 
         .attraction {
@@ -314,7 +315,7 @@
             .photo {
                 height: 200px;
                 width: 200px;
-                background-color: base.$neutral-300;
+                background-color: $neutral-300;
                 border-radius: 8px;
             }
     
@@ -334,16 +335,16 @@
                     align-self: stretch;
 
                     h4 {
-                        color: base.$neutral-600;
+                        color: $neutral-600;
                     }
 
                     p {
-                        color: base.$neutral-500;
+                        color: $neutral-500;
                     }
                 }
     
                 .schedule {
-                    color: base.$neutral-500;
+                    color: $neutral-500;
                 }
             }
         }
@@ -357,10 +358,10 @@
         gap: 10px;
 
         h3 {
-            color: base.$neutral-700;
+            color: $neutral-700;
         }
 
         p {
-            color: base.$neutral-600;
+            color: $neutral-600;
         }
     }
