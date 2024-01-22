@@ -16,6 +16,7 @@ export function AboutUs() {
         <>
             <PageHeader />
             <main className="page-container">
+                <section className="container">                
             
                 <section className="hero-section">
                     
@@ -34,8 +35,9 @@ export function AboutUs() {
 
                 <OurHistory />
                 <OurOtherProduct />
+            </section>
+            <Footer />
             </main>
-            {/* <Footer /> */}
         </>
     );
 }

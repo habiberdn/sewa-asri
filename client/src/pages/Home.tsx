@@ -14,21 +14,23 @@ export function Home() {
         <>
             <PageHeader />
             <main className="page-container">
-                <section className="hero-section">
-                    <article>
-                        <h1 className="h1-medium">Kelola Jadwal Reservasi dan Villa Dengan Sewa Asri Tenant</h1>
-                    </article>
-                    <section>
-                        <img src="" alt="" />
+                <section className="container">
+                    <section className="hero-section">
+                        <article>
+                            <h1 className="h1-medium">Kelola Jadwal Reservasi dan Villa Dengan Sewa Asri Tenant</h1>
+                        </article>
+                        <section>
+                            <img src="" alt="" />
+                        </section>
                     </section>
+
+                    <OurFeature />
+                    <TotalNumberGrowth />
+                    <Testimony />
+                    <CTA />
+
                 </section>
-
-                <OurFeature />
-                <TotalNumberGrowth />
-                <Testimony />
-                <CTA />
-
-                <Footer />
+            <Footer />
             </main>
         </>
     );
