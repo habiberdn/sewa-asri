@@ -1,21 +1,20 @@
 import reservationSchedule1Mockup from "./../assets/mockup/Reservation-schedule-v2-1.webp";
 import reservationSchedule2Mockup from "./../assets/mockup/Reservation-schedule-v2-2-cropped.webp";
-import { useNavigate } from '@tanstack/react-router'
 import villaManagement1Mockup from "./../assets/mockup/Management-villa-1.webp";
 import villaManagement2Mockup from "./../assets/mockup/Detail-villa-1-cropped.webp";
-import { TestimonialCard } from "../components";
 import chat1Mockup from "./../assets/mockup/Chat-1.webp";
 import chat2Mockup from "./../assets/mockup/Chat-2-cropped.webp";
 
-import { Badge, PageHeader, Footer } from "../components";
-import { Button } from "../components";
+import { useNavigate } from '@tanstack/react-router'
+import { Badge, PageHeader, Footer, Button, TestimonialCard } from "../components";
+
 export function Home() {
 
     return (
         <>
             <PageHeader />
-            <main className="home-container">
-                <section className="home-hero-section">
+            <main className="page-container">
+                <section className="hero-section">
                     <article>
                         <h1 className="h1-medium">Kelola Jadwal Reservasi dan Villa Dengan Sewa Asri Tenant</h1>
                     </article>
@@ -37,7 +36,7 @@ export function Home() {
 
 function OurFeature() {
     return (
-        <section className="our-feature-section">
+        <section className="section-wrapper mockup-section-wrapper">
 
             <header className="header">
 
@@ -61,7 +60,7 @@ function ReservationScheduleFeature() {
     return (
         <main className="main">
 
-            <section className="mockup">
+            <section className="mockup app-mockup">
 
                 <img src={reservationSchedule1Mockup} alt="reservation Schedule 1"
                     className="main-mockup" />
@@ -96,7 +95,7 @@ function VillaManagementFeature() {
     return (
         <main className="main">
 
-            <section className="mockup">
+            <section className="mockup app-mockup">
 
                 <img src={villaManagement1Mockup} alt="reservation Schedule 1"
                     className="main-mockup" />
@@ -130,7 +129,7 @@ function ChatFeature() {
     return (
         <main className="main">
 
-            <section className="mockup">
+            <section className="mockup app-mockup">
 
                 <img src={chat1Mockup} alt="reservation Schedule 1"
                     className="main-mockup" />
@@ -231,11 +230,12 @@ function TotalNumberGrowth() {
 
 function Testimony() {
     return (
-        <section className="testimonials">
-            <article className="label">
+        <section className="section-wrapper testimonial-section-wrapper">
+            <header className="header">
                 <h4 className="h4-regular">Testimoni Pengguna</h4>
-                <p className=" p-label h3-medium">Apa Kata Pemilik Tentang <br /> Sewa Asri Tenant? </p>
-            </article>
+                <h2 className="h2-medium">Apa Kata Pemilik Tentang Sewa Asri Tenant? </h2>
+            </header>
+
             <section className="testimonial">
                 <TestimonialCard name="Reny Anggraini" photo="https://i.pinimg.com/736x/2a/7d/4c/2a7d4c4bc1381a476b8b8a85885ac392.jpg" role="Pengelola villa" reviews="Sewa Asri Tenant dinilai sangat mudah digunakan, baik oleh pengguna pemula maupun pengguna yang sudah berpengalaman. Fitur-fiturnya dirancang dengan intuitif dan mudah dipahami." />
                 <TestimonialCard name="Ayu Renita" photo="https://i.pinimg.com/736x/64/7b/a2/647ba2eb2b1f47dc5d8b57a7a4727858.jpg" role="Pengelola villa" reviews="Sejak menggunakan Sewa Asri Tenant, saya tidak perlu lagi mengelola reservasi villa secara manual. Semuanya dapat dilakukan secara otomatis. Hal ini sangat menghemat waktu dan tenaga saya." />
@@ -252,17 +252,18 @@ function CTA() {
 
     return (
         <section className="cta">
-            <p className="h2-medium">Ayo Buat Akun di Sewa Asri</p>
-            <p className="p-regular p-label">Kelola booking secara otomatis, berkomunikasi dengan calon <br /> tamu, memperbarui harga villa, melihat riwayat booking</p>
+            <h2 className="h2-medium headline">Ayo Buat Akun di Sewa Asri</h2>
+            <p className="p-regular supporting-headline">Kelola booking secara otomatis, berkomunikasi dengan calon <br /> tamu, memperbarui harga villa, melihat riwayat booking</p>
+            
             <Button variant="primary"
-                behavior="hug-content"
-                size="large"
-                state="active"
-                label="Buat Akun"
+                    behavior="hug-content"
+                    size="large"
+                    state="active"
+                    label="Buat Akun"
 
-                onClickHandler={() => {
-                    navigate({ to: "/register" });
-                }}
+                    onClickHandler={() => {
+                        navigate({ to: "/register" });
+                    }}
             />
         </section>
     )
