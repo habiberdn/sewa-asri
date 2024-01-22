@@ -1,14 +1,14 @@
 import reservationSchedule1Mockup from "./../assets/mockup/Reservation-schedule-v2-1.webp";
 import reservationSchedule2Mockup from "./../assets/mockup/Reservation-schedule-v2-2-cropped.webp";
-
+import { useNavigate } from '@tanstack/react-router'
 import villaManagement1Mockup from "./../assets/mockup/Management-villa-1.webp";
 import villaManagement2Mockup from "./../assets/mockup/Detail-villa-1-cropped.webp";
 import { TestimonialCard } from "../components";
 import chat1Mockup from "./../assets/mockup/Chat-1.webp";
 import chat2Mockup from "./../assets/mockup/Chat-2-cropped.webp";
 
-import { Badge, PageHeader, MockupCodeEditor } from "../components";
-
+import { Badge, PageHeader, Footer } from "../components";
+import { Button } from "../components";
 export function Home() {
 
     return (
@@ -17,13 +17,19 @@ export function Home() {
             <main className="home-container">
                 <section className="home-hero-section">
                     <article>
-                        <h1>Kelola Jadwal Reservasi dan Villa Dengan Sewa Asri Tenant</h1>
+                        <h1 className="h1-medium">Kelola Jadwal Reservasi dan Villa Dengan Sewa Asri Tenant</h1>
                     </article>
+                    <section>
+                        <img src="" alt="" />
+                    </section>
                 </section>
 
                 <OurFeature />
                 <TotalNumberGrowth />
                 <Testimony />
+                <CTA />
+
+                <Footer />
             </main>
         </>
     );
@@ -231,12 +237,33 @@ function Testimony() {
                 <p className=" p-label h3-medium">Apa Kata Pemilik Tentang <br /> Sewa Asri Tenant? </p>
             </article>
             <section className="testimonial">
-               <TestimonialCard name="Reny Anggraini" photo="https://i.pinimg.com/736x/2a/7d/4c/2a7d4c4bc1381a476b8b8a85885ac392.jpg" role="Pengelola villa" reviews="Sewa Asri Tenant dinilai sangat mudah digunakan, baik oleh pengguna pemula maupun pengguna yang sudah berpengalaman. Fitur-fiturnya dirancang dengan intuitif dan mudah dipahami."/>
-               <TestimonialCard name="Ayu Renita" photo="https://i.pinimg.com/736x/64/7b/a2/647ba2eb2b1f47dc5d8b57a7a4727858.jpg" role="Pengelola villa" reviews="Sejak menggunakan Sewa Asri Tenant, saya tidak perlu lagi mengelola reservasi villa secara manual. Semuanya dapat dilakukan secara otomatis. Hal ini sangat menghemat waktu dan tenaga saya."/>
-               <TestimonialCard name="Anisa Rahmawati" photo="https://i.pinimg.com/736x/1e/b9/5a/1eb95a3eaef402828b3e539006afde30.jpg" role="Pengelola villa" reviews="Saya telah menggunakan Sewa Asri Tenant selama beberapa bulan dan sangat puas dengan hasilnya. Aplikasi ini sangat membantu saya untuk mengelola reservasi villa dengan mudah dan efisien."/>
-               <TestimonialCard name="Bella Hadid" photo="https://i.pinimg.com/564x/25/f6/6e/25f66e08ee01e563086bb5723b40ae1b.jpg" role="Pengelola villa" reviews="Saya telah menggunakan Sewa Asri Tenant selama beberapa bulan dan sangat puas dengan hasilnya. Aplikasi ini sangat membantu saya untuk mengelola reservasi villa dengan mudah dan efisien."/>
+                <TestimonialCard name="Reny Anggraini" photo="https://i.pinimg.com/736x/2a/7d/4c/2a7d4c4bc1381a476b8b8a85885ac392.jpg" role="Pengelola villa" reviews="Sewa Asri Tenant dinilai sangat mudah digunakan, baik oleh pengguna pemula maupun pengguna yang sudah berpengalaman. Fitur-fiturnya dirancang dengan intuitif dan mudah dipahami." />
+                <TestimonialCard name="Ayu Renita" photo="https://i.pinimg.com/736x/64/7b/a2/647ba2eb2b1f47dc5d8b57a7a4727858.jpg" role="Pengelola villa" reviews="Sejak menggunakan Sewa Asri Tenant, saya tidak perlu lagi mengelola reservasi villa secara manual. Semuanya dapat dilakukan secara otomatis. Hal ini sangat menghemat waktu dan tenaga saya." />
+                <TestimonialCard name="Anisa Rahmawati" photo="https://i.pinimg.com/736x/1e/b9/5a/1eb95a3eaef402828b3e539006afde30.jpg" role="Pengelola villa" reviews="Saya telah menggunakan Sewa Asri Tenant selama beberapa bulan dan sangat puas dengan hasilnya. Aplikasi ini sangat membantu saya untuk mengelola reservasi villa dengan mudah dan efisien." />
+                <TestimonialCard name="Bella Hadid" photo="https://i.pinimg.com/564x/25/f6/6e/25f66e08ee01e563086bb5723b40ae1b.jpg" role="Pengelola villa" reviews="Saya telah menggunakan Sewa Asri Tenant selama beberapa bulan dan sangat puas dengan hasilnya. Aplikasi ini sangat membantu saya untuk mengelola reservasi villa dengan mudah dan efisien." />
             </section>
 
+        </section>
+    )
+}
+
+function CTA() {
+    const navigate = useNavigate();
+
+    return (
+        <section className="cta">
+            <p className="h2-medium">Ayo Buat Akun di Sewa Asri</p>
+            <p className="p-regular p-label">Kelola booking secara otomatis, berkomunikasi dengan calon <br /> tamu, memperbarui harga villa, melihat riwayat booking</p>
+            <Button variant="primary"
+                behavior="hug-content"
+                size="large"
+                state="active"
+                label="Buat Akun"
+
+                onClickHandler={() => {
+                    navigate({ to: "/register" });
+                }}
+            />
         </section>
     )
 }
