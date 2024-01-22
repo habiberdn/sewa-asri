@@ -80,6 +80,7 @@ function TeamProfile({ name, role }: { name: string; role: string; }) {
         <section className="team-profile">
             <img src={avatarMap[name]} 
                  alt="avatar-photo"
+                 loading="lazy"
                  className="avatar" />
 
             <article className="detail">
@@ -113,11 +114,15 @@ function OurOtherProduct() {
 
                 <section className="mockup product-mockup">
 
-                    <img src={AndroidApp1} alt="reservation Schedule 1"
-                        className="android-mockup" />
+                    <img src={AndroidApp1} 
+                         alt="reservation Schedule 1"
+                         loading="lazy"
+                         className="android-mockup" />
 
-                    <img src={AndroidApp2} alt="reservation Schedule 1"
-                        className="android-mockup" />
+                    <img src={AndroidApp2} 
+                         alt="reservation Schedule 1"
+                         loading="lazy"
+                         className="android-mockup" />
                 </section>
 
                 <section className="content">
@@ -145,14 +150,20 @@ function OurOtherProduct() {
 
                 <section className="mockup product-mockup">
 
-                    <img src={Macbook} alt="reservation Schedule 1"
-                        className="main-mockup" />
+                    <img src={Macbook} 
+                         alt="reservation Schedule 1"
+                         loading="lazy"
+                         className="main-mockup" />
                     
-                    <img src={ReservationSchedule2} alt="reservation Schedule 1"
-                        className="floating-mockup" />
+                    <img src={ReservationSchedule2} 
+                         alt="reservation Schedule 1"
+                         loading="lazy"
+                         className="floating-mockup" />
 
-                    <img src={DetailVilla} alt="detail villa"
-                        className="floating-mockup" />
+                    <img src={DetailVilla} 
+                         alt="detail villa"
+                         loading="lazy"
+                         className="floating-mockup" />
                 </section>
 
                 <section className="content">

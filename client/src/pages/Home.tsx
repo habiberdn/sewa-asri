@@ -64,11 +64,15 @@ function ReservationScheduleFeature() {
 
             <section className="mockup app-mockup">
 
-                <img src={reservationSchedule1Mockup} alt="reservation Schedule 1"
-                    className="main-mockup" />
+                <img src={reservationSchedule1Mockup} 
+                     alt="reservation Schedule 1"
+                     loading="lazy"
+                     className="main-mockup" />
 
-                <img src={reservationSchedule2Mockup} alt="reservation Schedule 1"
-                    className="floating-mockup" />
+                <img src={reservationSchedule2Mockup} 
+                     alt="reservation Schedule 1"
+                     loading="lazy"
+                     className="floating-mockup" />
             </section>
 
             <section className="content">
@@ -99,11 +103,15 @@ function VillaManagementFeature() {
 
             <section className="mockup app-mockup">
 
-                <img src={villaManagement1Mockup} alt="reservation Schedule 1"
-                    className="main-mockup" />
+                <img src={villaManagement1Mockup} 
+                     alt="reservation Schedule 1"
+                     loading="lazy"
+                     className="main-mockup" />
 
-                <img src={villaManagement2Mockup} alt="reservation Schedule 1"
-                    className="floating-mockup" />
+                <img src={villaManagement2Mockup} 
+                     alt="reservation Schedule 1"
+                     loading="lazy"
+                     className="floating-mockup" />
             </section>
 
             <section className="content">
@@ -133,11 +141,15 @@ function ChatFeature() {
 
             <section className="mockup app-mockup">
 
-                <img src={chat1Mockup} alt="reservation Schedule 1"
-                    className="main-mockup" />
+                <img src={chat1Mockup} 
+                     alt="reservation Schedule 1"
+                     loading="lazy"
+                     className="main-mockup" />
 
-                <img src={chat2Mockup} alt="reservation Schedule 1"
-                    className="floating-mockup" />
+                <img src={chat2Mockup} 
+                     alt="reservation Schedule 1"
+                     loading="lazy"
+                     className="floating-mockup" />
             </section>
 
             <section className="content">
