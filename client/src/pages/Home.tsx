@@ -4,23 +4,37 @@ import villaManagement1Mockup from "./../assets/mockup/Management-villa-1.webp";
 import villaManagement2Mockup from "./../assets/mockup/Detail-villa-1-cropped.webp";
 import chat1Mockup from "./../assets/mockup/Chat-1.webp";
 import chat2Mockup from "./../assets/mockup/Chat-2-cropped.webp";
+import villaPhoto from "./../assets/mockup/villa hero section.webp";
+import cardVillaMockup from "./../assets/mockup/villa card hero section.webp";
 
 import { useNavigate } from '@tanstack/react-router'
 import { Badge, PageHeader, Footer, Button, TestimonialCard } from "../components";
 
 export function Home() {
-
     return (
         <>
             <PageHeader />
             <main className="page-container">
                 <section className="container">
+
                     <section className="hero-section">
-                        <article>
-                            <h1 className="h1-medium">Kelola Jadwal Reservasi dan Villa Dengan Sewa Asri Tenant</h1>
+
+                        <article className="header-description-wrapper">
+                            <h1 className="h1-medium">
+                                Kelola Jadwal Reservasi dan Villa Dengan <span className="highlight">Sewa Asri Tenant</span>
+                            </h1>
                         </article>
-                        <section>
-                            <img src="" alt="" />
+
+                        <section className="mockup">
+
+                            <img src={villaPhoto} 
+                                 alt="villa photo"
+                                 loading="lazy" />
+
+                            <img src={cardVillaMockup} 
+                                 alt="card villa mockup"
+                                 loading="lazy"
+                                 className="card-photo" />
                         </section>
                     </section>
 
