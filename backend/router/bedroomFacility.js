@@ -3,3 +3,6 @@ const bedroomFasilityController = require('../controller/bedroomFacilityControll
 const userRouter = express.Router();
 
 userRouter.route('/').get(bedroomFasilityController.getAllBedroomFasility).post(bedroomFasilityController.createBedroomFasility)
+
+
+module.exports = userRouter

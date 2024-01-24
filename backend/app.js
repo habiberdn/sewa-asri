@@ -5,25 +5,33 @@ const userRouter = require('./router/userRouter')
 const otpRouter = require('./router/otpRouter')
 const ratingsRouter = require('./router/ratingsRouter')
 const bookmarkRouter = require('./router/bookmarkRouter')
+const addressRouter = require('./router/addressRouter')
+const attractionRouter = require("./router/attractionRouter")
+const bathroomRouter = require('./router/bathroomRouter')
+const bathroomFacilityRouter = require('./router/bathroomFacilityRouter')
+
 const villaRouter = require('./router/villaRouter')
 const globalError = require('./controller/errorController');
+const bedroomRouter = require('./router/bedroomRouter')
+const bedroomFacilityRouter = require('./router/bedroomFacility')
+
 const AppError = require('./utils/appError');
 const app = express();
 const cookieParser = require('cookie-parser');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: '10kb' }));
-app.use(cors( {
+app.use(cors({
     origin: ['http://localhost:5173'],
     credentials: true,            //access-control-allow-credentials:true
     methods: ["POST", "GET"],
-  }))
+}))
 app.use(cookieParser());
 const limiter = rateLimit({
     max: 100,
     windowMs: 60 * 60 * 1000,
     message: 'Too many request from this IP,please try again in an hour!',
-    
+
 });
 
 app.set('trust proxy', 1);
@@ -35,11 +43,23 @@ app.set('trust proxy', 1);
 //     }
 // });
 app.use(limiter);
-app.use('/api/v1/otp',otpRouter)
+app.use('/api/v1/otp', otpRouter)
 app.use('/api/v1/rating', ratingsRouter)
 app.use('/api/v1/bookmark', bookmarkRouter)
 app.use('/api/v1/user', userRouter)
 app.use('/api/v1/villa', villaRouter)
+app.use('/api/v1/bedroom', bedroomRouter)
+app.use('/api/v1/bedroomFasility', bedroomFacilityRouter)
+app.use('/api/v1/address', addressRouter)
+app.use('/api/v1/attraction', attractionRouter)
+app.use('/api/v1/bathroom', bathroomRouter)
+app.use('/api/v1/bathroomFacility', bathroomFacilityRouter)
+
+
+
+
+
+
 
 
 app.get('/favicon.ico', (req, res) => res.status(204));
