@@ -1,0 +1,388 @@
+{
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "description": "Sewa Asri API",
+      "url": ""
+    }
+  ],
+  "info": {
+    "description": "This is a simple API",
+    "version": "1.0.0",
+    "title": "Simple Inventory API",
+    "contact": {
+      "email": "you@your-company.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags": [
+    {
+      "name": "manager",
+      "description": "Secured Admin-only calls"
+    },
+    {
+      "name": "user",
+      "description": "Operations available to regular developers"
+    }
+  ],
+  "paths": {
+    "/villa": {
+      "get": {
+        "tags": [
+          "manager"
+        ],
+        "summary": "searches inventory",
+        "operationId": "searchInventory",
+        "description": "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+        "responses": {
+          "200": {
+            "description": "Villas found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VillaFound"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/villa/id": {
+      "get": {
+        "tags": [
+          "manager"
+        ],
+        "summary": "searches inventory",
+        "operationId": "searchInventory",
+        "description": "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+        "responses": {
+          "200": {
+            "description": "Villa found",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VillaFound"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to perform this action",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "undefined"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": "fail",
+                    "message": "You're not logged in"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nothing found with that data",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VillaNotFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "manager"
+        ],
+        "summary": "adds an inventory item",
+        "operationId": "addInventory",
+        "description": "Adds an item to the system",
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing item already exists"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryItem"
+              }
+            }
+          },
+          "description": "Inventory item to add"
+        }
+      },
+      "patch": {
+        "tags": [
+          "manager"
+        ],
+        "summary": "adds an inventory item",
+        "operationId": "addInventory",
+        "description": "Adds an item to the system",
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing item already exists"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryItem"
+              }
+            }
+          },
+          "description": "Inventory item to add"
+        }
+      },
+      "delete": {
+        "tags": [
+          "manager"
+        ],
+        "summary": "adds an inventory item",
+        "operationId": "addInventory",
+        "description": "Adds an item to the system",
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing item already exists"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryItem"
+              }
+            }
+          },
+          "description": "Inventory item to add"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "InventoryItem": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "manufacturer",
+          "releaseDate"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          },
+          "name": {
+            "type": "string",
+            "example": "Widget Adapter"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2016-08-29T09:12:33.001Z"
+          },
+          "manufacturer": {
+            "$ref": "#/components/schemas/Manufacturer"
+          }
+        }
+      },
+      "Manufacturer": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "ACME Corporation"
+          },
+          "homePage": {
+            "type": "string",
+            "format": "url",
+            "example": "https://www.acme-corp.com"
+          },
+          "phone": {
+            "type": "string",
+            "example": "408-867-5309"
+          }
+        },
+        "type": "object"
+      },
+      "VillaFound": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success"
+          },
+          "message": {
+            "type": "string",
+            "example": "Villa found"
+          },
+          "data": {
+            "type": "object",
+            "example": {
+              "schema": {
+                "$ref": "#/components/schemas/Villa"
+              }
+            }
+          }
+        },
+        "type": "object"
+      },
+      "VillaNotFound": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success"
+          },
+          "message": {
+            "type": "string",
+            "example": "Villa not found"
+          },
+          "data": {
+            "type": "string",
+            "example": "undefined"
+          }
+        },
+        "type": "object"
+      },
+      "Villa": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Villa Flamboyan",
+            "minLength": 10,
+            "maxLength": 40
+          },
+          "price": {
+            "type": "number",
+            "example": 1000000
+          },
+          "image": {
+            "type": "array",
+            "example": []
+          },
+          "bedroom": {
+            "type": "object",
+            "example": {
+              "$ref": "#/components/schemas/Bedroom"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "24 June 2018"
+          },
+          "isAvailable": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "Bedroom": {
+        "required": [
+          "quantity"
+        ],
+        "properties": {
+          "quantity": {
+            "type": "number",
+            "default": 1,
+            "minLength": 1,
+            "example": 1
+          },
+          "width": {
+            "type": "number",
+            "default": 1,
+            "minLength": 1,
+            "example": 1
+          },
+          "length": {
+            "type": "number",
+            "default": 1,
+            "minLength": 1,
+            "example": 1
+          },
+          "bedSize": {
+            "type": "string",
+            "default": 1,
+            "minLength": 1,
+            "example": ["Single bed", "Double bed"]
+          }
+        },
+        "type": "object"
+      }
+    }
+  }
+}
