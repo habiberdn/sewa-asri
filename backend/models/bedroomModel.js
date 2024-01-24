@@ -15,8 +15,9 @@ const bedroomSchema = new mongoose.Schema({
         require:[true,'mush have length']
     },
     bedsize:{
-        type:Number,
-        require:[true,'mush have bedsize']
+        type:String,
+        require:[true,'mush have bedsize'],
+        default: "Single Bed"
     },
     othersFasility:{
         type:mongoose.Schema.ObjectId,
