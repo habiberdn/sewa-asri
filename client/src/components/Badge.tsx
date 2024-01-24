@@ -2,12 +2,13 @@ import cardIcon from "./../assets/icons/card.webp";
 import menuBoardIcon from "./../assets/icons/menu-board.webp";
 import receiptSearchIcon from "./../assets/icons/receipt-search.webp";
 import ticketIcon from "./../assets/icons/ticket.webp";
-import editIcon from "./../assets/icons/notification-status.png";
-import notificationStatusIcon from "./../assets/icons/edit-2.png";
-import likeIcon from "./../assets/icons/like.png";
-import messageIcon from "./../assets/icons/messages-2.png";
-import profileUserIcon from "./../assets/icons/profile-2user.png";
-import smsNotificationIcon from "./../assets/icons/sms-notification.png";
+import editIcon from "./../assets/icons/edit-2.webp";
+import notificationStatusIcon from "./../assets/icons/notification-status-1.webp";
+import likeIcon from "./../assets/icons/like-1.webp";
+import messageIcon from "./../assets/icons/messages-2-1.webp";
+import profileUserIcon from "./../assets/icons/profile-2user.webp";
+import smsNotificationIcon from "./../assets/icons/sms-notification.webp";
+import villaIcon from "./../assets/icons/house.webp";
 
 export function Badge({ label }: { label: string }) {
     return (
@@ -26,13 +27,16 @@ function BadgeIcon({ label }: { label: string }) {
         "Beragam metode pembayaran": cardIcon,
         "Unduh tiket": ticketIcon,
         "Kelola jadwal reservasi": menuBoardIcon,
+        "Booking villa": menuBoardIcon,
         "Riwayat status reservasi": receiptSearchIcon,
         "Atur status ketersediaan villa": notificationStatusIcon,
         "Edit informasi villa": editIcon,
         "Pantau kepuasan tamu": likeIcon,
         "Percakapan dengan calon tamu": messageIcon,
+        "Percakapan dengan pengelola": messageIcon,
         "Melihat daftar tamu": profileUserIcon,
-        "Notifikasi chat terbaru": smsNotificationIcon
+        "Notifikasi chat terbaru": smsNotificationIcon,
+        "Mencari villa": villaIcon
     }
     return <img src={badgeIconMap[label]} className="icon" />;
 }

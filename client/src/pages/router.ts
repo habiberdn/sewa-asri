@@ -24,7 +24,8 @@ import {
     CreateVilla,
     VillaDetailDescription,
     EditVilla,
-    PageNotFound
+    PageNotFound,
+    AboutUs
 } from ".";
 
 const rootRoute = new RootRoute();
@@ -52,6 +53,12 @@ const homeRoute = new Route({
     getParentRoute: () => rootRoute,
     path: '/',
     component: Home
+});
+
+const aboutUsRoute = new Route({
+    getParentRoute: () => rootRoute,
+    path: '/about-us',
+    component: AboutUs
 });
 
 const loginRoute = new Route({
@@ -200,6 +207,7 @@ const editvillaRoute = new Route({
 
 const routeTree = rootRoute.addChildren([
     homeRoute, 
+    aboutUsRoute,
     loginRoute, 
     registerRoute,
     createPasswordRoute,
