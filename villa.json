@@ -2,16 +2,16 @@
   "openapi": "3.0.0",
   "servers": [
     {
-      "description": "Sewa Asri API",
-      "url": ""
+      "description": "Sewa Asri Villa API",
+      "url": "asritech.netlify.app"
     }
   ],
   "info": {
-    "description": "This is a simple API",
+    "description": "This API was provided to Sewa Asri and Sewa Asri Tenant Apps",
     "version": "1.0.0",
-    "title": "Simple Inventory API",
+    "title": "Sewa Asri API",
     "contact": {
-      "email": "you@your-company.com"
+      "email": "asriitech@gmail.com"
     },
     "license": {
       "name": "Apache 2.0",
@@ -32,11 +32,11 @@
     "/villa": {
       "get": {
         "tags": [
-          "manager"
+          "manager",
+          "user"
         ],
-        "summary": "searches inventory",
-        "operationId": "searchInventory",
-        "description": "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+        "summary": "Mendapatkan banyak Villa",
+        "description": "path ini digunakan untuk mendapatkan semua villa",
         "responses": {
           "200": {
             "description": "Villas found",
@@ -60,10 +60,10 @@
     "/villa/id": {
       "get": {
         "tags": [
-          "manager"
+          "manager",
+          "user"
         ],
-        "summary": "searches inventory",
-        "operationId": "searchInventory",
+        "summary": "Mendapatkan detail villa",
         "description": "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
         "responses": {
           "200": {
@@ -154,7 +154,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/InventoryItem"
+                "$ref": "#/components/schemas/VillaCreated"
               }
             }
           },
@@ -183,7 +183,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/InventoryItem"
+                "$ref": "#/components/schemas/Villa"
               }
             }
           },
@@ -212,7 +212,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/InventoryItem"
+                "$ref": "#/components/schemas/VillaDeleted"
               }
             }
           },
@@ -223,63 +223,14 @@
   },
   "components": {
     "schemas": {
-      "InventoryItem": {
-        "type": "object",
-        "required": [
-          "id",
-          "name",
-          "manufacturer",
-          "releaseDate"
-        ],
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
-          },
-          "name": {
-            "type": "string",
-            "example": "Widget Adapter"
-          },
-          "releaseDate": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2016-08-29T09:12:33.001Z"
-          },
-          "manufacturer": {
-            "$ref": "#/components/schemas/Manufacturer"
-          }
-        }
-      },
-      "Manufacturer": {
-        "required": [
-          "name"
-        ],
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "ACME Corporation"
-          },
-          "homePage": {
-            "type": "string",
-            "format": "url",
-            "example": "https://www.acme-corp.com"
-          },
-          "phone": {
-            "type": "string",
-            "example": "408-867-5309"
-          }
-        },
-        "type": "object"
-      },
       "VillaFound": {
         "required": [
           "name"
         ],
         "properties": {
           "status": {
-            "type": "string",
-            "example": "success"
+            "type": "number",
+            "example": 200
           },
           "message": {
             "type": "string",
@@ -302,8 +253,8 @@
         ],
         "properties": {
           "status": {
-            "type": "string",
-            "example": "success"
+            "type": "number",
+            "example": 404
           },
           "message": {
             "type": "string",
@@ -312,6 +263,38 @@
           "data": {
             "type": "string",
             "example": "undefined"
+          }
+        },
+        "type": "object"
+      },
+      "VillaDeleted": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "example": 204
+          },
+          "message": {
+            "type": "string",
+            "example": "Villa not found"
+          }
+        },
+        "type": "object"
+      },
+      "VillaCreated": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "example": 204
+          },
+          "message": {
+            "type": "string",
+            "example": "Villa not found"
           }
         },
         "type": "object"
@@ -336,9 +319,42 @@
             "example": []
           },
           "bedroom": {
-            "type": "object",
-            "example": {
-              "$ref": "#/components/schemas/Bedroom"
+            "$ref": "#/components/schemas/Bedroom"
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "24 June 2018"
+          },
+          "isAvailable": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "VillaDetail": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Villa Flamboyan",
+            "minLength": 10,
+            "maxLength": 40
+          },
+          "price": {
+            "type": "number",
+            "example": 1000000
+          },
+          "image": {
+            "type": "array",
+            "example": []
+          },
+          "bedroom": {
+            "$ref": "#/components/schemas/Bedroom",
+            "othersFacility": {
+              "type": "object",
+              "$ref": "#/components/schemas/BedroomFacility"
             }
           },
           "createdAt": {
@@ -352,6 +368,26 @@
         }
       },
       "Bedroom": {
+        "required": [
+          "quantity"
+        ],
+        "properties": {
+          "quantity": {
+            "type": "number",
+            "default": 1,
+            "minLength": 1,
+            "example": 1
+          },
+          "bedSize": {
+            "type": "string",
+            "default": 1,
+            "minLength": 1,
+            "example": ["Single bed", "Double bed"]
+          }
+        },
+        "type": "object"
+      },
+      "BedroomDetail": {
         "required": [
           "quantity"
         ],
@@ -382,6 +418,80 @@
           }
         },
         "type": "object"
+      },
+      "BedroomFacility": {
+        "type": "object",
+        "properties": {
+          "window": {
+            "type": "object",
+            "example": {
+              "name": "Jendela",
+              "status": "available"
+            }
+          },
+          "socket": {
+            "type": "object",
+            "example": {
+              "name": "Stop kontak",
+              "status": "not available"
+            },
+            "default": {
+              "name": "Stop kontak",
+              "status": "not available"
+            }
+          },
+          "wardrobe": {
+            "type": "object",
+            "example": {
+              "name": "Lemari",
+              "status": "not available"
+            },
+            "default": {
+              "name": "Jendela",
+              "status": "not available"
+            }
+          }
+        }
+      },
+      "BathroomFacility": {
+        "type": "object",
+        "properties": {
+          "waterHeater": {
+            "type": "object",
+            "example": {
+              "name": "Penghangat air",
+              "status": "available"
+            }
+          },
+          "shower": {
+            "type": "object",
+            "example": {
+              "name": "Pancuran air",
+              "status": "not available"
+            }
+          },
+          "bathtube": {
+            "type": "object",
+            "example": {
+              "name": "Bak mandi",
+              "status": "available"
+            }
+          },
+          "squatToilet": {
+            "type": "object",
+            "example": {
+              "name": "Toilet jongkok",
+              "status": "available"
+            }
+          },
+          "sittingToilet": {
+            "type": "object",
+            "example": {
+              "name": "Toilet duduk",
+              "status": "not available"
+            }
+          }
+        }
       }
     }
   }
