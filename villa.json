@@ -239,9 +239,7 @@
           "data": {
             "type": "object",
             "example": {
-              "schema": {
-                "$ref": "#/components/schemas/Villa"
-              }
+              "$ref": "#/components/schemas/Villa"
             }
           }
         },
