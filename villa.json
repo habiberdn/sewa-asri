@@ -43,16 +43,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/VillaFound"
-                  }
+                  "$ref": "#/components/schemas/VillaFound"
                 }
               }
             }
-          },
-          "400": {
-            "description": "bad input parameter"
           }
         }
       }
@@ -261,6 +255,28 @@
           "data": {
             "type": "string",
             "example": "undefined"
+          }
+        },
+        "type": "object"
+      },
+      "VillaDetailFound": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "Villa found"
+          },
+          "data": {
+            "type": "object",
+            "example": {
+              "$ref": "#/components/schemas/Villa"
+            }
           }
         },
         "type": "object"
@@ -488,6 +504,44 @@
               "name": "Toilet duduk",
               "status": "not available"
             }
+          }
+        }
+      },
+      "location": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string",
+            "example": "Serang Banten"
+          },
+          "address": {
+            "type": "string",
+            "example": "Jl. Raya Serang Banten No 40"
+          }
+        }
+      },
+      "attraction": {
+        "type": "object",
+        "properties": {
+          "photo": {
+            "type": "string",
+            "example": "image file"
+          },
+          "name": {
+            "type": "string",
+            "example": "Air Terjun Kawah"
+          },
+          "open": {
+            "type": "string",
+            "example": "08.00"
+          },
+          "close": {
+            "type": "string",
+            "example": "15.00"
+          },
+          "distance": {
+            "type": "number",
+            "example": 100
           }
         }
       }
