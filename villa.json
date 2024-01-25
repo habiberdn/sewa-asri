@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "servers": [
     {
-      "description": "Sewa Asri Villa API",
+      "description": "Sewa Asri adalah aplikasi mobile yang dapat digunakan untuk booking dan mencari villa terdekat dengan praktis.",
       "url": "asritech.netlify.app"
     }
   ],
@@ -51,7 +51,7 @@
         }
       }
     },
-    "/villa/id": {
+    "/villa/{villaId}": {
       "get": {
         "tags": [
           "manager",
@@ -75,7 +75,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/VillaFound"
+                  "$ref": "#/components/schemas/VillaDetailFound"
                 }
               }
             }
@@ -89,7 +89,6 @@
                   "type": "string",
                   "example": "undefined"
                 }
-                
               }
             },
             "content": {
@@ -97,7 +96,7 @@
                 "schema": {
                   "type": "object",
                   "example": {
-                    "status": "fail",
+                    "status": 200,
                     "message": "You're not logged in"
                   }
                 }
@@ -119,58 +118,123 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/VillaNotFound"
+                  "example": {
+                    "status": 404,
+                    "message": "Villa not found",
+                    "data": null
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There is an error on the server side",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": 500,
+                    "message": "There is an error on the server side",
+                    "data": null
+                  }
                 }
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "villa_auth": [
+              "write: villa",
+              "read: villa"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
           "manager"
         ],
-        "summary": "adds an inventory item",
+        "summary": "Membuat villa baru",
         "operationId": "addInventory",
         "description": "Adds an item to the system",
         "responses": {
           "201": {
-            "description": "item created"
-          },
-          "400": {
-            "description": "invalid input, object invalid"
-          },
-          "409": {
-            "description": "an existing item already exists"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/VillaCreated"
+            "description": "Villa created",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VillaCreated"
+                }
               }
             }
           },
-          "description": "Inventory item to add"
-        }
-      },
-      "patch": {
-        "tags": [
-          "manager"
-        ],
-        "summary": "adds an inventory item",
-        "operationId": "addInventory",
-        "description": "Adds an item to the system",
-        "responses": {
-          "201": {
-            "description": "item created"
+          "403": {
+            "description": "You do not have permission to perform this action",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "undefined"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": 200,
+                    "message": "You're not logged in"
+                  }
+                }
+              }
+            }
           },
-          "400": {
-            "description": "invalid input, object invalid"
-          },
-          "409": {
-            "description": "an existing item already exists"
+          "500": {
+            "description": "There is an error on the server side",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": 500,
+                    "message": "There is an error on the server side",
+                    "data": null
+                  }
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -182,36 +246,202 @@
             }
           },
           "description": "Inventory item to add"
-        }
+        },
+        "security": [
+          {
+            "villa_auth": [
+              "write: villa",
+              "read: villa"
+            ]
+          }
+        ]
       },
-      "delete": {
+      "patch": {
         "tags": [
           "manager"
         ],
-        "summary": "adds an inventory item",
+        "summary": "Memperbarui data villa lama",
         "operationId": "addInventory",
         "description": "Adds an item to the system",
         "responses": {
-          "201": {
-            "description": "item created"
+          "200": {
+            "description": "Villa updated",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VillaCreated"
+                }
+              }
+            }
           },
-          "400": {
-            "description": "invalid input, object invalid"
+          "403": {
+            "description": "You do not have permission to perform this action",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "undefined"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": 200,
+                    "message": "You're not logged in"
+                  }
+                }
+              }
+            }
           },
-          "409": {
-            "description": "an existing item already exists"
+          "500": {
+            "description": "There is an error on the server side",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": 500,
+                    "message": "There is an error on the server side",
+                    "data": null
+                  }
+                }
+              }
+            }
           }
         },
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/VillaDeleted"
+                "$ref": "#/components/schemas/Villa"
               }
             }
           },
           "description": "Inventory item to add"
-        }
+        },
+        "security": [
+          {
+            "villa_auth": [
+              "write: villa",
+              "read: villa"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "manager"
+        ],
+        "summary": "Menghapus villa",
+        "operationId": "addInventory",
+        "description": "Adds an item to the system",
+        "responses": {
+          "204": {
+            "description": "villa was successfully deleted",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "undefined"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/VillaDeleted"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to perform this action",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "undefined"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": 200,
+                    "message": "You're not logged in"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There is an error on the server side",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": 500,
+                    "message": "There is an error on the server side",
+                    "data": null
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+            }
+          },
+          "description": "Inventory item to add"
+        },
+        "security": [
+          {
+            "villa_auth": [
+              "write: villa",
+              "read: villa"
+            ]
+          }
+        ]
       }
     }
   },
@@ -234,6 +464,18 @@
             "type": "object",
             "example": {
               "$ref": "#/components/schemas/Villa"
+            }
+          },
+          "villaAvailability": {
+            "type": "boolean", 
+            "example": {
+              "$ref": "#/components/schemas/VillaAvailability"
+            }
+          },
+          "filter": {
+            "type": "object",
+            "example": {
+              "$ref": "#/components/schemas/Filter"
             }
           }
         },
@@ -275,7 +517,7 @@
           "data": {
             "type": "object",
             "example": {
-              "$ref": "#/components/schemas/Villa"
+              "$ref": "#/components/schemas/VillaDetail"
             }
           }
         },
@@ -292,7 +534,7 @@
           },
           "message": {
             "type": "string",
-            "example": "Villa not found"
+            "example": "Villa was successfully deleted"
           }
         },
         "type": "object"
@@ -308,7 +550,23 @@
           },
           "message": {
             "type": "string",
-            "example": "Villa not found"
+            "example": "Villa was successfully created"
+          }
+        },
+        "type": "object"
+      },
+      "VillaUpdated": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "example": 204
+          },
+          "message": {
+            "type": "string",
+            "example": "Villa was successfully updated"
           }
         },
         "type": "object"
@@ -367,13 +625,15 @@
           "bedroom": {
             "$ref": "#/components/schemas/Bedroom",
             "othersFacility": {
-              "type": "object",
               "$ref": "#/components/schemas/BedroomFacility"
             }
           },
           "createdAt": {
             "type": "string",
             "example": "24 June 2018"
+          },
+          "attraction": {
+            "$ref": "#/components/schemas/Attraction"
           },
           "isAvailable": {
             "type": "boolean",
@@ -507,7 +767,7 @@
           }
         }
       },
-      "location": {
+      "Location": {
         "type": "object",
         "properties": {
           "city": {
@@ -520,7 +780,7 @@
           }
         }
       },
-      "attraction": {
+      "Attraction": {
         "type": "object",
         "properties": {
           "photo": {
@@ -544,6 +804,49 @@
             "example": 100
           }
         }
+      },
+      "VillaAvailability": {
+        "type": "boolean",
+        "example": true,
+        "default": true
+      },
+      "Filter": {
+        "type": "object",
+        "properties": {
+          "sortByPrice": {
+            "type": "string",
+            "enum": ["termurah", "termahal"],
+            "example": "termurah"
+          },
+          "sortByLocation": {
+            "type": "string",
+            "enum": ["terdekat", "terjauh", "terpopuler"],
+            "example": "terdekat"
+          },
+          "sortByRooms": {
+            "type": "number",
+            "example": 1
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "villa_auth": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://villabooking3.swagger.io/oauth/authorize",
+            "scopes": {
+              "write:villas": "modify villas in your account",
+              "read:villas": "read your villas"
+            }
+          }
+        }
+      },
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header"
       }
     }
   }
