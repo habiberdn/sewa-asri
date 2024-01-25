@@ -1,0 +1,623 @@
+{
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "description": "Sewa Asri adalah aplikasi mobile yang dapat digunakan untuk booking dan mencari villa terdekat dengan praktis.",
+      "url": "asritech.netlify.app"
+    }
+  ],
+  "info": {
+    "description": "This API was provided to Sewa Asri and Sewa Asri Tenant Apps",
+    "version": "1.0.0",
+    "title": "Sewa Asri API",
+    "contact": {
+      "email": "asriitech@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags": [
+    {
+      "name": "manager",
+      "description": "Secured Admin-only calls"
+    },
+    {
+      "name": "user",
+      "description": "Operations available to regular developers"
+    }
+  ],
+  "paths": {
+    "/bedroom/{villaId}": {
+      "get": {
+        "tags": [
+          "manager",
+          "user"
+        ],
+        "summary": "Mendapatkan detail kamar tidur",
+        "description": "path ini digunakan untuk mendapatkan semua villa",
+        "responses": {
+          "200": {
+            "description": "Villas found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BedroomFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "manager",
+          "user"
+        ],
+        "summary": "Membuat detail kamar tidur",
+        "description": "path ini digunakan untuk mendapatkan semua villa",
+        "responses": {
+          "201": {
+            "description": "Bedroom detail created",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bedroom"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Villas found",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                
+              }
+            }
+          },
+          "403": {
+            "description": "Villas found",
+            "content": {
+              "application/json": {
+              }
+            }
+          },
+          "500": {
+            "description": "Villas found",
+            "content": {
+              "application/json": {
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Bedroom"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "bedroom_auth": [
+              "write: bedroom",
+              "read: bedroom"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "manager",
+          "user"
+        ],
+        "summary": "Membuat detail kamar tidur",
+        "description": "path ini digunakan untuk mendapatkan semua villa",
+        "responses": {
+          "200": {
+            "description": "Villas found",
+            "content": {
+              "application/json": {
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Bedroom"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "bedroom_auth": [
+              "write: bedroom",
+              "read: bedroom"
+            ]
+          }
+        ]
+      }
+    },
+    "/bedroomFacility": {
+      "get": {
+        "tags": [
+          "manager",
+          "user"
+        ],
+        "summary": "Mendapatkan detail villa",
+        "description": "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+        "responses": {
+          "200": {
+            "description": "Villa found",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "example": {
+                  
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to perform this action",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "undefined"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": 200,
+                    "message": "You're not logged in"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nothing found with that data",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": 404,
+                    "message": "Villa not found",
+                    "data": null
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There is an error on the server side",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": 500,
+                    "message": "There is an error on the server side",
+                    "data": null
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "villa_auth": [
+              "write: villa",
+              "read: villa"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "manager"
+        ],
+        "summary": "Membuat villa baru",
+        "operationId": "addInventory",
+        "description": "Adds an item to the system",
+        "responses": {
+          "201": {
+            "description": "Villa created",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to perform this action",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "undefined"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": 200,
+                    "message": "You're not logged in"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There is an error on the server side",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": 500,
+                    "message": "There is an error on the server side",
+                    "data": null
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+            }
+          },
+          "description": "Inventory item to add"
+        },
+        "security": [
+          {
+            "villa_auth": [
+              "write: villa",
+              "read: villa"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "manager"
+        ],
+        "summary": "Memperbarui data villa lama",
+        "operationId": "addInventory",
+        "description": "Adds an item to the system",
+        "responses": {
+          "200": {
+            "description": "Villa updated",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to perform this action",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "undefined"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": 200,
+                    "message": "You're not logged in"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There is an error on the server side",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status": 500,
+                    "message": "There is an error on the server side",
+                    "data": null
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+            }
+          },
+          "description": "Inventory item to add"
+        },
+        "security": [
+          {
+            "villa_auth": [
+              "write: villa",
+              "read: villa"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BedroomFound": {
+        "required": [
+          "quantity"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "Bedroom detail found"
+          },
+          "schema": {
+            "$ref": "#/components/schemas/Bedroom"
+          }
+        },
+        "type": "object"
+      },
+      "BedroomCreated": {
+        "required": [
+          "quantity"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "example": 201
+          },
+          "message": {
+            "type": "string",
+            "example": "Bedroom created"
+          },
+          "$ref": "#/components/schemas/Bedroom"
+        },
+        "type": "object"
+      },
+      "Bedroom": {
+        "required": [
+          "quantity"
+        ],
+        "properties": {
+          "quantity": {
+            "type": "number",
+            "default": 1,
+            "minLength": 1,
+            "example": 1
+          },
+          "width": {
+            "type": "number",
+            "default": 1,
+            "minLength": 1,
+            "example": 1
+          },
+          "length": {
+            "type": "number",
+            "default": 1,
+            "minLength": 1,
+            "example": 1
+          },
+          "bedSize": {
+            "type": "string",
+            "default": 1,
+            "minLength": 1,
+            "enum": ["Single bed", "Double bed"],
+            "example": "Single bed"
+          }
+        },
+        "type": "object"
+      },
+      "BedroomFacility": {
+        "type": "object",
+        "properties": {
+          "window": {
+            "type": "object",
+            "example": {
+              "name": "Jendela",
+              "status": "available"
+            }
+          },
+          "socket": {
+            "type": "object",
+            "example": {
+              "name": "Stop kontak",
+              "status": "not available"
+            },
+            "default": {
+              "name": "Stop kontak",
+              "status": "not available"
+            }
+          },
+          "wardrobe": {
+            "type": "object",
+            "example": {
+              "name": "Lemari",
+              "status": "not available"
+            },
+            "default": {
+              "name": "Jendela",
+              "status": "not available"
+            }
+          }
+        }
+      },
+      "BathroomFacility": {
+        "type": "object",
+        "properties": {
+          "waterHeater": {
+            "type": "object",
+            "example": {
+              "name": "Penghangat air",
+              "status": "available"
+            }
+          },
+          "shower": {
+            "type": "object",
+            "example": {
+              "name": "Pancuran air",
+              "status": "not available"
+            }
+          },
+          "bathtube": {
+            "type": "object",
+            "example": {
+              "name": "Bak mandi",
+              "status": "available"
+            }
+          },
+          "squatToilet": {
+            "type": "object",
+            "example": {
+              "name": "Toilet jongkok",
+              "status": "available"
+            }
+          },
+          "sittingToilet": {
+            "type": "object",
+            "example": {
+              "name": "Toilet duduk",
+              "status": "not available"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bedroom_auth": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://villabooking3.swagger.io/oauth/authorize",
+            "scopes": {
+              "write:bedroom": "modify bedroom in your account",
+              "read:bedroom": "read your bedroom"
+            }
+          }
+        }
+      },
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header"
+      }
+    }
+  }
+}
