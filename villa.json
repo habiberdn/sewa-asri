@@ -205,7 +205,7 @@
                 "schema": {
                   "type": "object",
                   "example": {
-                    "status": 200,
+                    "status": 403,
                     "message": "You're not logged in"
                   }
                 }
