@@ -43,7 +43,58 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BedroomFound"
+                  "$ref": "#/components/schemas/Bedroom"
+                },
+                "examples": {
+                  "success": {
+                    "description": "Berhasil mendapatkan detail kamar tidur",
+                    "value": {
+                      "status": 200,
+                      "message": "Bedroom detail found",
+                      "bedroom": {
+                        "villaId": "65b318794b1ed52c8bc32f08",
+                        "quantity": 1,
+                        "width": 3,
+                        "length": 3,
+                        "bedSize": "Single bed"
+                      }
+                    }
+                  }
+                }
+                
+              }
+            }
+          },
+          "404": {
+            "description": "Bedroom detail not found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "success": {
+                    "description": "Gagal mendapatkan detail kamar tidur",
+                    "value": {
+                      "status": 404,
+                      "message": "Bedroom detail not found",
+                      "bedroom": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There is an error on the server side",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "success": {
+                    "description": "Gagal mendapatkan detail kamar tidur",
+                    "value": {
+                      "status": 500,
+                      "message": "There is an error on the server side",
+                      "bedroom": null
+                    }
+                  }
                 }
               }
             }
@@ -59,6 +110,155 @@
         "description": "path ini digunakan untuk mendapatkan semua villa",
         "responses": {
           "201": {
+            "description": "Bedroom detail created",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "$ref": "#/components/schemas/Token"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bedroom"
+                },
+                "examples": {
+                  "success": {
+                    "description": "Berhasil mendapatkan detail kamar tidur",
+                    "value": {
+                      "status": 200,
+                      "message": "Bedroom detail found",
+                      "bedroom": {
+                        "villaId": "65b318794b1ed52c8bc32f08",
+                        "quantity": 1,
+                        "width": 3,
+                        "length": 3,
+                        "bedSize": "Single bed"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to perform this action",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": null
+                },
+                "example": {
+                  "cookie": {
+                    "example": "2d"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bedroom"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "You're not logged in",
+                  "bedroom": null
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bedroom detail not found",
+            "headers": {
+              "Authorization": {
+                "description": "Token yang digunakan sebagai autentikasi",
+                "schema": {
+                  "$ref": "#/components/schemas/Token"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bedroom"
+                },
+                "example": {
+                  "status": 404,
+                  "message": "Bedroom detail not found",
+                  "bedroom": null
+                }
+              }
+            }
+          },    
+          "500": {
+            "description": "Villas found",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "$ref": "#/components/schemas/Token"
+                }
+                
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": 500,
+                    "message": "There is an error on the server side",
+                    "bedroom": null
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateBedroom"
+              },
+              "examples": {
+                "request body": {
+                  "value": {
+                    "villaId": "65b318794b1ed52c8bc32f08",
+                    "quantity": 1,
+                    "width": 3,
+                    "length": 3,
+                    "bedSize": "Single bed"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "bedroom_auth": [
+              "write: bedroom",
+              "read: bedroom"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "manager",
+          "user"
+        ],
+        "summary": "Membuat detail kamar tidur",
+        "description": "path ini digunakan untuk mendapatkan semua villa",
+        "responses": {
+          "200": {
             "description": "Bedroom detail created",
             "headers": {
               "Cookie": {
@@ -90,56 +290,57 @@
             },
             "content": {
               "application/json": {
-                
+                "schema": {
+                  "$ref": "#/components/schemas/BedroomNotFound"
+                }
               }
             }
           },
           "403": {
             "description": "Villas found",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "undefined"
+                }
+              }
+            },
             "content": {
               "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": 403,
+                    "message": "You're not logged in"
+                  }
+                }
               }
             }
           },
           "500": {
             "description": "Villas found",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+                
+              }
+            },
             "content": {
               "application/json": {
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Bedroom"
-              }
-            }
-          },
-          "required": true
-        },
-        "security": [
-          {
-            "bedroom_auth": [
-              "write: bedroom",
-              "read: bedroom"
-            ]
-          }
-        ]
-      },
-      "patch": {
-        "tags": [
-          "manager",
-          "user"
-        ],
-        "summary": "Membuat detail kamar tidur",
-        "description": "path ini digunakan untuk mendapatkan semua villa",
-        "responses": {
-          "200": {
-            "description": "Villas found",
-            "content": {
-              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": 500,
+                    "message": "There is an error on the server side",
+                    "data": null
+                  }
+                }
               }
             }
           }
@@ -164,17 +365,16 @@
         ]
       }
     },
-    "/bedroomFacility": {
+    "/bedroomFacility/{villaId}": {
       "get": {
         "tags": [
           "manager",
           "user"
         ],
-        "summary": "Mendapatkan detail villa",
-        "description": "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+        "summary": "Mendapatkan daftar fasilitas kamar tidur",
         "responses": {
           "200": {
-            "description": "Villa found",
+            "description": "Bedroom detail created",
             "headers": {
               "Cookie": {
                 "description": "Cookie yang digunakan sebagai autentikasi",
@@ -182,19 +382,37 @@
                   "type": "string",
                   "example": "Bearer eyJhbGciOiJIUzI"
                 }
-                
               }
             },
             "content": {
               "application/json": {
-                "example": {
-                  
+                "schema": {
+                  "$ref": "#/components/schemas/Bedroom"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Villas found",
+            "headers": {
+              "Cookie": {
+                "description": "Cookie yang digunakan sebagai autentikasi",
+                "schema": {
+                  "type": "string",
+                  "example": "Bearer eyJhbGciOiJIUzI"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BedroomNotFound"
                 }
               }
             }
           },
           "403": {
-            "description": "You do not have permission to perform this action",
+            "description": "Villas found",
             "headers": {
               "Cookie": {
                 "description": "Cookie yang digunakan sebagai autentikasi",
@@ -209,39 +427,15 @@
                 "schema": {
                   "type": "object",
                   "example": {
-                    "status": 200,
+                    "status": 403,
                     "message": "You're not logged in"
                   }
                 }
               }
             }
           },
-          "404": {
-            "description": "Nothing found with that data",
-            "headers": {
-              "Cookie": {
-                "description": "Cookie yang digunakan sebagai autentikasi",
-                "schema": {
-                  "type": "string",
-                  "example": "Bearer eyJhbGciOiJIUzI"
-                }
-                
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "example": {
-                    "status": 404,
-                    "message": "Villa not found",
-                    "data": null
-                  }
-                }
-              }
-            }
-          },
           "500": {
-            "description": "There is an error on the server side",
+            "description": "Villas found",
             "headers": {
               "Cookie": {
                 "description": "Cookie yang digunakan sebagai autentikasi",
@@ -255,6 +449,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "object",
                   "example": {
                     "status": 500,
                     "message": "There is an error on the server side",
@@ -469,8 +664,24 @@
             "type": "string",
             "example": "Bedroom detail found"
           },
-          "schema": {
+          "bedroom": {
             "$ref": "#/components/schemas/Bedroom"
+          }
+        },
+        "type": "object"
+      },
+      "BedroomNotFound": {
+        "required": [
+          "quantity"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "example": 404
+          },
+          "message": {
+            "type": "string",
+            "example": "Bedroom detail not found"
           }
         },
         "type": "object"
@@ -488,42 +699,45 @@
             "type": "string",
             "example": "Bedroom created"
           },
-          "$ref": "#/components/schemas/Bedroom"
-        },
-        "type": "object"
-      },
-      "Bedroom": {
-        "required": [
-          "quantity"
-        ],
-        "properties": {
-          "quantity": {
-            "type": "number",
-            "default": 1,
-            "minLength": 1,
-            "example": 1
-          },
-          "width": {
-            "type": "number",
-            "default": 1,
-            "minLength": 1,
-            "example": 1
-          },
-          "length": {
-            "type": "number",
-            "default": 1,
-            "minLength": 1,
-            "example": 1
-          },
-          "bedSize": {
-            "type": "string",
-            "default": 1,
-            "minLength": 1,
-            "enum": ["Single bed", "Double bed"],
-            "example": "Single bed"
+          "schema": {
+            "$ref": "#/components/schemas/Bedroom"
           }
         },
         "type": "object"
+      },
+      "BedroomFacilityFound": {
+        "type": "object",
+        "properties": {
+          "window": {
+            "type": "object",
+            "example": {
+              "name": "Jendela",
+              "status": "available"
+            }
+          },
+          "socket": {
+            "type": "object",
+            "example": {
+              "name": "Stop kontak",
+              "status": "not available"
+            },
+            "default": {
+              "name": "Stop kontak",
+              "status": "not available"
+            }
+          },
+          "wardrobe": {
+            "type": "object",
+            "example": {
+              "name": "Lemari",
+              "status": "not available"
+            },
+            "default": {
+              "name": "Jendela",
+              "status": "not available"
+            }
+          }
+        }
       },
       "BedroomFacility": {
         "type": "object",
@@ -558,6 +772,78 @@
             }
           }
         }
+      },
+      "Bedroom": {
+        "required": [
+          "villaId",
+          "quantity",
+          "bedSize",
+          "width",
+          "length"
+        ],
+        "properties": {
+          "villaId": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number",
+            "default": 1,
+            "minLength": 1
+          },
+          "width": {
+            "type": "number",
+            "default": 1,
+            "minLength": 1
+          },
+          "length": {
+            "type": "number",
+            "default": 1,
+            "minLength": 1
+          },
+          "bedSize": {
+            "type": "string",
+            "default": 1,
+            "minLength": 1,
+            "enum": ["Single bed", "Double bed"]
+          }
+        },
+        "type": "object"
+      },
+      "CreateOrUpdateBedroom": {
+        "required": [
+          "villaId",
+          "quantity",
+          "bedSize",
+          "width",
+          "length"
+        ],
+        "properties": {
+          "villaId": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number",
+            "default": 1,
+            "minLength": 1
+          },
+          "width": {
+            "type": "number",
+            "default": 1,
+            "minLength": 1
+          },
+          "length": {
+            "type": "number",
+            "default": 1,
+            "minLength": 1
+          },
+          "bedSize": {
+            "type": "string",
+            "default": 1,
+            "minLength": 1,
+            "enum": ["Single bed", "Double bed"]
+          }
+        },
+        "type": "object"
       },
       "BathroomFacility": {
         "type": "object",
@@ -598,6 +884,10 @@
             }
           }
         }
+      },
+      "Token": {
+        "type": "string",
+        "example": "Bearer <token>"
       }
     },
     "securitySchemes": {
