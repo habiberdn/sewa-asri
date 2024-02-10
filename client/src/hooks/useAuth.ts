@@ -16,7 +16,6 @@ function useLogin() {
             })
         }).then(res => res.json());
     }
-
     const { error:loginError, trigger:login, isMutating:isLoading } = useSWRMutation("/login", fetcher);
     
     return { loginError, login, isLoading };
