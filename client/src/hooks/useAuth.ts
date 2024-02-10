@@ -5,7 +5,6 @@ function useLogin() {
     async function fetcher(url:string, { arg }: { arg: { email:string, password:string }}) {
         return await fetch(`${API}${url}`, {
             method: 'POST',
-            mode: "cors",
             headers: {
                 "Content-Type": "application/json",
             },
