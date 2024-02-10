@@ -8,9 +8,8 @@ function useLogin() {
             mode: "cors",
             headers: {
                 "Content-Type": "application/json",
-                credentials: "include"
             },
-
+            credentials: "include",
             body: JSON.stringify({
                 "email": arg.email,
                 "password": arg.password
