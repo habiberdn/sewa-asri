@@ -56,7 +56,6 @@ function useLogout() {
             }
         }).then(res => res.json());
     }
-
     const { isMutating, error, trigger } = useSWRMutation("/logout", fetcher);
     
     return { isMutating, error, trigger };
