@@ -8,6 +8,7 @@ import { VillaDetailForm } from "./Forms/VillaDetail";
 import { AttractionForm } from "./Forms/Attraction";
 
 import { BedroomDetail, BathroomDetail, IndoorDetail, OutdoorDetail } from "./Forms/Facility";
+import { useCreateVilla } from "../hooks/useVilla";
 
 export function CreateVilla() {
     const villaRef = useRef<CreateVillaInterface>({
@@ -67,6 +68,8 @@ export function CreateVilla() {
         isAvailable: false
     });
 
+    const { createNewVilla } = useCreateVilla();
+
     const [messagebar, setMessagebar] = useState<IMessageBar>({
         showMessageBar: false,
         variant: "error",
@@ -84,7 +87,9 @@ export function CreateVilla() {
     console.count("VillaManagement.tsx Re-render");
 
     function onCreateVilla() {
-        console.info(villaRef.current);
+        createNewVilla({ villa: villaRef.current })
+        .then(response => console.info(response));
+        console.info(villaRef.current)
     }
 
     return (
