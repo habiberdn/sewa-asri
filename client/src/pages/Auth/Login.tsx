@@ -50,10 +50,7 @@ export function Login() {
                                 showMessage: true,
                                 name: "Email atau password salah" 
                             });
-                            navigate({ to: `/dashboard` });
-                            cookies.set("auth-token", response.token, {
-                                maxAge: Date.now() + 3 * 1000 * 60 * 60 * 24 * 3
-                            });
+                           
                             break;
                     
                         case "manager":
