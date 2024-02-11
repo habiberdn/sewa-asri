@@ -1,8 +1,11 @@
+import "./../styles/css/components/page-header.css"
 import { Link, useNavigate } from '@tanstack/react-router'
 
 import logo from "./../assets/logo.png";
 import calendarIcon from "./../assets/icons/calendar.png";
 import bellIcon from "./../assets/icons/bell.png";
+import hamburgerMenuIcon from "./../assets/icons/hamburger-menu.webp";
+
 import { getUser } from "../utils/userStore";
 import { Button } from '.';
 
@@ -126,8 +129,17 @@ function Main() {
     return (
         <header className="header-main">
 
-            <img className='logo'
-                src={logo} />
+            <img 
+                className='logo'
+                src={logo} 
+                alt="Logo Sewa Asri Tenant"    
+            />
+
+            <img 
+                className='hamburger-menu'
+                src={hamburgerMenuIcon} 
+                alt="Hamburger menu icon"
+            />
 
             <nav className='navigations'>
 
