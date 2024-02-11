@@ -1,4 +1,4 @@
-@import "./../../base";
+@use "./../../base";
 
 // page hero section
 .page-container {
@@ -12,49 +12,54 @@
     row-gap: 100px;
     
     .container {
-        padding: 0 48px;
+        padding: 0 16px;
 
         display: flex;
         flex-direction: column;
         row-gap: 100px;
+        align-items: center;
     }
 
     .hero-section {
+        width: 100%;
         display: flex;
-        flex-direction: row;
-        width: 1340px;
-        height: 400px;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 50px;
-        flex-shrink: 0;
+        gap: 16px;
+
+        text-align: center;
 
         .header-description-wrapper {
             width: 100%;
-            max-width: 650px;
+            // max-width: 650px;
 
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            align-items: center;
+            gap: 8px;
 
-            h1 {
-                font-family: Inter;
-                font-size: 49px;
+            .title {
+                font-family: 'Inter', sans-serif;
+                font-size: 24px;
                 font-weight: 700;
-                line-height: 80px; 
-                color: $neutral-700;
+                line-height: 40px; 
+                color: base.$neutral-700;
             }
 
             .highlight {
-                color: $primary-400;
+                color: base.$primary-400;
+                display: block;
             }
 
-            p {
-                color: $neutral-600;
-                font-family: Inter;
-                font-size: 18px;
+            .description {
+                max-width: 500px;
+
+                color: base.$neutral-600;
+                font-family: 'Inter', sans-serif;
+                font-size: 13px;
                 font-weight: 400;
-                line-height: 30px; 
+                line-height: 24px; 
             }
 
         }
@@ -65,15 +70,94 @@
             max-width: 500px;
 
             .card-photo {
-                max-width: 340px;
+                width: calc(100% - 30px);
+                max-width: 250px;
 
                 position: absolute;
                 left: 20px;
                 bottom: 16px;
 
-                border: 1.5px solid $neutral-400;
+                border: 1.5px solid base.$neutral-400;
                 border-radius: 8px;
                 box-shadow: 0px -10px 16px 0px rgba(40, 40, 40, 0.30);
+            }
+        }
+
+        // Tablet breakpoint
+        @media only screen and (min-width: 768px) {
+            & {
+                & {
+                    max-width: 600px;
+    
+                    .header-description-wrapper {
+                        gap: 10px;
+
+                        .title {
+                            font-size: 31px;
+                            line-height: 48px;
+                        }
+    
+                        .description {
+                            font-size: 16px;
+                            line-height: 30px;
+                        }
+
+                        .highlight {
+                            display: inline;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Desktop breakpoint
+        @media only screen and (min-width: 1080px) {
+            & {
+                padding-left: 48px;
+                padding-right: 48px;
+
+                & {
+                    max-width: unset;
+
+                    flex-direction: row;
+
+                    .header-description-wrapper {
+                        align-items: flex-start;
+
+                        .title {
+                            text-align: left;
+                        }
+    
+                        .description {
+                            text-align: left;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media only screen and (min-width: 1280px) {
+            & {
+                gap: 50px;
+
+                & {
+                    .header-description-wrapper {
+                        max-width: 700px;
+                        gap: 24px;
+
+                        .title {
+                            font-size: 49px;
+                            line-height: 80px;
+                        }
+    
+                        .description {
+                            max-width: unset;
+
+                            font-size: 18px;
+                            line-height: 30px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -97,11 +181,11 @@
             gap: 16px;
 
             h4 {
-                color: $primary-500;
+                color: base.$primary-500;
             }
 
             h2 {
-                color: $neutral-700;
+                color: base.$neutral-700;
                 text-align: center;
             }
         }
@@ -135,7 +219,7 @@
             gap: 24px;
 
             h2 {
-                color: $neutral-700;
+                color: base.$neutral-700;
             }
 
             .supporting-headline-badge-wrapper {
@@ -147,7 +231,7 @@
 
                 .supporting-headline {
                     line-height: 30px;
-                    color: $neutral-600;
+                    color: base.$neutral-600;
                 }
 
                 .badge-list {
@@ -177,11 +261,11 @@
         gap: 15px;
 
         .headline {
-            color: $neutral-700;
+            color: base.$neutral-700;
         }
 
         .supporting-headline {
-            color: $neutral-600;
+            color: base.$neutral-600;
         }
     }
 }
@@ -250,15 +334,15 @@
                 bottom: -24px;
 
                 border-radius: 8px;
-                border: 1px solid $neutral-200;
-                background-color: $neutral-0;
+                border: 1px solid base.$neutral-200;
+                background-color: base.$neutral-0;
 
                 p:first-child {
-                    color: $neutral-700;
+                    color: base.$neutral-700;
                 }
 
                 p:last-child {
-                    color: $neutral-600;
+                    color: base.$neutral-600;
                 }
             }
         }
@@ -269,7 +353,7 @@
 
         .history-detail {
             max-width: 900px;
-            color: $neutral-600;
+            color: base.$neutral-600;
             text-align: justify;
             
             // font-family: Inter;
@@ -315,7 +399,7 @@
 
             .floating-mockup {
                 border-radius: 16px;
-                border: 1px solid $neutral-200;
+                border: 1px solid base.$neutral-200;
                 box-shadow: -10px 10px 25px 16px rgba(213, 213, 213, 0.10);
             }
         }
@@ -339,14 +423,14 @@
                     object-fit: cover;
     
                     border-radius: 16px;
-                    border: 1px solid $neutral-200;
-                    background-color: $neutral-0;
+                    border: 1px solid base.$neutral-200;
+                    background-color: base.$neutral-0;
                 }
     
                 .floating-mockup {
                     position: absolute;
                     border-radius: 16px;
-                    border: 1px solid $neutral-200;
+                    border: 1px solid base.$neutral-200;
                     box-shadow: -10px 10px 25px 16px rgba(213, 213, 213, 0.10);
                 }
             }
@@ -397,8 +481,8 @@
         align-items: center;
         gap: 50px;
 
-        border-top: 1px solid $neutral-200;
-        border-bottom: 1px solid $neutral-200;
+        border-top: 1px solid base.$neutral-200;
+        border-bottom: 1px solid base.$neutral-200;
 
         .total-reservation {
             width: 100%;
@@ -408,11 +492,11 @@
             gap: 10px;
 
             h1 {
-                color: $primary-500;
+                color: base.$primary-500;
             }
 
             p {
-                color: $neutral-500;
+                color: base.$neutral-500;
             }
         }
 
@@ -441,18 +525,18 @@
                     width: 16px;
 
                     border-radius: 100px;
-                    border: 2px solid $primary-0;
-                    background: $primary-400;
+                    border: 2px solid base.$primary-0;
+                    background: base.$primary-400;
                 }
 
                 h3 {
-                    color: $primary-500;
+                    color: base.$primary-500;
                 }
             }
 
             p {
                 padding-left: 26px;
-                color: $neutral-500;
+                color: base.$neutral-500;
             }
         }
     }
