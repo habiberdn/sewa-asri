@@ -5,7 +5,7 @@ import { Button, Input } from "../../components";
 
 import { Message } from '../../utils/interface';
 
-import "./../../styles/pages/auth.css";
+import "./../../styles/css/pages/auth.css";
 
 import logo from "./../../assets/logo.png";
 import villaPhoto_1 from "./../../assets/images/image 1.png"
