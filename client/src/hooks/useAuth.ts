@@ -1,17 +1,20 @@
 import useSWRMutation from 'swr/mutation';
-const API = "https://wild-lime-newt-wig.cyclic.app/api/v1/user";
+const API = "http://localhost:3000/api/v1/user";
 
 function useLogin() {
     async function fetcher(url:string, { arg }: { arg: { email:string, password:string }}) {
+        const {email,password} = arg
+        console.log(email,password)
         return await fetch(`${API}${url}`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
             },
+            // mode: 'no-cors',
             credentials: "include",
             body: JSON.stringify({
-                "email": arg.email,
-                "password": arg.password
+               email: email,
+                password :password
             })
         }).then(res => res.json());
     }

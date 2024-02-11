@@ -41,6 +41,7 @@ export function Login() {
             login({ email: emailRef.current, password: passwordRef.current })
             .then((response) => {
                 const { id, name, photo, role } = response?.data?.user;
+                console.log(response)
 
                 if (response?.status === "Success") {
                     switch (role) {
@@ -48,6 +49,10 @@ export function Login() {
                             setMessage({
                                 showMessage: true,
                                 name: "Email atau password salah" 
+                            });
+                            navigate({ to: `/dashboard` });
+                            cookies.set("auth-token", response.token, {
+                                maxAge: Date.now() + 3 * 1000 * 60 * 60 * 24 * 3
                             });
                             break;
                     
