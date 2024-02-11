@@ -67,7 +67,7 @@
     width: 100%;
     display: flex;
     height: 100px;
-    padding: 10px 48px;
+    padding: 10px 16px;
     justify-content: space-between;
     align-items: center;
 
@@ -76,12 +76,16 @@
     box-shadow: 0px 10px 20px -14px rgba(92, 92, 92, 0.10);
 
     .logo {
-        width: 140px;
-        height: 78.315px;
+        max-width: 100px;
+    }
+
+    .hamburger-menu {
+        height: 30px;
+        width: 30px;
     }
 
     .navigations {
-        display: inherit;
+        display: none;
         height: 50px;
         justify-content: center;
         align-items: center;
@@ -91,7 +95,7 @@
             display: inherit;
             justify-content: center;
             align-items: center;
-            gap: 50px;
+            gap: 24px;
 
             .link {
                 text-decoration: none;
@@ -105,11 +109,81 @@
         }
 
         .actions {
-            display: inherit;
+            display: none;
             flex-direction: row;
             justify-content: center;
             align-items: center;
             gap: 16px;
+        }
+    }
+
+    @media only screen and (min-width: 640px) {
+        & {
+            padding: 10px 24px;
+
+            .logo {
+                max-width: 120px;
+            }
+
+            .hamburger-menu {
+                display: none;
+            }
+
+            .navigations {
+                display: flex;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        & {
+            padding: 10px 32px;
+
+            .navigations {
+                display: flex;
+                column-gap: 32px;
+
+                .actions {
+                    display: flex;
+
+                    button:last-child {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-width: 900px) {
+        & {
+            .navigations {
+                .actions {
+                    button:last-child {
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-width: 1080px) {
+        & {
+            padding: 10px 48px;
+
+            .logo {
+                max-width: 140px;
+            }
+
+            .navigations {
+                column-gap: 100px;
+
+                .actions {
+
+                    button:last-child {
+                        display: flex;
+                    }
+                }
+            }
         }
     }
 }
