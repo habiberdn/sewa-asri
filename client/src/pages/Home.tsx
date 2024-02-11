@@ -1,3 +1,5 @@
+import "./../styles/css/pages/page.css"
+
 import reservationSchedule1Mockup from "./../assets/mockup/Reservation-schedule-v2-1.webp";
 import reservationSchedule2Mockup from "./../assets/mockup/Reservation-schedule-v2-2-cropped.webp";
 import villaManagement1Mockup from "./../assets/mockup/Management-villa-1.webp";
@@ -20,9 +22,13 @@ export function Home() {
                     <section className="hero-section">
 
                         <article className="header-description-wrapper">
-                            <h1 className="h1-medium">
+                            <h1 className="title">
                                 Kelola Jadwal Reservasi dan Villa Dengan <span className="highlight">Sewa Asri Tenant</span>
                             </h1>
+
+                            <p className="description">
+                                Kamu dapat mengelola villa beserta jadwal reservasinya dan menerima pembayaran lewat berbagai macam metode pembayaran
+                            </p>
                         </article>
 
                         <section className="mockup">
