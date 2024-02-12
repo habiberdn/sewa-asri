@@ -1,3 +1,5 @@
+import "./../styles/css/components/badge.css";
+
 import cardIcon from "./../assets/icons/card.webp";
 import menuBoardIcon from "./../assets/icons/menu-board.webp";
 import receiptSearchIcon from "./../assets/icons/receipt-search.webp";
@@ -13,7 +15,7 @@ import villaIcon from "./../assets/icons/house.webp";
 export function Badge({ label }: { label: string }) {
     return (
         <article className="badge">
-            <p className="label-regular">
+            <p className="label">
                 { label }
             </p>
 
