@@ -1,3 +1,5 @@
+import "./../styles/css/components/testimonial-card.css";
+
 interface TestimonialCardProps {
     name: string;
     photo: string;
@@ -8,7 +10,7 @@ interface TestimonialCardProps {
 export function TestimonialCard({ name, photo, role, reviews }: TestimonialCardProps) {
     return (
         <article className="testimonial-card">
-            <p className="p-regular reviews">
+            <p className="reviews">
                 { reviews }
             </p>
 
@@ -20,11 +22,11 @@ export function TestimonialCard({ name, photo, role, reviews }: TestimonialCardP
                         loading="lazy" />
 
                 <article className="name-role-wrapper">
-                    <h4 className="h4-regular">
+                    <h4 className="name">
                         { name }
                     </h4>
 
-                    <p className="label-regular">
+                    <p className="role">
                         { role }
                     </p>
                 </article>
