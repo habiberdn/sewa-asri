@@ -1,5 +1,5 @@
 import useSWRMutation from 'swr/mutation';
-const API = "/api/v1/user";
+const API = "http://localhost:3000/api/v1/user";
 
 function useLogin() {
     async function fetcher(url:string, { arg }: { arg: { email:string, password:string }}) {
