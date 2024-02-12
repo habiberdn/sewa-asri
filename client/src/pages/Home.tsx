@@ -4,7 +4,7 @@ import villaPhoto from "./../assets/mockup/villa hero section.webp";
 import cardVillaMockup from "./../assets/mockup/villa card hero section.webp";
 
 import { PageHeader } from "../components";
-import { OurFeature, CTA } from "./Sections";
+import { OurFeature, CTA, Testimony } from "./Sections";
 
 export function Home() {
     return (
@@ -40,8 +40,8 @@ export function Home() {
 
                     <OurFeature />
                     {/* <TotalNumberGrowth /> */}
-                    {/* <Testimony /> */}
-                    <CTA />
+                    <Testimony />
+                    {/* <CTA /> */}
 
                 </section>
             {/* <Footer /> */}

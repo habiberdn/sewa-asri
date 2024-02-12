@@ -261,10 +261,11 @@
         }
 
         .testimonial {
+            width: 100%;
+
+            overflow-x: scroll;
+
             display: flex;
-            padding: 24px;
-            justify-content: center;
-            align-items: center;
             column-gap: 24px;
         }
 
@@ -428,6 +429,7 @@
 
     .testimonial-section-wrapper {
         row-gap: 32px;
+        width: calc(100vw - 24px);
     }
 }
 

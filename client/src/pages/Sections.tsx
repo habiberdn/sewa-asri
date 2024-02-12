@@ -220,8 +220,8 @@ export function Testimony() {
     return (
         <section className="section-wrapper testimonial-section-wrapper">
             <header className="header">
-                <h4 className="h4-regular">Testimoni Pengguna</h4>
-                <h2 className="h2-medium">Apa Kata Pemilik Tentang Sewa Asri Tenant? </h2>
+                <h4 className="title">Testimoni Pengguna</h4>
+                <h2 className="subtitle">Apa Kata Pemilik Tentang Sewa Asri Tenant? </h2>
             </header>
 
             <section className="testimonial">
