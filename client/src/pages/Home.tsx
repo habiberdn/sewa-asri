@@ -3,8 +3,8 @@ import "./../styles/css/pages/page.css"
 import villaPhoto from "./../assets/mockup/villa hero section.webp";
 import cardVillaMockup from "./../assets/mockup/villa card hero section.webp";
 
-import { PageHeader, Footer } from "../components";
-import { OurFeature, TotalNumberGrowth, Testimony, CTA } from "./Sections";
+import { PageHeader } from "../components";
+import { OurFeature, CTA } from "./Sections";
 
 export function Home() {
     return (
