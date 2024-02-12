@@ -10,18 +10,17 @@ import chat2Mockup from "./../assets/mockup/Chat-2-cropped.webp";
 import { useNavigate } from '@tanstack/react-router'
 import { Badge, Button, TestimonialCard } from "../components";
 
-
 export function OurFeature() {
     return (
         <section className="section-wrapper mockup-section-wrapper">
 
             <header className="header">
 
-                <h4 className="h4-regular">
+                <h4 className="subtitle">
                     Kelola Jadwal Reservasi • Kelola Villa • Chat
                 </h4>
 
-                <h2 className="h2-medium">
+                <h2 className="title">
                     Our Feature
                 </h2>
             </header>
@@ -51,12 +50,12 @@ function ReservationScheduleFeature() {
             </section>
 
             <section className="content">
-                <h2 className="h2-medium">
+                <h2 className="headline">
                     Kelola Jadwal Reservasi dengan Mudah
                 </h2>
 
                 <article className="supporting-headline-badge-wrapper">
-                    <p className="p-regular supporting-headline">
+                    <p className="supporting-headline">
                         Sistem pengelola jadwal reservasi online dapat menjadi solusi bagi villa yang Anda ingin kelola. Dengan sistem ini Anda dapat mengelola reservasi kapan saja dan di mana saja sehingga menghemat waktu dan tenaga.
                     </p>
 
@@ -90,12 +89,12 @@ function VillaManagementFeature() {
             </section>
 
             <section className="content">
-                <h2 className="h2-medium">
+                <h2 className="headline">
                     Kelola Villa dengan Mudah
                 </h2>
 
                 <article className="supporting-headline-badge-wrapper">
-                    <p className="p-regular supporting-headline">
+                    <p className="supporting-headline">
                         Sistem pengelola villa online dapat menjadi solusi bagi villa yang Anda ingin kelola. Dengan sistem ini Anda dapat mengelola villa kapan saja dan di mana saja sehingga menghemat waktu dan tenaga.
                     </p>
 
@@ -128,12 +127,12 @@ function ChatFeature() {
             </section>
 
             <section className="content">
-                <h2 className="h2-medium">
+                <h2 className="headline">
                     Percakapan dengan Calon Tamu
                 </h2>
 
                 <article className="supporting-headline-badge-wrapper">
-                    <p className="p-regular supporting-headline">
+                    <p className="supporting-headline">
                         Sistem percakapan online dapat menjadi solusi bagi calon tamu yang Anda ingin hibungi. Dengan sistem ini Anda dapat bercakap dengan calon tamu kapan saja dan di mana saja sehingga menghemat waktu dan tenaga.
                     </p>
 

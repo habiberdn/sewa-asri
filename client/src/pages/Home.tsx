@@ -39,12 +39,12 @@ export function Home() {
                     </section>
 
                     <OurFeature />
-                    <TotalNumberGrowth />
-                    <Testimony />
+                    {/* <TotalNumberGrowth /> */}
+                    {/* <Testimony /> */}
                     <CTA />
 
                 </section>
-            <Footer />
+            {/* <Footer /> */}
             </main>
         </>
     );
