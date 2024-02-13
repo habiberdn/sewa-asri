@@ -66,8 +66,12 @@
 
         .mockup {
             position: relative;
+            
+            height: 100%;
             width: 100%;
             max-width: 500px;
+
+            object-fit: contain;
 
             .card-photo {
                 width: calc(100% - 30px);
