@@ -108,6 +108,11 @@
             min-height: 340px;
 
             .detail {
+                .photo {
+                    height: 60px;
+                    width: 60px;
+                }
+
                 .name-role-wrapper {
                     gap: 8px;
                 }
