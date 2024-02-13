@@ -1,0 +1,82 @@
+@use "./../../base";
+
+.table {
+    width: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    
+    border: 1.5px solid base.$neutral-300;
+    border-radius: 12px;
+    overflow: hidden;
+    
+    text-align: center;
+
+    .cell {
+        padding: 12px 8px;
+        height: 40px;
+
+        width: fit-content;
+        max-width: 210px;
+    }
+
+    .cell-small {
+        min-width: 120px;
+    }
+
+    .cell-medium {
+        min-width: 140px;
+    }
+
+    .cell-large {
+        min-width: 200px;
+        max-width: 230px;
+    }
+
+    .header {
+        padding: 4px 0;
+        
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+
+        display: flex;
+
+        background-color: base.$primary-100;
+        border-bottom: 1.5px solid base.$primary-200;
+
+        .cell {
+            color: base.$primary-800;
+        }
+    }
+
+    .body {
+        display: flex;
+        flex-direction: column;
+
+        .row {
+            background-color: base.$neutral-100;
+            border: none;
+
+            border-top-width: 0;
+            border-bottom-width: 1px;
+            border-left-width: 0;
+            border-right-width: 0;
+
+            border-style: solid;
+            border-color: base.$neutral-200;
+
+            &:last-child {
+                border: none;
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: base.$neutral-200;
+            }
+        }
+
+        .cell {
+            color: base.$neutral-600;
+        }
+    }
+}
