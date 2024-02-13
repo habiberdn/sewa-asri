@@ -18,6 +18,14 @@
         flex-direction: column;
         row-gap: 100px;
         align-items: center;
+
+        @media only screen and (min-width: 768px) {
+            padding: 0 24px;
+        }
+
+        @media only screen and (min-width: 1080px) {
+            padding: 0 48px;
+        }
     }
 
     .hero-section {
@@ -117,9 +125,6 @@
         // Desktop breakpoint
         @media only screen and (min-width: 1080px) {
             & {
-                padding-left: 48px;
-                padding-right: 48px;
-
                 & {
                     max-width: unset;
 
@@ -433,7 +438,6 @@
 
     .testimonial-section-wrapper {
         row-gap: 32px;
-        width: calc(100vw - 24px);
     }
 }
 
