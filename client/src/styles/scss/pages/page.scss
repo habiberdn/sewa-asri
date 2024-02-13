@@ -270,12 +270,20 @@
         }
 
         .testimonial {
-            width: 100%;
+            width: calc(100vw - 24px);
 
             overflow-x: scroll;
 
             display: flex;
             column-gap: 24px;
+
+            @media only screen and (min-width: 768px) {
+                width: calc(100vw - 48px);
+            }
+
+            @media only screen and (min-width: 1080px) {
+                width: calc(100vw - 96px);
+            }
         }
 
         // Tablet breakpoint

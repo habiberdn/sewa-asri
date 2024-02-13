@@ -230,7 +230,6 @@ export function Testimony() {
                 <TestimonialCard name="Anisa Rahmawati" photo="https://i.pinimg.com/736x/1e/b9/5a/1eb95a3eaef402828b3e539006afde30.jpg" role="Pengelola villa" reviews="Saya telah menggunakan Sewa Asri Tenant selama beberapa bulan dan sangat puas dengan hasilnya. Aplikasi ini sangat membantu saya untuk mengelola reservasi villa dengan mudah dan efisien." />
                 <TestimonialCard name="Bella Hadid" photo="https://i.pinimg.com/564x/25/f6/6e/25f66e08ee01e563086bb5723b40ae1b.jpg" role="Pengelola villa" reviews="Saya telah menggunakan Sewa Asri Tenant selama beberapa bulan dan sangat puas dengan hasilnya. Aplikasi ini sangat membantu saya untuk mengelola reservasi villa dengan mudah dan efisien." />
             </section>
-
         </section>
     )
 }
