@@ -1,0 +1,77 @@
+@use "./../../base";
+
+.web-sidebar-opened {
+    right: 0;
+}
+
+.web-sidebar-closed {
+    right: -100vw;
+}
+
+.web-sidebar {
+    padding: 32px 24px 24px 24px;
+
+    height: 100%;
+    width: 100%;
+    min-width: 230px;
+    max-width: 230px;
+
+    position: absolute;
+    top: 0;
+    z-index: 10;
+
+    transition: right 300ms;
+    
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+
+    background-color: base.$neutral-0;
+    border-right-width: 1px;
+    border-color: base.$neutral-200;
+    border-style: solid;
+
+    .close-icon {
+        height: 24px;
+        width: 24px;
+    }
+
+    .navigation,
+    .menus,
+    .actions {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navigation {
+        height: 100%;
+        justify-content: space-between;
+
+        .menus {
+            row-gap: 32px;
+
+            a {
+                color: base.$neutral-600;
+                text-decoration: none;
+                font-size: 13px;
+                font-weight: 400;
+                font-family: 'Inter', sans-serif;
+                line-height: auto;
+
+                &:hover {
+                    color: base.$primary-400;
+                }
+            }
+        }
+
+        .actions {
+            row-gap: 16px;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        & {
+            display: none;
+        }
+    }
+}

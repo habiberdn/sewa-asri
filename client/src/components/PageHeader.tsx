@@ -8,6 +8,8 @@ import hamburgerMenuIcon from "./../assets/icons/hamburger-menu.webp";
 
 import { getUser } from "../utils/userStore";
 import { Button } from '.';
+import { WebSidebar } from "./WebSidebar";
+import { useState } from "react";
 
 interface PageHeaderInterface {
     variant?: "auth" | "main";
@@ -124,9 +126,18 @@ function Auth({ user, dayMap, monthMap, onHoverProfile }: AuthHeaderInterface) {
 }
 
 function Main() {
+    const [sidebarStatus, setSidebarStatus] = useState("closed");
     const navigate = useNavigate();
 
     return (
+        <>
+        <WebSidebar 
+            status={sidebarStatus} 
+            setStatus={() => {
+                sidebarStatus === "closed" ? setSidebarStatus("opened") : setSidebarStatus("closed")
+            }} 
+        />
+
         <header className="header-main">
 
             <img 
@@ -139,6 +150,8 @@ function Main() {
                 className='hamburger-menu'
                 src={hamburgerMenuIcon} 
                 alt="Hamburger menu icon"
+
+                onClick={() => setSidebarStatus("opened")}
             />
 
             <nav className='navigations'>
@@ -184,5 +197,6 @@ function Main() {
                 </section>
             </nav>
         </header>
+        </>
     );
 }
