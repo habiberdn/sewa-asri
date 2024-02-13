@@ -1,3 +1,5 @@
+import "./../styles/css/pages/page.css";
+
 import JulianAvatar from "./../assets/avatar/Avatar-Julian-Transparant.webp";
 import HabibAvatar from "./../assets/avatar/Avatar-Habib-Transparant.webp";
 import FikriAvatar from "./../assets/avatar/Avatar-Fikri-Transparant.webp";
@@ -21,22 +23,22 @@ export function AboutUs() {
                 <section className="hero-section">
                     
                     <article className="header-description-wrapper">
-                        <h1>
+                        <h1 className="title">
                             Tentang Produk Kami <span className="highlight">Sewa Asri Tenant</span>
                         </h1>
 
-                        <p>
+                        <p className="description">
                             Layanan perantara C2C (Customer to Customer) memungkinkan kedua belah pihak pemilik villa untuk menyewakan villa mereka kepada tamu secara online.
                         </p>
                     </article>
                     
-                    <MockupCodeEditor variant="client" />
+                    <MockupCodeEditor variant="backend" />
                 </section>
 
                 <OurHistory />
-                <OurOtherProduct />
+                {/* <OurOtherProduct /> */}
             </section>
-            <Footer />
+            {/* <Footer /> */}
             </main>
         </>
     );
@@ -47,22 +49,22 @@ function OurHistory() {
         <section className="section-wrapper history-section-wrapper">
             <header className="header">
 
-                <h4 className="h4-regular">
+                <h4 className="subtitle">
                     Sejarah awal kami berdiri
                 </h4>
 
-                <h2 className="h2-medium">
+                <h2 className="title">
                     Our History
                 </h2>
             </header>
 
             <section className="team-list">
-                <TeamProfile name="Achmad Julian" role="Frontend Developer | UI/UX Designer" />
+                <TeamProfile name="Achmad Julian" role="Frontend Developer UI/UX Designer" />
                 <TeamProfile name="M Habib Erdian" role="Fullstack Developer" />
                 <TeamProfile name="Fikri Abdii" role="UX Researcher" />
             </section>
 
-            <p className="history-detail p-regular">
+            <p className="history-detail">
                 Sewa Asri adalah proyek yang dibangun secara sukarela dan tidak dikomersilkan (untuk saat ini) dengan tujuan sebagai portfolio yang dapat ditaruh oleh anggota tim di CV mereka. Dan Asri Tech adalah kolektif yang terdiri dari para pengembang dan desainer muda yang bersemangat untuk belajar dan berkembang insiatif dari dua orang anggota tim yaitu Julian dan Habib.
             </p>
         </section>
@@ -84,11 +86,11 @@ function TeamProfile({ name, role }: { name: string; role: string; }) {
                  className="avatar" />
 
             <article className="detail">
-                <p className="label-medium">
+                <h4 className="name">
                     { name }
-                </p>
+                </h4>
 
-                <p className="label-regular">
+                <p className="role">
                     { role }
                 </p>
             </article>
