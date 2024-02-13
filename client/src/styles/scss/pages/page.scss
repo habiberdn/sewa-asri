@@ -587,37 +587,89 @@
     .mockup-section-wrapper {
         .main {
             .product-mockup {
+                max-width: 500px;
+
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+                justify-content: center;
 
-                column-gap: 32px;
+                column-gap: 16px;
 
                 .android-mockup {
                     width: 100%;
-                    border-radius: 32px;
+                    min-width: 50px;
+                    max-width: 200px;
+                    
+                    border-radius: 24px;
                     box-shadow: 0px 2px 20px 6px rgba(153, 153, 153, 0.20);
+                }
+
+                .main-mockup {
+                    width: 100%;
+                    max-width: 450px;
                 }
                 
                 .floating-mockup:nth-child(2) {
-                    max-width: 160px;
+                    width: 100%;
+                    max-width: 80px;
                     
                     left: 25px;
                     top: 20px;
                 }
 
                 .floating-mockup:nth-child(3) {
-                    max-width: 380px;
+                    width: 100%;
+                    max-width: 150px;
                     
                     right: 16px;
-                    top: 80px;
+                    bottom: 10px;
                 }
             }
 
             .floating-mockup {
-                border-radius: 16px;
+                border-radius: 8px;
                 border: 1px solid base.$neutral-200;
                 box-shadow: -10px 10px 25px 16px rgba(213, 213, 213, 0.10);
+            }
+
+            @media only screen and (min-width: 428px) {
+                & {
+                    .product-mockup {
+                        .floating-mockup:nth-child(2) {
+                            max-width: 130px;
+                        }
+                        
+                        .floating-mockup:nth-child(3) {
+                            max-width: 230px;
+                        }
+                    }
+                }
+            }
+
+            @media only screen and (min-width: 1080px) {
+                & {
+                    .product-mockup {
+                        max-width: 600px;
+
+                        .floating-mockup:nth-child(2) {
+                            max-width: 180px;
+                        }
+                        
+                        .floating-mockup:nth-child(3) {
+                            max-width: 280px;
+                        }
+                        
+                        .android-mockup {
+                            max-width: 230px;
+                        }
+
+                        .main-mockup {
+                            max-width: 600px;
+                        }
+                    }
+                }
+            
             }
         }
     }

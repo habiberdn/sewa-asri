@@ -36,7 +36,7 @@ export function AboutUs() {
                 </section>
 
                 <OurHistory />
-                {/* <OurOtherProduct /> */}
+                <OurOtherProduct />
             </section>
             {/* <Footer /> */}
             </main>
@@ -103,11 +103,11 @@ function OurOtherProduct() {
         <section className="section-wrapper mockup-section-wrapper">
             <header className="header">
 
-                <h4 className="h4-regular">
+                <h4 className="subtitle">
                     Produk kami selain Sewa Asri
                 </h4>
 
-                <h2 className="h2-medium">
+                <h2 className="title">
                     Our Other Product
                 </h2>
             </header>
@@ -128,12 +128,12 @@ function OurOtherProduct() {
                 </section>
 
                 <section className="content">
-                    <h2 className="h2-medium">
+                    <h2 className="headline">
                         Kelola Villa dengan Mudah
                     </h2>
 
                     <article className="supporting-headline-badge-wrapper">
-                        <p className="p-regular supporting-headline">
+                        <p className="supporting-headline">
                             Sistem pengelola villa online dapat menjadi solusi bagi villa yang Anda ingin kelola. Dengan sistem ini Anda dapat mengelola villa kapan saja dan di mana saja sehingga menghemat waktu dan tenaga.
                         </p>
 
@@ -169,12 +169,12 @@ function OurOtherProduct() {
                 </section>
 
                 <section className="content">
-                    <h2 className="h2-medium">
+                    <h2 className="headline">
                         Sewa Asri Tenant - Web
                     </h2>
 
                     <article className="supporting-headline-badge-wrapper">
-                        <p className="p-regular supporting-headline">
+                        <p className="supporting-headline">
                             Sewa Asri Tenant adalah aplikasi pengelola villa online dapat menjadi solusi bagi villa yang Anda ingin kelola. Dengan sistem ini Anda dapat mengelola villa kapan saja dan di mana saja sehingga menghemat waktu dan tenaga.
                         </p>
 
