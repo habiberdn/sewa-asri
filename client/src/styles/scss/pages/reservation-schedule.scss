@@ -1,0 +1,73 @@
+@use "./../../base";
+
+.reservation-schedule {
+    .navigation {
+        height: 100px;
+
+        display: flex;
+        justify-content: space-between;
+
+        .row {
+            height: 30px;
+
+            width: fit-content;
+            min-width: 50px;
+
+            padding: 2px 12px;
+
+            background-color: base.$neutral-0;
+            border-radius: 6px;
+
+            border: 1px;
+            border-style: solid;
+            border-color: base.$neutral-200;
+            
+            color: base.$neutral-600;
+            text-align: center;
+
+            cursor: pointer;
+
+            &-selected {    
+                background-color: base.$primary-0;
+                    
+                border-radius: 6px;
+                border-color: base.$primary-200;
+                    
+                color: base.$primary-700;
+            }
+        }
+
+        .row-filter,
+        .page,
+        .option,
+        .actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .row-filter {
+            gap: 16px;
+
+            color: base.$neutral-700;
+
+            h4:last-child {
+                color: base.$neutral-600;
+            }
+
+            .option {
+                gap: 10px;
+            }
+        }
+
+        .page {
+            color: base.$neutral-600;
+            gap: 24px;
+
+            .actions {
+                gap: 16px;
+            }
+        }
+
+
+    }
+}
