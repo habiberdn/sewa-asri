@@ -24,7 +24,13 @@ interface ReservationSchedule {
     }
 }
 
-export function ReservationTable({ data }: { data: Array<ReservationSchedule> }) {
+export function ReservationTable({ 
+    data,
+    onClickCellHandler
+}: { 
+    data: Array<ReservationSchedule>;
+    onClickCellHandler?: () => void;
+}) {
     return (
         <table className="table">
             <thead className="header">
@@ -43,7 +49,10 @@ export function ReservationTable({ data }: { data: Array<ReservationSchedule> })
             <tbody className="body">
                 {data.map(reservation => {
                     return (
-                        <tr className="row">
+                        <tr 
+                            className="row"
+                            onClick={() => onClickCellHandler && onClickCellHandler()}    
+                        >
                             <td className="cell cell-small label-regular">No</td>
                             <td className="cell cell-small label-regular">{ reservation.date }</td>
                             <td className="cell cell-large label-regular">{ reservation.guest.name }</td>
