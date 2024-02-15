@@ -1,0 +1,311 @@
+@use "./../../base";
+
+.reservation-side-panel {
+    height: 100%;
+    width: 100%;
+    min-width: 500px;
+    max-width: 500px;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    row-gap: 10px;
+
+    background-color: base.$neutral-0;
+    box-shadow: -20px 0 20px -14px rgba(173,173,173,10%);
+
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+
+    transition: right 200ms ease-in;
+
+    .header,
+    .footer,
+    .accordion,
+    .data-cell,
+    .guest,
+    .detail,
+    .name-chat-wrapper,
+    .reservation,
+    .detail,
+    .paper-detail,
+    .id-copy-wrapper,
+    .accordion-content {
+        display: flex;
+        align-items: center;
+    }
+
+    .main-header,
+    .main-footer {
+        padding: 24px;
+
+        background-color: base.$neutral-100;
+        
+        border-width: 0;
+
+        column-gap: 16px;
+    }
+
+    .header {
+        border-bottom: 1.5px;
+        border-color: base.$neutral-200;
+        border-style: solid;
+    }
+
+    .footer {
+        height: 100px;
+
+        border-top: 1.5px;
+        border-color: base.$neutral-200;
+        border-style: solid;
+        
+        justify-content: center;
+    }
+
+    .main-header {
+        .label {
+            width: 100%;
+            text-align: center;
+            color: base.$neutral-700;
+        }
+
+        .chevron-icon {
+            height: 32px;
+            width: 32px;
+        }
+    }
+
+    .reservation {
+        height: 100%;
+        overflow-y: scroll;
+
+        padding: 0 24px;
+
+        flex-direction: column;
+        align-items: stretch;
+        row-gap: 24px;
+
+        .accordion,
+        .guest {
+            column-gap: 16px;
+        }
+
+        .accordion {
+            cursor: pointer;
+        }
+
+        .accordion .chevron-icon {
+            height: 24px;
+            width: 24px;
+
+            transform: rotate(-180deg);
+
+            transition: transform 200ms ease-in;
+
+            &-closed {
+                transform: rotate(0deg);
+            }
+        }
+        
+        .accordion-content {
+            transition: height 200ms ease-in;
+
+            flex-direction: column;
+            align-items: stretch;
+            
+            overflow-y: hidden;
+            
+            &-opened {
+                height: 100%;
+            }
+            
+            &-closed {
+                height: 0%;
+            }
+        }
+    }
+
+    .detail {       
+        flex-direction: column;
+        align-items: stretch; 
+        row-gap: 16px;
+
+        &-opened {
+            max-height: unset;
+        }
+
+        &-closed {
+            overflow-y: hidden;
+            max-height: 30px;
+        }
+
+        .guest {
+            .photo {
+                height: 80px;
+                min-width: 80px;
+                object-fit: cover;
+
+                border-radius: 100px;
+                overflow: hidden;
+                background-color: base.$neutral-200;
+            }
+
+            .detail {
+                width: 100%;
+
+                row-gap: 10px;
+                align-items: flex-start;
+                flex-direction: column;
+
+                .name-chat-wrapper {
+                    width: 100%;
+                    justify-content: space-between;
+
+                    .name {
+                        color: base.$neutral-700;
+                    }
+
+                    .chat-icon {
+                        height: 28px;
+                        width: 28px;
+                    }
+                }
+
+                .status {
+                    line-height: normal;
+
+                    padding: 4px 10px;
+                    color: base.$info-0;
+
+                    background-color: base.$info-200;
+
+                    border-radius: 8px;
+                    border: 1px solid base.$info-0;
+                }
+            }
+        }
+
+        .paper-detail {
+            padding: 16px;
+
+            flex-direction: column;
+            row-gap: 16px;
+            align-items: stretch;
+
+            background-color: base.$neutral-100;
+            border: 1px solid base.$neutral-200;
+            border-radius: 8px;
+
+            .data-cell {
+                justify-content: space-between;
+                color: base.$neutral-600;
+                
+                .data {
+                    width: 100%;
+                    min-width: 120px;
+                    max-width: 200px;
+                    
+
+                }
+                &:last-child .data {
+                    color: base.$neutral-700;
+                }
+
+                .id-copy-wrapper {
+                    height: 24px;
+                    column-gap: 10px;
+
+                    .id {
+                        height: 20px;
+                        width: 160px;
+
+                        overflow: hidden;
+                        text-overflow: clip;
+
+                        line-height: normal;
+                    }
+
+                    .copy-icon {
+                        height: 24px;
+                        width: 24px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .history-detail {
+            display: flex;
+            flex-direction: column;
+    
+            background-color: base.$neutral-100;
+    
+            border-radius: 8px;
+            border: 1px solid base.$neutral-300;
+            border-collapse: collapse;
+    
+            .header,
+            .body .row {
+                display: flex;
+                padding: 12px 16px;
+            }
+    
+            .header {
+                width: 100%;
+                background-color: base.$neutral-200;
+            }
+    
+            .body {
+                .row {
+                    justify-content: space-between;
+    
+                    border-width: 0;
+                    border-bottom: 1px;
+                    border-style: solid;
+                    border-color: base.$neutral-200;
+    
+                    .status {
+                        width: fit-content;
+    
+                        padding: 4px 8px;
+                        border-radius: 4px;
+                        line-height: normal;
+    
+                        &-pending {
+                            color: base.$info-0;
+                            background-color: base.$info-200;
+                        }
+    
+                        &-failed {
+                            color: base.$error-0;
+                            background-color: base.$error-200;
+                        }
+    
+                        &-success {
+                            color: base.$primary-500;
+                            background-color: base.$primary-0;
+                        }
+                    }
+    
+                    .date {
+                        color: base.$neutral-500;
+                    }
+    
+                    &:last-child {
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.reservation-side-panel-opened {
+    right: 0;
+}
+
+.reservation-side-panel-closed {
+    right: -50vw;
+}
