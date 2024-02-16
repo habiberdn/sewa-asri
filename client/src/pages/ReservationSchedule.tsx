@@ -1,16 +1,20 @@
 import styles from "./../styles/css/pages/reservation-schedule.module.css";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 // import { AuthContext } from "../context/UserContext";
 // import { useNavigate } from "@tanstack/react-router";
 
 import { WidgetHeader, PageHeader, Sidebar } from "../components";
-// import { ReservationTable } from "../components/Table";
+import { ReservationTable } from "../components/Table";
 import { Button } from "./../components/Button";
+import { ReservationSidePanel } from "../components/ReservationSidePanel";
 
-// import { reservationSchedule } from "./../data/reservation-schedule.json";
+import { reservationSchedule } from "./../data/reservation-schedule.json";
 
 export function ReservationSchedule() {
+    const [sidePanelStatus, setSidePanelStatus] = useState("closed");
+    const [currentReservationId, setCurrentReservationId] = useState("");
+
     return (
         <main  className="dashboard-container">
             <Sidebar />
@@ -21,8 +25,24 @@ export function ReservationSchedule() {
                 <section  className={`widget ${styles["reservation-schedule"]}`}>
 
                     <WidgetHeader variant="reservation-schedule" />
-                    {/* <ReservationTable data={reservationSchedule} /> */}
-                    {/* <Navigation /> */}
+
+                    <ReservationTable 
+                        data={reservationSchedule} 
+                        onClickCellHandler={(reservationId) => {
+                            if (sidePanelStatus === "closed") {
+                                setCurrentReservationId(reservationId);                           
+                            }
+                            setSidePanelStatus("opened");
+                        }}
+                    />
+
+                    <Navigation />
+
+                    <ReservationSidePanel 
+                        reservationId={currentReservationId} 
+                        sidePanelStatus={sidePanelStatus}
+                        onCloseHandler={() => setSidePanelStatus("closed")}
+                    /> 
 
                 </section>
             </section>

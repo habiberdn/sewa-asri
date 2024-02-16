@@ -1,0 +1,199 @@
+{
+    "reservationSchedule": [
+        {
+            "id": "65cd764b15840105c16ba71f",
+
+            "date": "24-2-2023",
+            "status": "Menunggu pembayaran",
+            "total": 1000000,
+
+            "guest": {
+                "id": "65cd76700eff9e23bc4ddc71",
+                "name": "Dania Cooper",
+                "photo": "https://id.pinterest.com/offsite/?token=525-570&url=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F1c%2F16%2Fca%2F1c16caef979bd3cc3fa022d730908e63.jpg&pin=4292562135068461&client_tracking_params=CwABAAAAEDMzOTc2MjA2ODIwMjI3NTULAAcAAAAPdW5rbm93bi91bmtub3duAA&aux_data=%7B%22commerce_data%22%3A%7B%7D%7D"
+            },
+
+            "villa": {
+                "id": "65cd767456b8b257acac2c43",
+                "name": "Villa Pasir Putih"
+            },
+            
+            "schedule": {
+                "checkIn": "24-2-2023",
+                "checkOut": "26-2-2023"
+            }  
+        },
+        {
+            "id": "65cd76535f41cb695598e700",
+
+            "date": "24-2-2023",
+            "status": "Menunggu konfirmasi",
+            "total": 7500000,
+
+            "guest": {
+                "id": "65cd767b66b1469514adee0e",
+                "name": "Sofia Bennett",
+                "photo": "https://id.pinterest.com/offsite/?token=525-570&url=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F1c%2F16%2Fca%2F1c16caef979bd3cc3fa022d730908e63.jpg&pin=4292562135068461&client_tracking_params=CwABAAAAEDMzOTc2MjA2ODIwMjI3NTULAAcAAAAPdW5rbm93bi91bmtub3duAA&aux_data=%7B%22commerce_data%22%3A%7B%7D%7D"
+            },
+
+            "villa": {
+                "id": "65cd7684b5214c8c16e25554",
+                "name": "Villa Bukit Hijau"
+            },
+            
+            "schedule": {
+                "checkIn": "24-2-2023",
+                "checkOut": "26-2-2023"
+            }  
+        },
+        {
+            "id": "65cd7657097a711e70173b7c",
+
+            "date": "18-01-2024",
+            "status": "Selesai",
+            "total": 15000000,
+
+            "guest": {
+                "id": "65cd775a3ab66944b5648374",
+                "name": "Olivia Kennedy",
+                "photo": "https://id.pinterest.com/offsite/?token=525-570&url=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F1c%2F16%2Fca%2F1c16caef979bd3cc3fa022d730908e63.jpg&pin=4292562135068461&client_tracking_params=CwABAAAAEDMzOTc2MjA2ODIwMjI3NTULAAcAAAAPdW5rbm93bi91bmtub3duAA&aux_data=%7B%22commerce_data%22%3A%7B%7D%7D"
+            },
+
+            "villa": {
+                "id": "65cd7755ad079821024dd317",
+                "name": "Villa Bunga Melati"
+            },
+            
+            "schedule": {
+                "checkIn": "24-2-2023",
+                "checkOut": "26-2-2023"
+            }  
+        }
+    ],
+
+    "reservationScheduleDetail": [
+        {
+            "id": "65cd764b15840105c16ba71f",
+
+            "date": "24-2-2023",
+            "status": "Menunggu pembayaran",
+            "total": 1000000,
+
+            "guest": {
+                "id": "65cd76700eff9e23bc4ddc71",
+                "name": "Dania Cooper",
+                "photo": "https://i.pinimg.com/564x/f1/9c/39/f19c39dd4831ec4c94dc8ee1fbf044b3.jpg"
+            },
+
+            "villa": {
+                "id": "65cd767456b8b257acac2c43",
+                "name": "Villa Pasir Putih"
+            },
+            
+            "schedule": {
+                "checkIn": "24-2-2023",
+                "checkOut": "26-2-2023"
+            },
+
+            "history": [
+                {
+                    "id": "65cdbd00a786d9df0e5f72a8",
+                    "status": "Menunggu konfirmasi", 
+                    "date": "19-01-2024 11:24" 
+                },
+                {
+                    "id": "65cdbd0ad61d58b3282a47e2",
+                    "status": "Reservasi diterima", 
+                    "date": "19-01-2024 13:10" 
+                },
+                {
+                    "id": "65cdbd0e1131f828f90d8cc5",
+                    "status": "Menunggu pembayaran", 
+                    "date": "19-01-2024 13:10" 
+                }
+            ]
+        },
+        {
+            "id": "65cd76535f41cb695598e700",
+
+            "date": "24-2-2023",
+            "status": "Menunggu konfirmasi",
+            "total": 7500000,
+
+            "guest": {
+                "id": "65cdbd145a00759499b1d69b",
+                "name": "Sofia Bennett",
+                "photo": "https://i.pinimg.com/564x/59/af/1b/59af1bc3c91a6f1c0fa77f65a6ddd02a.jpg"
+            },
+
+            "villa": {
+                "id": "65cdbd1ac42b6c0a451145c1",
+                "name": "Villa Bukit Hijau"
+            },
+            
+            "schedule": {
+                "checkIn": "24-2-2023",
+                "checkOut": "26-2-2023"
+            },
+
+            "history": [
+                {
+                    "id": "65cdbd2132112736f041f496",
+                    "status": "Menunggu konfirmasi", 
+                    "date": "19-01-2024 11:24" 
+                },
+                {
+                    "id": "65cdbd2526adb26a5b260375",
+                    "status": "Reservasi diterima", 
+                    "date": "19-01-2024 13:10" 
+                },
+                {
+                    "id": "65cdbd289e2843c624ff64f0",
+                    "status": "Menunggu pembayaran", 
+                    "date": "19-01-2024 13:10" 
+                }
+            ]
+        },
+        {
+            "id": "65cd7657097a711e70173b7c",
+
+            "date": "18-01-2024",
+            "status": "Selesai",
+            "total": 15000000,
+
+            "guest": {
+                "id": "65cd775a3ab66944b5648374",
+                "name": "Olivia Kennedy",
+                "photo": "https://i.pinimg.com/564x/8a/59/d0/8a59d010b8b5a6fb64c81e324cd7f6f6.jpg"
+            },
+
+            "villa": {
+                "id": "65cd7755ad079821024dd317",
+                "name": "Villa Bunga Melati"
+            },
+            
+            "schedule": {
+                "checkIn": "24-2-2023",
+                "checkOut": "26-2-2023"
+            },
+
+            "history": [
+                {
+                    "id": "65cdbd2e20b3dbab1c43515b",
+                    "status": "Menunggu konfirmasi", 
+                    "date": "19-01-2024 11:24" 
+                },
+                {
+                    "id": "65cdbd353382a98e0a03d1ea",
+                    "status": "Reservasi diterima", 
+                    "date": "19-01-2024 13:10" 
+                },
+                {
+                    "id": "65cdbd39c73457b709c558b5",
+                    "status": "Menunggu pembayaran", 
+                    "date": "19-01-2024 13:10" 
+                }
+            ]
+        }
+    ]
+}
