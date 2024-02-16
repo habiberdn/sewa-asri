@@ -29,7 +29,7 @@ export function ReservationTable({
     onClickCellHandler
 }: { 
     data: Array<ReservationSchedule>;
-    onClickCellHandler?: () => void;
+    onClickCellHandler?: (reservationId: string) => void;
 }) {
     return (
         <table className="table">
@@ -47,11 +47,12 @@ export function ReservationTable({
             </thead>
 
             <tbody className="body">
-                {data.map(reservation => {
+                {data.map((reservation, index) => {
                     return (
                         <tr 
                             className="row"
-                            onClick={() => onClickCellHandler && onClickCellHandler()}    
+                            onClick={() => onClickCellHandler && onClickCellHandler(reservation.id)}    
+                            key={reservation.id + index}
                         >
                             <td className="cell cell-small label-regular">No</td>
                             <td className="cell cell-small label-regular">{ reservation.date }</td>
