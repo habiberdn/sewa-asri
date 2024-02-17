@@ -5,7 +5,8 @@
 .chart .visualization .scale,
 .chart .visualization .data,
 .chart .visualization .data-chart,
-.chart .visualization .scale-value  {
+.chart .visualization .scale-value,
+.chart .info  {
     display: flex;
 }
 
@@ -116,6 +117,26 @@
                     color: base.$neutral-500;
                 }
             }
+        }
+    }
+
+    .info {
+        .label::before {
+            height: 20px;
+            width: 20px;
+            content: " ";
+
+            border-radius: 4px;
+            display: block;
+            background-color: base.$primary-0;
+        }
+
+        .label {
+            display: flex;
+            column-gap: 16px;
+            align-items: center;
+
+            color: base.$neutral-500;
         }
     }
 

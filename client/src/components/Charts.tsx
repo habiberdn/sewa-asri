@@ -150,8 +150,8 @@ export function BookingsChart() {
                 </section>
             </main>
 
-            <article className="info">
-                <p>Semua villa</p>
+            <article className={styles["info"]}>
+                <p className={`label-regular ${styles["label"]}`}>Semua villa</p>
             </article>
         </section>
     );
