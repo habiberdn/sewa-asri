@@ -1,0 +1,152 @@
+@use "./../../base";
+
+.chart,
+.chart .visualization,
+.chart .visualization .scale,
+.chart .visualization .data,
+.chart .visualization .data-chart,
+.chart .visualization .scale-value,
+.chart .info  {
+    display: flex;
+}
+
+.chart {
+    padding: 24px;
+
+    flex-direction: column;
+    row-gap: 24px;
+
+    background-color: base.$neutral-0;
+    border-radius: 16px;
+    border: 1.5px solid base.$neutral-200;
+
+    .visualization {
+        column-gap: 16px;
+
+        .scale {
+            padding-top: 4px;
+
+            row-gap: 2px;
+            flex-direction: column;
+            
+            .scale-value {
+                row-gap: 24px;
+                flex-direction: column;
+            }
+
+            .value {
+                color: base.$neutral-600;
+            }
+
+            .invisible-shape {
+                height: 24px;
+                width: 24px;
+            }
+        }
+
+        .chart-visualization {
+            width: 100%;
+            padding: 0 24px;
+
+            display: flex;
+            row-gap: 16px;
+            justify-content: space-between;
+
+            position: relative;
+
+            .grid {
+                height: calc(100% - 40px);
+
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                position: absolute;
+
+                .vertical-grid,
+                .horizontal-grid {
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .horizontal-grid {
+                    top: 0;
+                    position: absolute;
+                    flex-direction: column;
+                }
+
+                .line {
+                    border: 1px dashed base.$neutral-300;
+
+                    &:first-child,
+                    &:last-child {
+                        border-style: solid;
+                    }
+                }
+            }
+
+            .data-chart {
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                position: absolute;
+
+                justify-content: space-between;
+            }
+
+            .data {
+                height: 100%;
+                row-gap: 16px;
+                align-items: center;
+                justify-content: flex-end;
+                flex-direction: column;
+
+                .bar-chart {
+                    height: 50%;
+                    width: 16px;
+                    background-color: base.$primary-100;
+
+                    border-top-left-radius: 4px;
+                    border-top-right-radius: 4px;
+                }
+
+                .data-label {
+                    color: base.$neutral-500;
+                }
+            }
+        }
+    }
+
+    .info {
+        .label::before {
+            height: 20px;
+            width: 20px;
+            content: " ";
+
+            border-radius: 4px;
+            display: block;
+            background-color: base.$primary-0;
+        }
+
+        .label {
+            display: flex;
+            column-gap: 16px;
+            align-items: center;
+
+            color: base.$neutral-500;
+        }
+    }
+
+    .reservation-visualization {
+        height: 300px;
+        width: 850px;
+    }
+
+    .status-visualization {
+        height: 330px;
+        width: 560px;
+    }
+}
